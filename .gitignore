@@ -10,6 +10,7 @@
 .classpath
 .project
 .settings
+light-log.txt
 
 *.iml
 *.idea
