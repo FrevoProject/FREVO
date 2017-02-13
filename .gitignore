@@ -4,6 +4,9 @@
 **/Results/
 /Results/
 */Results/*
+**/bin/
+/bin/
+*/bin/*
 .classpath
 .project
 .settings
