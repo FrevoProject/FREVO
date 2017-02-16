@@ -1,6 +1,6 @@
 package helper;
 
-// $ANTLR 3.1.1 CMinus.g 2017-02-15 10:52:19
+// $ANTLR 3.1.1 CMinus.g 2017-02-16 17:04:53
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -25,6 +25,12 @@ public class CMinusLexer extends Lexer {
     public static final int T__9=9;
     public static final int T__8=8;
     public static final int T__7=7;
+    public static final int T__22=22;
+    public static final int T__23=23;
+    public static final int T__24=24;
+    public static final int T__25=25;
+    public static final int T__20=20;
+    public static final int T__21=21;
 
     // delegates
     // delegators
@@ -247,11 +253,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:13:7: ( '==' )
-            // CMinus.g:13:9: '=='
+            // CMinus.g:13:7: ( '[' )
+            // CMinus.g:13:9: '['
             {
-            match("=="); 
-
+            match('['); 
 
             }
 
@@ -268,10 +273,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:14:7: ( '<' )
-            // CMinus.g:14:9: '<'
+            // CMinus.g:14:7: ( ']' )
+            // CMinus.g:14:9: ']'
             {
-            match('<'); 
+            match(']'); 
 
             }
 
@@ -288,10 +293,11 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:15:7: ( '+' )
-            // CMinus.g:15:9: '+'
+            // CMinus.g:15:7: ( '==' )
+            // CMinus.g:15:9: '=='
             {
-            match('+'); 
+            match("=="); 
+
 
             }
 
@@ -303,13 +309,136 @@ public class CMinusLexer extends Lexer {
     }
     // $ANTLR end "T__19"
 
+    // $ANTLR start "T__20"
+    public final void mT__20() throws RecognitionException {
+        try {
+            int _type = T__20;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // CMinus.g:16:7: ( '<' )
+            // CMinus.g:16:9: '<'
+            {
+            match('<'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__20"
+
+    // $ANTLR start "T__21"
+    public final void mT__21() throws RecognitionException {
+        try {
+            int _type = T__21;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // CMinus.g:17:7: ( '<=' )
+            // CMinus.g:17:9: '<='
+            {
+            match("<="); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__21"
+
+    // $ANTLR start "T__22"
+    public final void mT__22() throws RecognitionException {
+        try {
+            int _type = T__22;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // CMinus.g:18:7: ( '>=' )
+            // CMinus.g:18:9: '>='
+            {
+            match(">="); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__22"
+
+    // $ANTLR start "T__23"
+    public final void mT__23() throws RecognitionException {
+        try {
+            int _type = T__23;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // CMinus.g:19:7: ( '>' )
+            // CMinus.g:19:9: '>'
+            {
+            match('>'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__23"
+
+    // $ANTLR start "T__24"
+    public final void mT__24() throws RecognitionException {
+        try {
+            int _type = T__24;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // CMinus.g:20:7: ( '!=' )
+            // CMinus.g:20:9: '!='
+            {
+            match("!="); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__24"
+
+    // $ANTLR start "T__25"
+    public final void mT__25() throws RecognitionException {
+        try {
+            int _type = T__25;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // CMinus.g:21:7: ( '+' )
+            // CMinus.g:21:9: '+'
+            {
+            match('+'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__25"
+
     // $ANTLR start "ID"
     public final void mID() throws RecognitionException {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:139:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // CMinus.g:139:9: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // CMinus.g:155:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // CMinus.g:155:9: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -320,7 +449,7 @@ public class CMinusLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // CMinus.g:139:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // CMinus.g:155:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop1:
             do {
                 int alt1=2;
@@ -369,10 +498,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:142:5: ( ( '0' .. '9' )+ )
-            // CMinus.g:142:7: ( '0' .. '9' )+
+            // CMinus.g:158:5: ( ( '0' .. '9' )+ )
+            // CMinus.g:158:7: ( '0' .. '9' )+
             {
-            // CMinus.g:142:7: ( '0' .. '9' )+
+            // CMinus.g:158:7: ( '0' .. '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -386,7 +515,7 @@ public class CMinusLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // CMinus.g:142:8: '0' .. '9'
+            	    // CMinus.g:158:8: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -418,10 +547,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:145:5: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // CMinus.g:145:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // CMinus.g:161:5: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // CMinus.g:161:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // CMinus.g:145:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // CMinus.g:161:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt3=0;
             loop3:
             do {
@@ -472,8 +601,8 @@ public class CMinusLexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // CMinus.g:1:8: ( T__7 | T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | ID | INT | WS )
-        int alt4=16;
+        // CMinus.g:1:8: ( T__7 | T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | ID | INT | WS )
+        int alt4=22;
         alt4 = dfa4.predict(input);
         switch (alt4) {
             case 1 :
@@ -568,21 +697,63 @@ public class CMinusLexer extends Lexer {
                 }
                 break;
             case 14 :
-                // CMinus.g:1:85: ID
+                // CMinus.g:1:85: T__20
+                {
+                mT__20(); 
+
+                }
+                break;
+            case 15 :
+                // CMinus.g:1:91: T__21
+                {
+                mT__21(); 
+
+                }
+                break;
+            case 16 :
+                // CMinus.g:1:97: T__22
+                {
+                mT__22(); 
+
+                }
+                break;
+            case 17 :
+                // CMinus.g:1:103: T__23
+                {
+                mT__23(); 
+
+                }
+                break;
+            case 18 :
+                // CMinus.g:1:109: T__24
+                {
+                mT__24(); 
+
+                }
+                break;
+            case 19 :
+                // CMinus.g:1:115: T__25
+                {
+                mT__25(); 
+
+                }
+                break;
+            case 20 :
+                // CMinus.g:1:121: ID
                 {
                 mID(); 
 
                 }
                 break;
-            case 15 :
-                // CMinus.g:1:88: INT
+            case 21 :
+                // CMinus.g:1:124: INT
                 {
                 mINT(); 
 
                 }
                 break;
-            case 16 :
-                // CMinus.g:1:92: WS
+            case 22 :
+                // CMinus.g:1:128: WS
                 {
                 mWS(); 
 
@@ -596,51 +767,60 @@ public class CMinusLexer extends Lexer {
 
     protected DFA4 dfa4 = new DFA4(this);
     static final String DFA4_eotS =
-        "\5\uffff\2\15\2\uffff\1\15\1\24\5\uffff\3\15\2\uffff\1\30\1\15"+
-        "\1\32\1\uffff\1\33\2\uffff";
+        "\5\uffff\2\21\2\uffff\1\21\1\30\2\uffff\1\32\1\34\5\uffff\3\21"+
+        "\6\uffff\1\40\1\21\1\42\1\uffff\1\43\2\uffff";
     static final String DFA4_eofS =
-        "\34\uffff";
+        "\44\uffff";
     static final String DFA4_minS =
-        "\1\11\4\uffff\1\156\1\150\2\uffff\1\157\1\75\5\uffff\1\164\1\141"+
-        "\1\162\2\uffff\1\60\1\162\1\60\1\uffff\1\60\2\uffff";
+        "\1\11\4\uffff\1\156\1\150\2\uffff\1\157\1\75\2\uffff\2\75\5\uffff"+
+        "\1\164\1\141\1\162\6\uffff\1\60\1\162\1\60\1\uffff\1\60\2\uffff";
     static final String DFA4_maxS =
-        "\1\175\4\uffff\1\156\1\150\2\uffff\1\157\1\75\5\uffff\1\164\1\141"+
-        "\1\162\2\uffff\1\172\1\162\1\172\1\uffff\1\172\2\uffff";
+        "\1\175\4\uffff\1\156\1\150\2\uffff\1\157\1\75\2\uffff\2\75\5\uffff"+
+        "\1\164\1\141\1\162\6\uffff\1\172\1\162\1\172\1\uffff\1\172\2\uffff";
     static final String DFA4_acceptS =
-        "\1\uffff\1\1\1\2\1\3\1\4\2\uffff\1\7\1\10\2\uffff\1\14\1\15\1\16"+
-        "\1\17\1\20\3\uffff\1\13\1\12\3\uffff\1\5\1\uffff\1\11\1\6";
+        "\1\uffff\1\1\1\2\1\3\1\4\2\uffff\1\7\1\10\2\uffff\1\13\1\14\2\uffff"+
+        "\1\22\1\23\1\24\1\25\1\26\3\uffff\1\15\1\12\1\17\1\16\1\20\1\21"+
+        "\3\uffff\1\5\1\uffff\1\11\1\6";
     static final String DFA4_specialS =
-        "\34\uffff}>";
+        "\44\uffff}>";
     static final String[] DFA4_transitionS = {
-            "\2\17\2\uffff\1\17\22\uffff\1\17\7\uffff\1\2\1\4\1\uffff\1"+
-            "\14\1\3\3\uffff\12\16\1\uffff\1\1\1\13\1\12\3\uffff\32\15\4"+
-            "\uffff\1\15\1\uffff\2\15\1\6\2\15\1\11\2\15\1\5\21\15\1\7\1"+
-            "\uffff\1\10",
+            "\2\23\2\uffff\1\23\22\uffff\1\23\1\17\6\uffff\1\2\1\4\1\uffff"+
+            "\1\20\1\3\3\uffff\12\22\1\uffff\1\1\1\15\1\12\1\16\2\uffff\32"+
+            "\21\1\13\1\uffff\1\14\1\uffff\1\21\1\uffff\2\21\1\6\2\21\1\11"+
+            "\2\21\1\5\21\21\1\7\1\uffff\1\10",
             "",
             "",
             "",
             "",
-            "\1\20",
-            "\1\21",
-            "",
-            "",
-            "\1\22",
-            "\1\23",
-            "",
-            "",
-            "",
-            "",
-            "",
+            "\1\24",
             "\1\25",
+            "",
+            "",
             "\1\26",
             "\1\27",
             "",
             "",
-            "\12\15\7\uffff\32\15\4\uffff\1\15\1\uffff\32\15",
             "\1\31",
-            "\12\15\7\uffff\32\15\4\uffff\1\15\1\uffff\32\15",
+            "\1\33",
             "",
-            "\12\15\7\uffff\32\15\4\uffff\1\15\1\uffff\32\15",
+            "",
+            "",
+            "",
+            "",
+            "\1\35",
+            "\1\36",
+            "\1\37",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
+            "\1\41",
+            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
+            "",
+            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
             "",
             ""
     };
@@ -675,7 +855,7 @@ public class CMinusLexer extends Lexer {
             this.transition = DFA4_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__7 | T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | ID | INT | WS );";
+            return "1:1: Tokens : ( T__7 | T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | ID | INT | WS );";
         }
     }
  

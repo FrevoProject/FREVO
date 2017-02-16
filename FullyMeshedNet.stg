@@ -1,0 +1,53 @@
+group FullyMeshedNet;
+
+getOutputDeclaration(floattype,inttype,iterations,inputsize,inputnodes,outputsize,nodes,outputnodes,activationbody,activationargument) ::= <<
+
+<floattype> output [<outputsize>];
+
+<floattype> activate(<floattype> <activationargument>){
+  <activationbody>
+}
+
+<floattype> rand_range(<floattype> border){
+  <floattype> x = ((<floattype>)rand()/(<floattype>)RAND_MAX);
+  <floattype> val = x*2.0*border-border;
+}
+
+<floattype>[] getStep(<floattype>[] input){
+  if (inputsize==inputnodes){
+    <inttype> i;
+	<inttype> j;
+	<floattype> activation [<nodes>];
+	<floattype> outputVector [<outputnodes>];
+    for (i=0; i \< <inputsize>; i=i+1) {
+      output[i]=input[i];
+    }
+	for (i=<inputnodes>; i \< <nodes>; i=i+1) {
+      <floattype> sum=0.0;
+	  for (j=0; j \< <nodes>; j=j+1) {
+        sum=sum+weight[j][i]*output[j];
+      }
+	  activation[i]=activation[i]+rand_range(randombias[i]);
+    }
+	for (i = <inputnodes>; i \< <nodes>; i=i+1) {
+      output[i]=activate(activation[i]);
+    }
+	for (i = (<nodes> - <outputnodes>); i \< <nodes>; i=i+1) {
+	  j = i - (<nodes> - <outputnodes>);
+      outputVector[j]=output[i];
+    }
+	return outputVector;
+  }
+
+}
+
+<floattype>[] getOutput(<floattype>[] input){
+  srand((unsigned)time(NULL));
+  <inttype> i;
+  for (i=0; i \< <iterations> - 1; i=i+1) {
+    getStep(input);
+  }
+  return getStep(input);
+}
+
+>>

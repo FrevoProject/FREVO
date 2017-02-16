@@ -9,6 +9,14 @@ class Wrapper {
 
 variable(type,name) ::= "<type> <name>;"
 
+arrayDeclaration(type,name,size) ::= "<type> <name>[]=new <type>[<size>];"
+
+array(name,index) ::= "<name>[<index>]"
+
+arrayexp(index) ::= "[<index>]"
+
+dummy() ::= "dummy"
+
 globalVariable ::= variable
 
 function(type,name,args,locals,stats) ::= <<
@@ -47,6 +55,14 @@ assign(lhs,rhs) ::= "<lhs> = <rhs>;"
 equals(left,right) ::= "<left> == <right>"
 
 lessThan(left,right) ::= "<left> \< <right>"
+
+moreThan(left,right) ::= "<left> \> <right>"
+
+lessOrEqual(left,right) ::= "<left> \<= <right>"
+
+moreOrEqual(left,right) ::= "<left> \>= <right>"
+
+unEqual(left,right) ::= "<left> != <right>"
 
 add(left,right) ::= "<left> + <right>"
 
