@@ -46,6 +46,14 @@ variable
         -> {$function.size()>0 && $function::name==null}?
            globalVariable(type={$type.st},name={$declarator.st})
         -> variable(type={$type.st},name={$declarator.st})
+	|   type declarator '=' expr ';'
+	    -> {$function.size()>0 && $function::name==null}?
+           globalVariableInit(type={$type.st},name={$declarator.st},value={$expr.st})
+        -> variableInit(type={$type.st},name={$declarator.st},value={$expr.st})
+	|   type declarator '[' expr ']' ';'
+	    -> {$function.size()>0 && $function::name==null}?
+           globalArrayDeclaration(type={$type.st},name={$declarator.st},size={$expr.st})
+        -> arrayDeclaration(type={$type.st},name={$declarator.st},size={$expr.st})
     ;
 	
 
@@ -75,18 +83,23 @@ scope slist;
 formalParameter
     :   type declarator 
         -> parameter(type={$type.st},name={$declarator.st})
+	|   type declarator '[]'
+	    -> arrayparameter(type={$type.st},name={$declarator.st})
     ;
 
 type
     :   'int'  -> type_int()
     |   'char' -> type_char()
+	|   'float' -> type_float()
+	|   'int[]' -> type_intarray()
+	|   'char[]' -> type_chararray()
+	|   'float[]' -> type_floatarray()
     |   ID     -> type_user_object(name={$ID.text})
     ;
 
 block
     :  '{'
-       ( variable {$slist::locals.add($variable.st);} )*
-       ( stat {$slist::stats.add($stat.st);})*
+       ( variable {$slist::locals.add($variable.st);} | stat {$slist::stats.add($stat.st);})*
        '}'
     ;
 	
@@ -98,10 +111,23 @@ scope slist;
   $slist::stats = new ArrayList();
 }
     : forStat -> {$forStat.st}
+	| ifStat -> {$ifStat.st}
     | expr ';' -> statement(expr={$expr.st})
     | block -> statementList(locals={$slist::locals}, stats={$slist::stats})
     | assignStat ';' -> {$assignStat.st}
+	| 'return' expr ';' -> return(expr={$expr.st})
     | ';' -> {new StringTemplate(";")}
+    ;
+	
+ifStat
+scope slist;
+@init {
+  $slist::locals = new ArrayList();
+  $slist::stats = new ArrayList();
+}
+    :   'if' '(' e=condExpr ')' block
+        -> ifBlock(e={$e.st},
+                   locals={$slist::locals}, stats={$slist::stats})
     ;
 
 forStat
@@ -116,8 +142,11 @@ scope slist;
     ;
 
 assignStat
-    :   ID '=' expr -> assign(lhs={$ID.text}, rhs={$expr.st})
-	|   arrayexpr '=' expr -> assign(lhs={$arrayexpr.st}, rhs={$expr.st})
+	:   e1=expr '=' e2=expr -> assign(lhs={$e1.st}, rhs={$e2.st})
+	|   expr '++' -> inkrement(e={$expr.st})
+	|   expr '--' -> dekrement(e={$expr.st})
+	|   e1=expr '+=' e2=expr -> inkrementby(lhs={$e1.st}, rhs={$e2.st})
+	|   e1=expr '-=' e2=expr -> dekrementby(lhs={$e1.st}, rhs={$e2.st})
     ;
 
 expr:   condExpr -> {$condExpr.st}
@@ -149,6 +178,7 @@ aexpr
 atom
     : ID -> refVar(id={$ID.text})
     | INT -> iconst(value={$INT.text})
+	| FP -> iconst(value={$FP.text})
     | '(' expr ')' -> {$expr.st}
     ; 
 
@@ -156,6 +186,9 @@ ID  :   ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
     ;
 
 INT	:	('0'..'9')+
+	;
+	
+FP  :   ('0'..'9')+ ('.') ('0'..'9')+
 	;
 
 WS  :   (' ' | '\t' | '\r' | '\n')+ {channel=99;}
