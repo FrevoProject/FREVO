@@ -118,6 +118,7 @@ scope slist;
 }
     : forStat -> {$forStat.st}
 	| ifStat -> {$ifStat.st}
+	| elseStat -> {$elseStat.st}
     | expr ';' -> statement(expr={$expr.st})
     | block -> statementList(locals={$slist::locals}, stats={$slist::stats})
     | assignStat ';' -> {$assignStat.st}
@@ -134,6 +135,16 @@ scope slist;
     :   'if' '(' e=condExpr ')' block
         -> ifBlock(e={$e.st},
                    locals={$slist::locals}, stats={$slist::stats})
+    ;
+	
+elseStat
+scope slist;
+@init {
+  $slist::locals = new ArrayList();
+  $slist::stats = new ArrayList();
+}
+    :   'else' block
+        -> elseBlock(locals={$slist::locals}, stats={$slist::stats})
     ;
 
 forStat

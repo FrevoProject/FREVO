@@ -85,6 +85,13 @@ if (<e>) {
 }
 >>
 
+elseBlock(locals,stats) ::= <<
+else {
+    <locals; separator="\n">
+    <stats; separator="\n">
+}
+>>
+
 inkrement(e) ::= "<e>++"
 
 dekrement(e) ::= "<e>--"

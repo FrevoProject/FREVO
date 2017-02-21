@@ -2,7 +2,7 @@ group FullyMeshedNet;
 
 getOutputDeclaration(floattype,inttype,iterations,inputsize,inputnodes,outputsize,nodes,outputnodes,activationbody,activationargument) ::= <<
 
-<floattype> output [<outputsize>];
+<floattype> output[<outputsize>];
 
 <floattype> activate(<floattype> <activationargument>){
   <activationbody>
