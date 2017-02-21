@@ -86,14 +86,20 @@ formalParameter
 	|   type declarator '[]'
 	    -> arrayparameter(type={$type.st},name={$declarator.st})
     ;
+	
+castexpr
+    :   '(' type ')' -> cast(type={$type.st})
+	;
 
 type
     :   'int'  -> type_int()
     |   'char' -> type_char()
 	|   'float' -> type_float()
+	|   'double' -> type_double()
 	|   'int[]' -> type_intarray()
 	|   'char[]' -> type_chararray()
 	|   'float[]' -> type_floatarray()
+	|   'double[]' -> type_doublearray()
     |   ID     -> type_user_object(name={$ID.text})
     ;
 
@@ -151,13 +157,20 @@ assignStat
 
 expr:   condExpr -> {$condExpr.st}
     |   arrayexpr -> {$arrayexpr.st}
+	|   aexpr -> {$aexpr.st}
     ;
 	
 arrayexpr
 	:   a=aexpr '[' b=aexpr ']' -> array(name={$a.st},index={$b.st})
 	;
-
+	
 condExpr
+	:   c1=condexp '&&' c2=condexp -> conjunction(left={$c1.st},right={$c2.st})
+	|   c1=condexp '||' c2=condexp -> disjunction(left={$c1.st},right={$c2.st})
+	|   c=condexp -> {$condexp.st}
+	;
+
+condexp
     :   a=aexpr
         (   (  '==' b=aexpr -> equals(left={$a.st},right={$b.st})
             |  '<' b=aexpr   -> lessThan(left={$a.st},right={$b.st})
@@ -173,6 +186,9 @@ condExpr
 aexpr
     :   (a=atom -> {$a.st})
         ( '+' b=atom -> add(left={$aexpr.st}, right={$b.st}) )*
+		( '-' b=atom -> substract(left={$aexpr.st}, right={$b.st}) )*
+		( '*' b=atom -> multiply(left={$aexpr.st}, right={$b.st}) )*
+		( '/' b=atom -> divide(left={$aexpr.st}, right={$b.st}) )*
     ;
 
 atom
@@ -180,6 +196,10 @@ atom
     | INT -> iconst(value={$INT.text})
 	| FP -> iconst(value={$FP.text})
     | '(' expr ')' -> {$expr.st}
+	| castexpr ID -> castrefVar(type={$castexpr.st},id={$ID.text})
+    | castexpr INT -> casticonst(type={$castexpr.st},value={$INT.text})
+	| castexpr FP -> casticonst(type={$castexpr.st},value={$FP.text})
+    | castexpr '(' expr ')' -> castexp(type={$castexpr.st},value={$expr.st})
     ; 
 
 ID  :   ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
