@@ -1,6 +1,6 @@
 package helper;
 
-// $ANTLR 3.1.1 CMinus.g 2017-02-21 11:23:57
+// $ANTLR 3.1.1 CMinus.g 2017-02-21 13:41:11
 
 import org.antlr.stringtemplate.*;
 
@@ -1625,15 +1625,12 @@ public class CMinusParser extends Parser {
             // CMinus.g:158:5: ( condExpr -> {$condExpr.st} | arrayexpr -> {$arrayexpr.st} | aexpr -> {$aexpr.st})
             int alt11=3;
             switch ( input.LA(1) ) {
-            case ID:
+            case 12:
                 {
                 int LA11_1 = input.LA(2);
 
                 if ( (synpred28_CMinus()) ) {
                     alt11=1;
-                }
-                else if ( (synpred29_CMinus()) ) {
-                    alt11=2;
                 }
                 else if ( (true) ) {
                     alt11=3;
@@ -1647,7 +1644,7 @@ public class CMinusParser extends Parser {
                 }
                 }
                 break;
-            case INT:
+            case ID:
                 {
                 int LA11_2 = input.LA(2);
 
@@ -1669,15 +1666,12 @@ public class CMinusParser extends Parser {
                 }
                 }
                 break;
-            case FP:
+            case INT:
                 {
                 int LA11_3 = input.LA(2);
 
                 if ( (synpred28_CMinus()) ) {
                     alt11=1;
-                }
-                else if ( (synpred29_CMinus()) ) {
-                    alt11=2;
                 }
                 else if ( (true) ) {
                     alt11=3;
@@ -1691,15 +1685,12 @@ public class CMinusParser extends Parser {
                 }
                 }
                 break;
-            case 12:
+            case FP:
                 {
                 int LA11_4 = input.LA(2);
 
                 if ( (synpred28_CMinus()) ) {
                     alt11=1;
-                }
-                else if ( (synpred29_CMinus()) ) {
-                    alt11=2;
                 }
                 else if ( (true) ) {
                     alt11=3;
@@ -1804,40 +1795,35 @@ public class CMinusParser extends Parser {
     };
 
     // $ANTLR start "arrayexpr"
-    // CMinus.g:163:1: arrayexpr : a= aexpr '[' b= aexpr ']' -> array(name=$a.stindex=$b.st);
+    // CMinus.g:163:1: arrayexpr : ID '[' aexpr ']' -> array(name=$ID.textindex=$aexpr.st);
     public final CMinusParser.arrayexpr_return arrayexpr() throws RecognitionException {
         CMinusParser.arrayexpr_return retval = new CMinusParser.arrayexpr_return();
         retval.start = input.LT(1);
 
-        CMinusParser.aexpr_return a = null;
-
-        CMinusParser.aexpr_return b = null;
+        Token ID31=null;
+        CMinusParser.aexpr_return aexpr32 = null;
 
 
         try {
-            // CMinus.g:164:2: (a= aexpr '[' b= aexpr ']' -> array(name=$a.stindex=$b.st))
-            // CMinus.g:164:6: a= aexpr '[' b= aexpr ']'
+            // CMinus.g:164:2: ( ID '[' aexpr ']' -> array(name=$ID.textindex=$aexpr.st))
+            // CMinus.g:164:6: ID '[' aexpr ']'
             {
-            pushFollow(FOLLOW_aexpr_in_arrayexpr1360);
-            a=aexpr();
+            ID31=(Token)match(input,ID,FOLLOW_ID_in_arrayexpr1357); if (state.failed) return retval;
+            match(input,10,FOLLOW_10_in_arrayexpr1359); if (state.failed) return retval;
+            pushFollow(FOLLOW_aexpr_in_arrayexpr1361);
+            aexpr32=aexpr();
 
             state._fsp--;
             if (state.failed) return retval;
-            match(input,10,FOLLOW_10_in_arrayexpr1362); if (state.failed) return retval;
-            pushFollow(FOLLOW_aexpr_in_arrayexpr1366);
-            b=aexpr();
-
-            state._fsp--;
-            if (state.failed) return retval;
-            match(input,11,FOLLOW_11_in_arrayexpr1368); if (state.failed) return retval;
+            match(input,11,FOLLOW_11_in_arrayexpr1363); if (state.failed) return retval;
 
 
             // TEMPLATE REWRITE
             if ( state.backtracking==0 ) {
-              // 164:30: -> array(name=$a.stindex=$b.st)
+              // 164:23: -> array(name=$ID.textindex=$aexpr.st)
               {
                   retval.st = templateLib.getInstanceOf("array",
-                new STAttrMap().put("name", (a!=null?a.st:null)).put("index", (b!=null?b.st:null)));
+                new STAttrMap().put("name", (ID31!=null?ID31.getText():null)).put("index", (aexpr32!=null?aexpr32.st:null)));
               }
 
             }
@@ -1879,7 +1865,7 @@ public class CMinusParser extends Parser {
             // CMinus.g:168:2: (c1= condexp '&&' c2= condexp -> conjunction(left=$c1.stright=$c2.st) | c1= condexp '||' c2= condexp -> disjunction(left=$c1.stright=$c2.st) | c= condexp -> {$condexp.st})
             int alt12=3;
             switch ( input.LA(1) ) {
-            case ID:
+            case 12:
                 {
                 int LA12_1 = input.LA(2);
 
@@ -1901,7 +1887,7 @@ public class CMinusParser extends Parser {
                 }
                 }
                 break;
-            case INT:
+            case ID:
                 {
                 int LA12_2 = input.LA(2);
 
@@ -1923,7 +1909,7 @@ public class CMinusParser extends Parser {
                 }
                 }
                 break;
-            case FP:
+            case INT:
                 {
                 int LA12_3 = input.LA(2);
 
@@ -1945,7 +1931,7 @@ public class CMinusParser extends Parser {
                 }
                 }
                 break;
-            case 12:
+            case FP:
                 {
                 int LA12_4 = input.LA(2);
 
@@ -1979,13 +1965,13 @@ public class CMinusParser extends Parser {
                 case 1 :
                     // CMinus.g:168:6: c1= condexp '&&' c2= condexp
                     {
-                    pushFollow(FOLLOW_condexp_in_condExpr1397);
+                    pushFollow(FOLLOW_condexp_in_condExpr1392);
                     c1=condexp();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    match(input,33,FOLLOW_33_in_condExpr1399); if (state.failed) return retval;
-                    pushFollow(FOLLOW_condexp_in_condExpr1403);
+                    match(input,33,FOLLOW_33_in_condExpr1394); if (state.failed) return retval;
+                    pushFollow(FOLLOW_condexp_in_condExpr1398);
                     c2=condexp();
 
                     state._fsp--;
@@ -2006,13 +1992,13 @@ public class CMinusParser extends Parser {
                 case 2 :
                     // CMinus.g:169:6: c1= condexp '||' c2= condexp
                     {
-                    pushFollow(FOLLOW_condexp_in_condExpr1425);
+                    pushFollow(FOLLOW_condexp_in_condExpr1420);
                     c1=condexp();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    match(input,34,FOLLOW_34_in_condExpr1427); if (state.failed) return retval;
-                    pushFollow(FOLLOW_condexp_in_condExpr1431);
+                    match(input,34,FOLLOW_34_in_condExpr1422); if (state.failed) return retval;
+                    pushFollow(FOLLOW_condexp_in_condExpr1426);
                     c2=condexp();
 
                     state._fsp--;
@@ -2033,7 +2019,7 @@ public class CMinusParser extends Parser {
                 case 3 :
                     // CMinus.g:170:6: c= condexp
                     {
-                    pushFollow(FOLLOW_condexp_in_condExpr1453);
+                    pushFollow(FOLLOW_condexp_in_condExpr1448);
                     c=condexp();
 
                     state._fsp--;
@@ -2086,7 +2072,7 @@ public class CMinusParser extends Parser {
             // CMinus.g:174:5: (a= aexpr ( ( '==' b= aexpr -> equals(left=$a.stright=$b.st) | '<' b= aexpr -> lessThan(left=$a.stright=$b.st) | '<=' b= aexpr -> lessOrEqual(left=$a.stright=$b.st) | '>=' b= aexpr -> moreOrEqual(left=$a.stright=$b.st) | '>' b= aexpr -> moreThan(left=$a.stright=$b.st) | '!=' b= aexpr -> unEqual(left=$a.stright=$b.st)) | -> {$a.st}) )
             // CMinus.g:174:9: a= aexpr ( ( '==' b= aexpr -> equals(left=$a.stright=$b.st) | '<' b= aexpr -> lessThan(left=$a.stright=$b.st) | '<=' b= aexpr -> lessOrEqual(left=$a.stright=$b.st) | '>=' b= aexpr -> moreOrEqual(left=$a.stright=$b.st) | '>' b= aexpr -> moreThan(left=$a.stright=$b.st) | '!=' b= aexpr -> unEqual(left=$a.stright=$b.st)) | -> {$a.st})
             {
-            pushFollow(FOLLOW_aexpr_in_condexp1475);
+            pushFollow(FOLLOW_aexpr_in_condexp1470);
             a=aexpr();
 
             state._fsp--;
@@ -2157,8 +2143,8 @@ public class CMinusParser extends Parser {
                         case 1 :
                             // CMinus.g:175:16: '==' b= aexpr
                             {
-                            match(input,35,FOLLOW_35_in_condexp1492); if (state.failed) return retval;
-                            pushFollow(FOLLOW_aexpr_in_condexp1496);
+                            match(input,35,FOLLOW_35_in_condexp1487); if (state.failed) return retval;
+                            pushFollow(FOLLOW_aexpr_in_condexp1491);
                             b=aexpr();
 
                             state._fsp--;
@@ -2179,8 +2165,8 @@ public class CMinusParser extends Parser {
                         case 2 :
                             // CMinus.g:176:16: '<' b= aexpr
                             {
-                            match(input,36,FOLLOW_36_in_condexp1526); if (state.failed) return retval;
-                            pushFollow(FOLLOW_aexpr_in_condexp1530);
+                            match(input,36,FOLLOW_36_in_condexp1521); if (state.failed) return retval;
+                            pushFollow(FOLLOW_aexpr_in_condexp1525);
                             b=aexpr();
 
                             state._fsp--;
@@ -2201,8 +2187,8 @@ public class CMinusParser extends Parser {
                         case 3 :
                             // CMinus.g:177:7: '<=' b= aexpr
                             {
-                            match(input,37,FOLLOW_37_in_condexp1553); if (state.failed) return retval;
-                            pushFollow(FOLLOW_aexpr_in_condexp1557);
+                            match(input,37,FOLLOW_37_in_condexp1548); if (state.failed) return retval;
+                            pushFollow(FOLLOW_aexpr_in_condexp1552);
                             b=aexpr();
 
                             state._fsp--;
@@ -2223,8 +2209,8 @@ public class CMinusParser extends Parser {
                         case 4 :
                             // CMinus.g:178:7: '>=' b= aexpr
                             {
-                            match(input,38,FOLLOW_38_in_condexp1580); if (state.failed) return retval;
-                            pushFollow(FOLLOW_aexpr_in_condexp1584);
+                            match(input,38,FOLLOW_38_in_condexp1575); if (state.failed) return retval;
+                            pushFollow(FOLLOW_aexpr_in_condexp1579);
                             b=aexpr();
 
                             state._fsp--;
@@ -2245,8 +2231,8 @@ public class CMinusParser extends Parser {
                         case 5 :
                             // CMinus.g:179:7: '>' b= aexpr
                             {
-                            match(input,39,FOLLOW_39_in_condexp1607); if (state.failed) return retval;
-                            pushFollow(FOLLOW_aexpr_in_condexp1611);
+                            match(input,39,FOLLOW_39_in_condexp1602); if (state.failed) return retval;
+                            pushFollow(FOLLOW_aexpr_in_condexp1606);
                             b=aexpr();
 
                             state._fsp--;
@@ -2267,8 +2253,8 @@ public class CMinusParser extends Parser {
                         case 6 :
                             // CMinus.g:180:7: '!=' b= aexpr
                             {
-                            match(input,40,FOLLOW_40_in_condexp1634); if (state.failed) return retval;
-                            pushFollow(FOLLOW_aexpr_in_condexp1638);
+                            match(input,40,FOLLOW_40_in_condexp1629); if (state.failed) return retval;
+                            pushFollow(FOLLOW_aexpr_in_condexp1633);
                             b=aexpr();
 
                             state._fsp--;
@@ -2325,6 +2311,147 @@ public class CMinusParser extends Parser {
     }
     // $ANTLR end "condexp"
 
+    public static class basicexpr_return extends ParserRuleReturnScope {
+        public StringTemplate st;
+        public Object getTemplate() { return st; }
+        public String toString() { return st==null?null:st.toString(); }
+    };
+
+    // $ANTLR start "basicexpr"
+    // CMinus.g:186:1: basicexpr : ( '(' type ')' arrayexpr -> castvalue(type=$type.stvalue=$arrayexpr.st) | '(' type ')' atom -> castvalue(type=$type.stvalue=$atom.st) | arrayexpr -> {$arrayexpr.st} | atom -> {$atom.st});
+    public final CMinusParser.basicexpr_return basicexpr() throws RecognitionException {
+        CMinusParser.basicexpr_return retval = new CMinusParser.basicexpr_return();
+        retval.start = input.LT(1);
+
+        CMinusParser.type_return type33 = null;
+
+        CMinusParser.arrayexpr_return arrayexpr34 = null;
+
+        CMinusParser.type_return type35 = null;
+
+        CMinusParser.atom_return atom36 = null;
+
+        CMinusParser.arrayexpr_return arrayexpr37 = null;
+
+        CMinusParser.atom_return atom38 = null;
+
+
+        try {
+            // CMinus.g:187:5: ( '(' type ')' arrayexpr -> castvalue(type=$type.stvalue=$arrayexpr.st) | '(' type ')' atom -> castvalue(type=$type.stvalue=$atom.st) | arrayexpr -> {$arrayexpr.st} | atom -> {$atom.st})
+            int alt15=4;
+            alt15 = dfa15.predict(input);
+            switch (alt15) {
+                case 1 :
+                    // CMinus.g:187:9: '(' type ')' arrayexpr
+                    {
+                    match(input,12,FOLLOW_12_in_basicexpr1709); if (state.failed) return retval;
+                    pushFollow(FOLLOW_type_in_basicexpr1711);
+                    type33=type();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+                    match(input,14,FOLLOW_14_in_basicexpr1713); if (state.failed) return retval;
+                    pushFollow(FOLLOW_arrayexpr_in_basicexpr1715);
+                    arrayexpr34=arrayexpr();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+
+                    // TEMPLATE REWRITE
+                    if ( state.backtracking==0 ) {
+                      // 187:32: -> castvalue(type=$type.stvalue=$arrayexpr.st)
+                      {
+                          retval.st = templateLib.getInstanceOf("castvalue",
+                        new STAttrMap().put("type", (type33!=null?type33.st:null)).put("value", (arrayexpr34!=null?arrayexpr34.st:null)));
+                      }
+
+                    }
+                    }
+                    break;
+                case 2 :
+                    // CMinus.g:188:6: '(' type ')' atom
+                    {
+                    match(input,12,FOLLOW_12_in_basicexpr1735); if (state.failed) return retval;
+                    pushFollow(FOLLOW_type_in_basicexpr1737);
+                    type35=type();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+                    match(input,14,FOLLOW_14_in_basicexpr1739); if (state.failed) return retval;
+                    pushFollow(FOLLOW_atom_in_basicexpr1741);
+                    atom36=atom();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+
+                    // TEMPLATE REWRITE
+                    if ( state.backtracking==0 ) {
+                      // 188:24: -> castvalue(type=$type.stvalue=$atom.st)
+                      {
+                          retval.st = templateLib.getInstanceOf("castvalue",
+                        new STAttrMap().put("type", (type35!=null?type35.st:null)).put("value", (atom36!=null?atom36.st:null)));
+                      }
+
+                    }
+                    }
+                    break;
+                case 3 :
+                    // CMinus.g:189:6: arrayexpr
+                    {
+                    pushFollow(FOLLOW_arrayexpr_in_basicexpr1761);
+                    arrayexpr37=arrayexpr();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+
+                    // TEMPLATE REWRITE
+                    if ( state.backtracking==0 ) {
+                      // 189:16: -> {$arrayexpr.st}
+                      {
+                          retval.st = (arrayexpr37!=null?arrayexpr37.st:null);
+                      }
+
+                    }
+                    }
+                    break;
+                case 4 :
+                    // CMinus.g:190:6: atom
+                    {
+                    pushFollow(FOLLOW_atom_in_basicexpr1772);
+                    atom38=atom();
+
+                    state._fsp--;
+                    if (state.failed) return retval;
+
+
+                    // TEMPLATE REWRITE
+                    if ( state.backtracking==0 ) {
+                      // 190:11: -> {$atom.st}
+                      {
+                          retval.st = (atom38!=null?atom38.st:null);
+                      }
+
+                    }
+                    }
+                    break;
+
+            }
+            retval.stop = input.LT(-1);
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+        }
+        return retval;
+    }
+    // $ANTLR end "basicexpr"
+
     public static class aexpr_return extends ParserRuleReturnScope {
         public StringTemplate st;
         public Object getTemplate() { return st; }
@@ -2332,25 +2459,25 @@ public class CMinusParser extends Parser {
     };
 
     // $ANTLR start "aexpr"
-    // CMinus.g:186:1: aexpr : (a= atom -> {$a.st}) ( '+' b= atom -> add(left=$aexpr.stright=$b.st))* ( '-' b= atom -> substract(left=$aexpr.stright=$b.st))* ( '*' b= atom -> multiply(left=$aexpr.stright=$b.st))* ( '/' b= atom -> divide(left=$aexpr.stright=$b.st))* ;
+    // CMinus.g:193:1: aexpr : (a= basicexpr -> {$a.st}) ( ( '+' b= basicexpr -> add(left=$aexpr.stright=$b.st)) | ( '-' b= basicexpr -> substract(left=$aexpr.stright=$b.st)) | ( '*' b= basicexpr -> multiply(left=$aexpr.stright=$b.st)) | ( '/' b= basicexpr -> divide(left=$aexpr.stright=$b.st)) )* ;
     public final CMinusParser.aexpr_return aexpr() throws RecognitionException {
         CMinusParser.aexpr_return retval = new CMinusParser.aexpr_return();
         retval.start = input.LT(1);
 
-        CMinusParser.atom_return a = null;
+        CMinusParser.basicexpr_return a = null;
 
-        CMinusParser.atom_return b = null;
+        CMinusParser.basicexpr_return b = null;
 
 
         try {
-            // CMinus.g:187:5: ( (a= atom -> {$a.st}) ( '+' b= atom -> add(left=$aexpr.stright=$b.st))* ( '-' b= atom -> substract(left=$aexpr.stright=$b.st))* ( '*' b= atom -> multiply(left=$aexpr.stright=$b.st))* ( '/' b= atom -> divide(left=$aexpr.stright=$b.st))* )
-            // CMinus.g:187:9: (a= atom -> {$a.st}) ( '+' b= atom -> add(left=$aexpr.stright=$b.st))* ( '-' b= atom -> substract(left=$aexpr.stright=$b.st))* ( '*' b= atom -> multiply(left=$aexpr.stright=$b.st))* ( '/' b= atom -> divide(left=$aexpr.stright=$b.st))*
+            // CMinus.g:194:5: ( (a= basicexpr -> {$a.st}) ( ( '+' b= basicexpr -> add(left=$aexpr.stright=$b.st)) | ( '-' b= basicexpr -> substract(left=$aexpr.stright=$b.st)) | ( '*' b= basicexpr -> multiply(left=$aexpr.stright=$b.st)) | ( '/' b= basicexpr -> divide(left=$aexpr.stright=$b.st)) )* )
+            // CMinus.g:194:9: (a= basicexpr -> {$a.st}) ( ( '+' b= basicexpr -> add(left=$aexpr.stright=$b.st)) | ( '-' b= basicexpr -> substract(left=$aexpr.stright=$b.st)) | ( '*' b= basicexpr -> multiply(left=$aexpr.stright=$b.st)) | ( '/' b= basicexpr -> divide(left=$aexpr.stright=$b.st)) )*
             {
-            // CMinus.g:187:9: (a= atom -> {$a.st})
-            // CMinus.g:187:10: a= atom
+            // CMinus.g:194:9: (a= basicexpr -> {$a.st})
+            // CMinus.g:194:10: a= basicexpr
             {
-            pushFollow(FOLLOW_atom_in_aexpr1716);
-            a=atom();
+            pushFollow(FOLLOW_basicexpr_in_aexpr1795);
+            a=basicexpr();
 
             state._fsp--;
             if (state.failed) return retval;
@@ -2358,7 +2485,7 @@ public class CMinusParser extends Parser {
 
             // TEMPLATE REWRITE
             if ( state.backtracking==0 ) {
-              // 187:17: -> {$a.st}
+              // 194:22: -> {$a.st}
               {
                   retval.st = (a!=null?a.st:null);
               }
@@ -2366,24 +2493,44 @@ public class CMinusParser extends Parser {
             }
             }
 
-            // CMinus.g:188:9: ( '+' b= atom -> add(left=$aexpr.stright=$b.st))*
-            loop15:
+            // CMinus.g:195:9: ( ( '+' b= basicexpr -> add(left=$aexpr.stright=$b.st)) | ( '-' b= basicexpr -> substract(left=$aexpr.stright=$b.st)) | ( '*' b= basicexpr -> multiply(left=$aexpr.stright=$b.st)) | ( '/' b= basicexpr -> divide(left=$aexpr.stright=$b.st)) )*
+            loop16:
             do {
-                int alt15=2;
-                int LA15_0 = input.LA(1);
+                int alt16=5;
+                switch ( input.LA(1) ) {
+                case 41:
+                    {
+                    alt16=1;
+                    }
+                    break;
+                case 42:
+                    {
+                    alt16=2;
+                    }
+                    break;
+                case 43:
+                    {
+                    alt16=3;
+                    }
+                    break;
+                case 44:
+                    {
+                    alt16=4;
+                    }
+                    break;
 
-                if ( (LA15_0==41) ) {
-                    alt15=1;
                 }
 
-
-                switch (alt15) {
+                switch (alt16) {
             	case 1 :
-            	    // CMinus.g:188:11: '+' b= atom
+            	    // CMinus.g:195:10: ( '+' b= basicexpr -> add(left=$aexpr.stright=$b.st))
             	    {
-            	    match(input,41,FOLLOW_41_in_aexpr1733); if (state.failed) return retval;
-            	    pushFollow(FOLLOW_atom_in_aexpr1737);
-            	    b=atom();
+            	    // CMinus.g:195:10: ( '+' b= basicexpr -> add(left=$aexpr.stright=$b.st))
+            	    // CMinus.g:195:12: '+' b= basicexpr
+            	    {
+            	    match(input,41,FOLLOW_41_in_aexpr1813); if (state.failed) return retval;
+            	    pushFollow(FOLLOW_basicexpr_in_aexpr1817);
+            	    b=basicexpr();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
@@ -2391,7 +2538,7 @@ public class CMinusParser extends Parser {
 
             	    // TEMPLATE REWRITE
             	    if ( state.backtracking==0 ) {
-            	      // 188:22: -> add(left=$aexpr.stright=$b.st)
+            	      // 195:28: -> add(left=$aexpr.stright=$b.st)
             	      {
             	          retval.st = templateLib.getInstanceOf("add",
             	        new STAttrMap().put("left", retval.st).put("right", (b!=null?b.st:null)));
@@ -2399,31 +2546,19 @@ public class CMinusParser extends Parser {
 
             	    }
             	    }
+
+
+            	    }
             	    break;
-
-            	default :
-            	    break loop15;
-                }
-            } while (true);
-
-            // CMinus.g:189:3: ( '-' b= atom -> substract(left=$aexpr.stright=$b.st))*
-            loop16:
-            do {
-                int alt16=2;
-                int LA16_0 = input.LA(1);
-
-                if ( (LA16_0==42) ) {
-                    alt16=1;
-                }
-
-
-                switch (alt16) {
-            	case 1 :
-            	    // CMinus.g:189:5: '-' b= atom
+            	case 2 :
+            	    // CMinus.g:196:3: ( '-' b= basicexpr -> substract(left=$aexpr.stright=$b.st))
             	    {
-            	    match(input,42,FOLLOW_42_in_aexpr1760); if (state.failed) return retval;
-            	    pushFollow(FOLLOW_atom_in_aexpr1764);
-            	    b=atom();
+            	    // CMinus.g:196:3: ( '-' b= basicexpr -> substract(left=$aexpr.stright=$b.st))
+            	    // CMinus.g:196:5: '-' b= basicexpr
+            	    {
+            	    match(input,42,FOLLOW_42_in_aexpr1841); if (state.failed) return retval;
+            	    pushFollow(FOLLOW_basicexpr_in_aexpr1845);
+            	    b=basicexpr();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
@@ -2431,7 +2566,7 @@ public class CMinusParser extends Parser {
 
             	    // TEMPLATE REWRITE
             	    if ( state.backtracking==0 ) {
-            	      // 189:16: -> substract(left=$aexpr.stright=$b.st)
+            	      // 196:21: -> substract(left=$aexpr.stright=$b.st)
             	      {
             	          retval.st = templateLib.getInstanceOf("substract",
             	        new STAttrMap().put("left", retval.st).put("right", (b!=null?b.st:null)));
@@ -2439,31 +2574,19 @@ public class CMinusParser extends Parser {
 
             	    }
             	    }
+
+
+            	    }
             	    break;
-
-            	default :
-            	    break loop16;
-                }
-            } while (true);
-
-            // CMinus.g:190:3: ( '*' b= atom -> multiply(left=$aexpr.stright=$b.st))*
-            loop17:
-            do {
-                int alt17=2;
-                int LA17_0 = input.LA(1);
-
-                if ( (LA17_0==43) ) {
-                    alt17=1;
-                }
-
-
-                switch (alt17) {
-            	case 1 :
-            	    // CMinus.g:190:5: '*' b= atom
+            	case 3 :
+            	    // CMinus.g:197:3: ( '*' b= basicexpr -> multiply(left=$aexpr.stright=$b.st))
             	    {
-            	    match(input,43,FOLLOW_43_in_aexpr1787); if (state.failed) return retval;
-            	    pushFollow(FOLLOW_atom_in_aexpr1791);
-            	    b=atom();
+            	    // CMinus.g:197:3: ( '*' b= basicexpr -> multiply(left=$aexpr.stright=$b.st))
+            	    // CMinus.g:197:5: '*' b= basicexpr
+            	    {
+            	    match(input,43,FOLLOW_43_in_aexpr1869); if (state.failed) return retval;
+            	    pushFollow(FOLLOW_basicexpr_in_aexpr1873);
+            	    b=basicexpr();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
@@ -2471,7 +2594,7 @@ public class CMinusParser extends Parser {
 
             	    // TEMPLATE REWRITE
             	    if ( state.backtracking==0 ) {
-            	      // 190:16: -> multiply(left=$aexpr.stright=$b.st)
+            	      // 197:21: -> multiply(left=$aexpr.stright=$b.st)
             	      {
             	          retval.st = templateLib.getInstanceOf("multiply",
             	        new STAttrMap().put("left", retval.st).put("right", (b!=null?b.st:null)));
@@ -2479,31 +2602,19 @@ public class CMinusParser extends Parser {
 
             	    }
             	    }
+
+
+            	    }
             	    break;
-
-            	default :
-            	    break loop17;
-                }
-            } while (true);
-
-            // CMinus.g:191:3: ( '/' b= atom -> divide(left=$aexpr.stright=$b.st))*
-            loop18:
-            do {
-                int alt18=2;
-                int LA18_0 = input.LA(1);
-
-                if ( (LA18_0==44) ) {
-                    alt18=1;
-                }
-
-
-                switch (alt18) {
-            	case 1 :
-            	    // CMinus.g:191:5: '/' b= atom
+            	case 4 :
+            	    // CMinus.g:198:3: ( '/' b= basicexpr -> divide(left=$aexpr.stright=$b.st))
             	    {
-            	    match(input,44,FOLLOW_44_in_aexpr1814); if (state.failed) return retval;
-            	    pushFollow(FOLLOW_atom_in_aexpr1818);
-            	    b=atom();
+            	    // CMinus.g:198:3: ( '/' b= basicexpr -> divide(left=$aexpr.stright=$b.st))
+            	    // CMinus.g:198:5: '/' b= basicexpr
+            	    {
+            	    match(input,44,FOLLOW_44_in_aexpr1897); if (state.failed) return retval;
+            	    pushFollow(FOLLOW_basicexpr_in_aexpr1901);
+            	    b=basicexpr();
 
             	    state._fsp--;
             	    if (state.failed) return retval;
@@ -2511,7 +2622,7 @@ public class CMinusParser extends Parser {
 
             	    // TEMPLATE REWRITE
             	    if ( state.backtracking==0 ) {
-            	      // 191:16: -> divide(left=$aexpr.stright=$b.st)
+            	      // 198:21: -> divide(left=$aexpr.stright=$b.st)
             	      {
             	          retval.st = templateLib.getInstanceOf("divide",
             	        new STAttrMap().put("left", retval.st).put("right", (b!=null?b.st:null)));
@@ -2519,10 +2630,13 @@ public class CMinusParser extends Parser {
 
             	    }
             	    }
+
+
+            	    }
             	    break;
 
             	default :
-            	    break loop18;
+            	    break loop16;
                 }
             } while (true);
 
@@ -2549,197 +2663,119 @@ public class CMinusParser extends Parser {
     };
 
     // $ANTLR start "atom"
-    // CMinus.g:194:1: atom : ( ID -> refVar(id=$ID.text) | INT -> iconst(value=$INT.text) | FP -> iconst(value=$FP.text) | '(' expr ')' -> {$expr.st} | castexpr ID -> castrefVar(type=$castexpr.stid=$ID.text) | castexpr INT -> casticonst(type=$castexpr.stvalue=$INT.text) | castexpr FP -> casticonst(type=$castexpr.stvalue=$FP.text) | castexpr '(' expr ')' -> castexp(type=$castexpr.stvalue=$expr.st));
+    // CMinus.g:201:1: atom : ( ID -> refVar(id=$ID.text) | INT -> iconst(value=$INT.text) | FP -> iconst(value=$FP.text) | '(' expr ')' -> brackets(expr=$expr.st));
     public final CMinusParser.atom_return atom() throws RecognitionException {
         CMinusParser.atom_return retval = new CMinusParser.atom_return();
         retval.start = input.LT(1);
 
-        Token ID31=null;
-        Token INT32=null;
-        Token FP33=null;
-        Token ID36=null;
-        Token INT38=null;
-        Token FP40=null;
-        CMinusParser.expr_return expr34 = null;
-
-        CMinusParser.castexpr_return castexpr35 = null;
-
-        CMinusParser.castexpr_return castexpr37 = null;
-
-        CMinusParser.castexpr_return castexpr39 = null;
-
-        CMinusParser.castexpr_return castexpr41 = null;
-
+        Token ID39=null;
+        Token INT40=null;
+        Token FP41=null;
         CMinusParser.expr_return expr42 = null;
 
 
         try {
-            // CMinus.g:195:5: ( ID -> refVar(id=$ID.text) | INT -> iconst(value=$INT.text) | FP -> iconst(value=$FP.text) | '(' expr ')' -> {$expr.st} | castexpr ID -> castrefVar(type=$castexpr.stid=$ID.text) | castexpr INT -> casticonst(type=$castexpr.stvalue=$INT.text) | castexpr FP -> casticonst(type=$castexpr.stvalue=$FP.text) | castexpr '(' expr ')' -> castexp(type=$castexpr.stvalue=$expr.st))
-            int alt19=8;
-            alt19 = dfa19.predict(input);
-            switch (alt19) {
+            // CMinus.g:202:5: ( ID -> refVar(id=$ID.text) | INT -> iconst(value=$INT.text) | FP -> iconst(value=$FP.text) | '(' expr ')' -> brackets(expr=$expr.st))
+            int alt17=4;
+            switch ( input.LA(1) ) {
+            case ID:
+                {
+                alt17=1;
+                }
+                break;
+            case INT:
+                {
+                alt17=2;
+                }
+                break;
+            case FP:
+                {
+                alt17=3;
+                }
+                break;
+            case 12:
+                {
+                alt17=4;
+                }
+                break;
+            default:
+                if (state.backtracking>0) {state.failed=true; return retval;}
+                NoViableAltException nvae =
+                    new NoViableAltException("", 17, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt17) {
                 case 1 :
-                    // CMinus.g:195:7: ID
+                    // CMinus.g:202:7: ID
                     {
-                    ID31=(Token)match(input,ID,FOLLOW_ID_in_atom1852); if (state.failed) return retval;
+                    ID39=(Token)match(input,ID,FOLLOW_ID_in_atom1936); if (state.failed) return retval;
 
 
                     // TEMPLATE REWRITE
                     if ( state.backtracking==0 ) {
-                      // 195:10: -> refVar(id=$ID.text)
+                      // 202:10: -> refVar(id=$ID.text)
                       {
                           retval.st = templateLib.getInstanceOf("refVar",
-                        new STAttrMap().put("id", (ID31!=null?ID31.getText():null)));
+                        new STAttrMap().put("id", (ID39!=null?ID39.getText():null)));
                       }
 
                     }
                     }
                     break;
                 case 2 :
-                    // CMinus.g:196:7: INT
+                    // CMinus.g:203:7: INT
                     {
-                    INT32=(Token)match(input,INT,FOLLOW_INT_in_atom1869); if (state.failed) return retval;
+                    INT40=(Token)match(input,INT,FOLLOW_INT_in_atom1953); if (state.failed) return retval;
 
 
                     // TEMPLATE REWRITE
                     if ( state.backtracking==0 ) {
-                      // 196:11: -> iconst(value=$INT.text)
+                      // 203:11: -> iconst(value=$INT.text)
                       {
                           retval.st = templateLib.getInstanceOf("iconst",
-                        new STAttrMap().put("value", (INT32!=null?INT32.getText():null)));
+                        new STAttrMap().put("value", (INT40!=null?INT40.getText():null)));
                       }
 
                     }
                     }
                     break;
                 case 3 :
-                    // CMinus.g:197:4: FP
+                    // CMinus.g:204:4: FP
                     {
-                    FP33=(Token)match(input,FP,FOLLOW_FP_in_atom1883); if (state.failed) return retval;
+                    FP41=(Token)match(input,FP,FOLLOW_FP_in_atom1967); if (state.failed) return retval;
 
 
                     // TEMPLATE REWRITE
                     if ( state.backtracking==0 ) {
-                      // 197:7: -> iconst(value=$FP.text)
+                      // 204:7: -> iconst(value=$FP.text)
                       {
                           retval.st = templateLib.getInstanceOf("iconst",
-                        new STAttrMap().put("value", (FP33!=null?FP33.getText():null)));
+                        new STAttrMap().put("value", (FP41!=null?FP41.getText():null)));
                       }
 
                     }
                     }
                     break;
                 case 4 :
-                    // CMinus.g:198:7: '(' expr ')'
+                    // CMinus.g:205:7: '(' expr ')'
                     {
-                    match(input,12,FOLLOW_12_in_atom1900); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expr_in_atom1902);
-                    expr34=expr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-                    match(input,14,FOLLOW_14_in_atom1904); if (state.failed) return retval;
-
-
-                    // TEMPLATE REWRITE
-                    if ( state.backtracking==0 ) {
-                      // 198:20: -> {$expr.st}
-                      {
-                          retval.st = (expr34!=null?expr34.st:null);
-                      }
-
-                    }
-                    }
-                    break;
-                case 5 :
-                    // CMinus.g:199:4: castexpr ID
-                    {
-                    pushFollow(FOLLOW_castexpr_in_atom1913);
-                    castexpr35=castexpr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-                    ID36=(Token)match(input,ID,FOLLOW_ID_in_atom1915); if (state.failed) return retval;
-
-
-                    // TEMPLATE REWRITE
-                    if ( state.backtracking==0 ) {
-                      // 199:16: -> castrefVar(type=$castexpr.stid=$ID.text)
-                      {
-                          retval.st = templateLib.getInstanceOf("castrefVar",
-                        new STAttrMap().put("type", (castexpr35!=null?castexpr35.st:null)).put("id", (ID36!=null?ID36.getText():null)));
-                      }
-
-                    }
-                    }
-                    break;
-                case 6 :
-                    // CMinus.g:200:7: castexpr INT
-                    {
-                    pushFollow(FOLLOW_castexpr_in_atom1936);
-                    castexpr37=castexpr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-                    INT38=(Token)match(input,INT,FOLLOW_INT_in_atom1938); if (state.failed) return retval;
-
-
-                    // TEMPLATE REWRITE
-                    if ( state.backtracking==0 ) {
-                      // 200:20: -> casticonst(type=$castexpr.stvalue=$INT.text)
-                      {
-                          retval.st = templateLib.getInstanceOf("casticonst",
-                        new STAttrMap().put("type", (castexpr37!=null?castexpr37.st:null)).put("value", (INT38!=null?INT38.getText():null)));
-                      }
-
-                    }
-                    }
-                    break;
-                case 7 :
-                    // CMinus.g:201:4: castexpr FP
-                    {
-                    pushFollow(FOLLOW_castexpr_in_atom1956);
-                    castexpr39=castexpr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-                    FP40=(Token)match(input,FP,FOLLOW_FP_in_atom1958); if (state.failed) return retval;
-
-
-                    // TEMPLATE REWRITE
-                    if ( state.backtracking==0 ) {
-                      // 201:16: -> casticonst(type=$castexpr.stvalue=$FP.text)
-                      {
-                          retval.st = templateLib.getInstanceOf("casticonst",
-                        new STAttrMap().put("type", (castexpr39!=null?castexpr39.st:null)).put("value", (FP40!=null?FP40.getText():null)));
-                      }
-
-                    }
-                    }
-                    break;
-                case 8 :
-                    // CMinus.g:202:7: castexpr '(' expr ')'
-                    {
-                    pushFollow(FOLLOW_castexpr_in_atom1979);
-                    castexpr41=castexpr();
-
-                    state._fsp--;
-                    if (state.failed) return retval;
-                    match(input,12,FOLLOW_12_in_atom1981); if (state.failed) return retval;
-                    pushFollow(FOLLOW_expr_in_atom1983);
+                    match(input,12,FOLLOW_12_in_atom1984); if (state.failed) return retval;
+                    pushFollow(FOLLOW_expr_in_atom1986);
                     expr42=expr();
 
                     state._fsp--;
                     if (state.failed) return retval;
-                    match(input,14,FOLLOW_14_in_atom1985); if (state.failed) return retval;
+                    match(input,14,FOLLOW_14_in_atom1988); if (state.failed) return retval;
 
 
                     // TEMPLATE REWRITE
                     if ( state.backtracking==0 ) {
-                      // 202:29: -> castexp(type=$castexpr.stvalue=$expr.st)
+                      // 205:20: -> brackets(expr=$expr.st)
                       {
-                          retval.st = templateLib.getInstanceOf("castexp",
-                        new STAttrMap().put("type", (castexpr41!=null?castexpr41.st:null)).put("value", (expr42!=null?expr42.st:null)));
+                          retval.st = templateLib.getInstanceOf("brackets",
+                        new STAttrMap().put("expr", (expr42!=null?expr42.st:null)));
                       }
 
                     }
@@ -2916,13 +2952,13 @@ public class CMinusParser extends Parser {
         // CMinus.g:168:6: (c1= condexp '&&' c2= condexp )
         // CMinus.g:168:6: c1= condexp '&&' c2= condexp
         {
-        pushFollow(FOLLOW_condexp_in_synpred30_CMinus1397);
+        pushFollow(FOLLOW_condexp_in_synpred30_CMinus1392);
         c1=condexp();
 
         state._fsp--;
         if (state.failed) return ;
-        match(input,33,FOLLOW_33_in_synpred30_CMinus1399); if (state.failed) return ;
-        pushFollow(FOLLOW_condexp_in_synpred30_CMinus1403);
+        match(input,33,FOLLOW_33_in_synpred30_CMinus1394); if (state.failed) return ;
+        pushFollow(FOLLOW_condexp_in_synpred30_CMinus1398);
         c2=condexp();
 
         state._fsp--;
@@ -2942,13 +2978,13 @@ public class CMinusParser extends Parser {
         // CMinus.g:169:6: (c1= condexp '||' c2= condexp )
         // CMinus.g:169:6: c1= condexp '||' c2= condexp
         {
-        pushFollow(FOLLOW_condexp_in_synpred31_CMinus1425);
+        pushFollow(FOLLOW_condexp_in_synpred31_CMinus1420);
         c1=condexp();
 
         state._fsp--;
         if (state.failed) return ;
-        match(input,34,FOLLOW_34_in_synpred31_CMinus1427); if (state.failed) return ;
-        pushFollow(FOLLOW_condexp_in_synpred31_CMinus1431);
+        match(input,34,FOLLOW_34_in_synpred31_CMinus1422); if (state.failed) return ;
+        pushFollow(FOLLOW_condexp_in_synpred31_CMinus1426);
         c2=condexp();
 
         state._fsp--;
@@ -3107,7 +3143,7 @@ public class CMinusParser extends Parser {
     protected DFA6 dfa6 = new DFA6(this);
     protected DFA9 dfa9 = new DFA9(this);
     protected DFA10 dfa10 = new DFA10(this);
-    protected DFA19 dfa19 = new DFA19(this);
+    protected DFA15 dfa15 = new DFA15(this);
     static final String DFA2_eotS =
         "\15\uffff";
     static final String DFA2_eofS =
@@ -3305,7 +3341,7 @@ public class CMinusParser extends Parser {
     static final String DFA9_specialS =
         "\3\uffff\1\0\1\1\1\2\1\3\5\uffff}>";
     static final String[] DFA9_transitionS = {
-            "\1\3\1\4\1\5\1\uffff\1\11\3\uffff\1\6\13\uffff\1\7\1\uffff"+
+            "\1\4\1\5\1\6\1\uffff\1\11\3\uffff\1\3\13\uffff\1\7\1\uffff"+
             "\1\10\1\2\1\1",
             "",
             "",
@@ -3437,7 +3473,7 @@ public class CMinusParser extends Parser {
     static final String DFA10_specialS =
         "\1\uffff\1\0\1\1\1\2\1\3\5\uffff}>";
     static final String[] DFA10_transitionS = {
-            "\1\1\1\2\1\3\5\uffff\1\4",
+            "\1\2\1\3\1\4\5\uffff\1\1",
             "\1\uffff",
             "\1\uffff",
             "\1\uffff",
@@ -3577,75 +3613,73 @@ public class CMinusParser extends Parser {
             throw nvae;
         }
     }
-    static final String DFA19_eotS =
-        "\25\uffff";
-    static final String DFA19_eofS =
-        "\20\uffff\1\16\4\uffff";
-    static final String DFA19_minS =
-        "\1\4\3\uffff\1\4\10\16\1\12\1\uffff\2\4\4\uffff";
-    static final String DFA19_maxS =
-        "\1\14\3\uffff\1\27\10\16\1\54\1\uffff\1\14\1\54\4\uffff";
-    static final String DFA19_acceptS =
-        "\1\uffff\1\1\1\2\1\3\12\uffff\1\4\2\uffff\1\10\1\6\1\7\1\5";
-    static final String DFA19_specialS =
-        "\25\uffff}>";
-    static final String[] DFA19_transitionS = {
-            "\1\1\1\2\1\3\5\uffff\1\4",
+    static final String DFA15_eotS =
+        "\23\uffff";
+    static final String DFA15_eofS =
+        "\2\uffff\1\3\13\uffff\1\3\1\uffff\1\21\2\uffff";
+    static final String DFA15_minS =
+        "\2\4\1\10\1\uffff\1\12\10\16\1\uffff\2\4\1\10\2\uffff";
+    static final String DFA15_maxS =
+        "\1\14\1\27\1\54\1\uffff\1\54\10\16\1\uffff\1\54\1\14\1\54\2\uffff";
+    static final String DFA15_acceptS =
+        "\3\uffff\1\4\11\uffff\1\3\3\uffff\1\2\1\1";
+    static final String DFA15_specialS =
+        "\23\uffff}>";
+    static final String[] DFA15_transitionS = {
+            "\1\2\2\3\5\uffff\1\1",
+            "\1\4\2\3\5\uffff\1\3\3\uffff\1\5\1\6\1\7\1\10\1\11\1\12\1"+
+            "\13\1\14",
+            "\2\3\1\15\1\3\2\uffff\1\3\16\uffff\20\3",
             "",
+            "\1\3\3\uffff\1\16\22\uffff\14\3",
+            "\1\17",
+            "\1\17",
+            "\1\17",
+            "\1\17",
+            "\1\17",
+            "\1\17",
+            "\1\17",
+            "\1\17",
             "",
-            "",
-            "\1\15\2\16\5\uffff\1\16\3\uffff\1\5\1\6\1\7\1\10\1\11\1\12"+
-            "\1\13\1\14",
-            "\1\17",
-            "\1\17",
-            "\1\17",
-            "\1\17",
-            "\1\17",
-            "\1\17",
-            "\1\17",
-            "\1\17",
-            "\1\16\3\uffff\1\20\22\uffff\14\16",
-            "",
-            "\1\24\1\22\1\23\5\uffff\1\21",
-            "\1\24\1\22\1\23\1\uffff\4\16\1\21\1\uffff\1\16\16\uffff\20"+
-            "\16",
-            "",
-            "",
+            "\1\20\2\21\1\uffff\2\3\1\uffff\1\3\1\21\1\uffff\1\3\16\uffff"+
+            "\20\3",
+            "\1\20\2\21\5\uffff\1\21",
+            "\2\21\1\22\1\21\2\uffff\1\21\16\uffff\20\21",
             "",
             ""
     };
 
-    static final short[] DFA19_eot = DFA.unpackEncodedString(DFA19_eotS);
-    static final short[] DFA19_eof = DFA.unpackEncodedString(DFA19_eofS);
-    static final char[] DFA19_min = DFA.unpackEncodedStringToUnsignedChars(DFA19_minS);
-    static final char[] DFA19_max = DFA.unpackEncodedStringToUnsignedChars(DFA19_maxS);
-    static final short[] DFA19_accept = DFA.unpackEncodedString(DFA19_acceptS);
-    static final short[] DFA19_special = DFA.unpackEncodedString(DFA19_specialS);
-    static final short[][] DFA19_transition;
+    static final short[] DFA15_eot = DFA.unpackEncodedString(DFA15_eotS);
+    static final short[] DFA15_eof = DFA.unpackEncodedString(DFA15_eofS);
+    static final char[] DFA15_min = DFA.unpackEncodedStringToUnsignedChars(DFA15_minS);
+    static final char[] DFA15_max = DFA.unpackEncodedStringToUnsignedChars(DFA15_maxS);
+    static final short[] DFA15_accept = DFA.unpackEncodedString(DFA15_acceptS);
+    static final short[] DFA15_special = DFA.unpackEncodedString(DFA15_specialS);
+    static final short[][] DFA15_transition;
 
     static {
-        int numStates = DFA19_transitionS.length;
-        DFA19_transition = new short[numStates][];
+        int numStates = DFA15_transitionS.length;
+        DFA15_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA19_transition[i] = DFA.unpackEncodedString(DFA19_transitionS[i]);
+            DFA15_transition[i] = DFA.unpackEncodedString(DFA15_transitionS[i]);
         }
     }
 
-    class DFA19 extends DFA {
+    class DFA15 extends DFA {
 
-        public DFA19(BaseRecognizer recognizer) {
+        public DFA15(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 19;
-            this.eot = DFA19_eot;
-            this.eof = DFA19_eof;
-            this.min = DFA19_min;
-            this.max = DFA19_max;
-            this.accept = DFA19_accept;
-            this.special = DFA19_special;
-            this.transition = DFA19_transition;
+            this.decisionNumber = 15;
+            this.eot = DFA15_eot;
+            this.eof = DFA15_eof;
+            this.min = DFA15_min;
+            this.max = DFA15_max;
+            this.accept = DFA15_accept;
+            this.special = DFA15_special;
+            this.transition = DFA15_transition;
         }
         public String getDescription() {
-            return "194:1: atom : ( ID -> refVar(id=$ID.text) | INT -> iconst(value=$INT.text) | FP -> iconst(value=$FP.text) | '(' expr ')' -> {$expr.st} | castexpr ID -> castrefVar(type=$castexpr.stid=$ID.text) | castexpr INT -> casticonst(type=$castexpr.stvalue=$INT.text) | castexpr FP -> casticonst(type=$castexpr.stvalue=$FP.text) | castexpr '(' expr ')' -> castexp(type=$castexpr.stvalue=$expr.st));";
+            return "186:1: basicexpr : ( '(' type ')' arrayexpr -> castvalue(type=$type.stvalue=$arrayexpr.st) | '(' type ')' atom -> castvalue(type=$type.stvalue=$atom.st) | arrayexpr -> {$arrayexpr.st} | atom -> {$atom.st});";
         }
     }
  
@@ -3738,55 +3772,55 @@ public class CMinusParser extends Parser {
     public static final BitSet FOLLOW_condExpr_in_expr1312 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_arrayexpr_in_expr1326 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_aexpr_in_expr1337 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_aexpr_in_arrayexpr1360 = new BitSet(new long[]{0x0000000000000400L});
-    public static final BitSet FOLLOW_10_in_arrayexpr1362 = new BitSet(new long[]{0x0000000000001070L});
-    public static final BitSet FOLLOW_aexpr_in_arrayexpr1366 = new BitSet(new long[]{0x0000000000000800L});
-    public static final BitSet FOLLOW_11_in_arrayexpr1368 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_condexp_in_condExpr1397 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_33_in_condExpr1399 = new BitSet(new long[]{0x0000000000001070L});
-    public static final BitSet FOLLOW_condexp_in_condExpr1403 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_condexp_in_condExpr1425 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_condExpr1427 = new BitSet(new long[]{0x0000000000001070L});
-    public static final BitSet FOLLOW_condexp_in_condExpr1431 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_condexp_in_condExpr1453 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_aexpr_in_condexp1475 = new BitSet(new long[]{0x000001F800000002L});
-    public static final BitSet FOLLOW_35_in_condexp1492 = new BitSet(new long[]{0x0000000000001070L});
-    public static final BitSet FOLLOW_aexpr_in_condexp1496 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_36_in_condexp1526 = new BitSet(new long[]{0x0000000000001070L});
-    public static final BitSet FOLLOW_aexpr_in_condexp1530 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_37_in_condexp1553 = new BitSet(new long[]{0x0000000000001070L});
-    public static final BitSet FOLLOW_aexpr_in_condexp1557 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_condexp1580 = new BitSet(new long[]{0x0000000000001070L});
-    public static final BitSet FOLLOW_aexpr_in_condexp1584 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_39_in_condexp1607 = new BitSet(new long[]{0x0000000000001070L});
-    public static final BitSet FOLLOW_aexpr_in_condexp1611 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_40_in_condexp1634 = new BitSet(new long[]{0x0000000000001070L});
-    public static final BitSet FOLLOW_aexpr_in_condexp1638 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_atom_in_aexpr1716 = new BitSet(new long[]{0x00001E0000000002L});
-    public static final BitSet FOLLOW_41_in_aexpr1733 = new BitSet(new long[]{0x0000000000001070L});
-    public static final BitSet FOLLOW_atom_in_aexpr1737 = new BitSet(new long[]{0x00001E0000000002L});
-    public static final BitSet FOLLOW_42_in_aexpr1760 = new BitSet(new long[]{0x0000000000001070L});
-    public static final BitSet FOLLOW_atom_in_aexpr1764 = new BitSet(new long[]{0x00001C0000000002L});
-    public static final BitSet FOLLOW_43_in_aexpr1787 = new BitSet(new long[]{0x0000000000001070L});
-    public static final BitSet FOLLOW_atom_in_aexpr1791 = new BitSet(new long[]{0x0000180000000002L});
-    public static final BitSet FOLLOW_44_in_aexpr1814 = new BitSet(new long[]{0x0000000000001070L});
-    public static final BitSet FOLLOW_atom_in_aexpr1818 = new BitSet(new long[]{0x0000100000000002L});
-    public static final BitSet FOLLOW_ID_in_atom1852 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INT_in_atom1869 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_FP_in_atom1883 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_12_in_atom1900 = new BitSet(new long[]{0x0000000000001070L});
-    public static final BitSet FOLLOW_expr_in_atom1902 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_atom1904 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_castexpr_in_atom1913 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_atom1915 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_castexpr_in_atom1936 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_INT_in_atom1938 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_castexpr_in_atom1956 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_FP_in_atom1958 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_castexpr_in_atom1979 = new BitSet(new long[]{0x0000000000001000L});
-    public static final BitSet FOLLOW_12_in_atom1981 = new BitSet(new long[]{0x0000000000001070L});
-    public static final BitSet FOLLOW_expr_in_atom1983 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_14_in_atom1985 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_arrayexpr1357 = new BitSet(new long[]{0x0000000000000400L});
+    public static final BitSet FOLLOW_10_in_arrayexpr1359 = new BitSet(new long[]{0x0000000000001070L});
+    public static final BitSet FOLLOW_aexpr_in_arrayexpr1361 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_11_in_arrayexpr1363 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_condexp_in_condExpr1392 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_33_in_condExpr1394 = new BitSet(new long[]{0x0000000000001070L});
+    public static final BitSet FOLLOW_condexp_in_condExpr1398 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_condexp_in_condExpr1420 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_condExpr1422 = new BitSet(new long[]{0x0000000000001070L});
+    public static final BitSet FOLLOW_condexp_in_condExpr1426 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_condexp_in_condExpr1448 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_aexpr_in_condexp1470 = new BitSet(new long[]{0x000001F800000002L});
+    public static final BitSet FOLLOW_35_in_condexp1487 = new BitSet(new long[]{0x0000000000001070L});
+    public static final BitSet FOLLOW_aexpr_in_condexp1491 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_36_in_condexp1521 = new BitSet(new long[]{0x0000000000001070L});
+    public static final BitSet FOLLOW_aexpr_in_condexp1525 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_37_in_condexp1548 = new BitSet(new long[]{0x0000000000001070L});
+    public static final BitSet FOLLOW_aexpr_in_condexp1552 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_condexp1575 = new BitSet(new long[]{0x0000000000001070L});
+    public static final BitSet FOLLOW_aexpr_in_condexp1579 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_39_in_condexp1602 = new BitSet(new long[]{0x0000000000001070L});
+    public static final BitSet FOLLOW_aexpr_in_condexp1606 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_condexp1629 = new BitSet(new long[]{0x0000000000001070L});
+    public static final BitSet FOLLOW_aexpr_in_condexp1633 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_12_in_basicexpr1709 = new BitSet(new long[]{0x0000000000FF0010L});
+    public static final BitSet FOLLOW_type_in_basicexpr1711 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_basicexpr1713 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_arrayexpr_in_basicexpr1715 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_12_in_basicexpr1735 = new BitSet(new long[]{0x0000000000FF0010L});
+    public static final BitSet FOLLOW_type_in_basicexpr1737 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_basicexpr1739 = new BitSet(new long[]{0x0000000000001070L});
+    public static final BitSet FOLLOW_atom_in_basicexpr1741 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_arrayexpr_in_basicexpr1761 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_atom_in_basicexpr1772 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_basicexpr_in_aexpr1795 = new BitSet(new long[]{0x00001E0000000002L});
+    public static final BitSet FOLLOW_41_in_aexpr1813 = new BitSet(new long[]{0x0000000000001070L});
+    public static final BitSet FOLLOW_basicexpr_in_aexpr1817 = new BitSet(new long[]{0x00001E0000000002L});
+    public static final BitSet FOLLOW_42_in_aexpr1841 = new BitSet(new long[]{0x0000000000001070L});
+    public static final BitSet FOLLOW_basicexpr_in_aexpr1845 = new BitSet(new long[]{0x00001E0000000002L});
+    public static final BitSet FOLLOW_43_in_aexpr1869 = new BitSet(new long[]{0x0000000000001070L});
+    public static final BitSet FOLLOW_basicexpr_in_aexpr1873 = new BitSet(new long[]{0x00001E0000000002L});
+    public static final BitSet FOLLOW_44_in_aexpr1897 = new BitSet(new long[]{0x0000000000001070L});
+    public static final BitSet FOLLOW_basicexpr_in_aexpr1901 = new BitSet(new long[]{0x00001E0000000002L});
+    public static final BitSet FOLLOW_ID_in_atom1936 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INT_in_atom1953 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_FP_in_atom1967 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_12_in_atom1984 = new BitSet(new long[]{0x0000000000001070L});
+    public static final BitSet FOLLOW_expr_in_atom1986 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_14_in_atom1988 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_expr_in_synpred20_CMinus898 = new BitSet(new long[]{0x0000000000000100L});
     public static final BitSet FOLLOW_8_in_synpred20_CMinus900 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_assignStat_in_synpred22_CMinus939 = new BitSet(new long[]{0x0000000000000100L});
@@ -3803,11 +3837,11 @@ public class CMinusParser extends Parser {
     public static final BitSet FOLLOW_expr_in_synpred27_CMinus1255 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_condExpr_in_synpred28_CMinus1312 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_arrayexpr_in_synpred29_CMinus1326 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_condexp_in_synpred30_CMinus1397 = new BitSet(new long[]{0x0000000200000000L});
-    public static final BitSet FOLLOW_33_in_synpred30_CMinus1399 = new BitSet(new long[]{0x0000000000001070L});
-    public static final BitSet FOLLOW_condexp_in_synpred30_CMinus1403 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_condexp_in_synpred31_CMinus1425 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_34_in_synpred31_CMinus1427 = new BitSet(new long[]{0x0000000000001070L});
-    public static final BitSet FOLLOW_condexp_in_synpred31_CMinus1431 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_condexp_in_synpred30_CMinus1392 = new BitSet(new long[]{0x0000000200000000L});
+    public static final BitSet FOLLOW_33_in_synpred30_CMinus1394 = new BitSet(new long[]{0x0000000000001070L});
+    public static final BitSet FOLLOW_condexp_in_synpred30_CMinus1398 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_condexp_in_synpred31_CMinus1420 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_34_in_synpred31_CMinus1422 = new BitSet(new long[]{0x0000000000001070L});
+    public static final BitSet FOLLOW_condexp_in_synpred31_CMinus1426 = new BitSet(new long[]{0x0000000000000002L});
 
 }

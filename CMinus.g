@@ -159,9 +159,9 @@ expr:   condExpr -> {$condExpr.st}
     |   arrayexpr -> {$arrayexpr.st}
 	|   aexpr -> {$aexpr.st}
     ;
-	
+
 arrayexpr
-	:   a=aexpr '[' b=aexpr ']' -> array(name={$a.st},index={$b.st})
+	:   ID '[' aexpr ']' -> array(name={$ID.text},index={$aexpr.st})
 	;
 	
 condExpr
@@ -182,24 +182,27 @@ condexp
         |   -> {$a.st} // else just aexpr
         )
     ;
+	
+basicexpr
+    :   '(' type ')' arrayexpr -> castvalue(type={$type.st},value={$arrayexpr.st})
+	|   '(' type ')' atom -> castvalue(type={$type.st},value={$atom.st})
+	|   arrayexpr -> {$arrayexpr.st}
+	|   atom -> {$atom.st}
+	;
 
 aexpr
-    :   (a=atom -> {$a.st})
-        ( '+' b=atom -> add(left={$aexpr.st}, right={$b.st}) )*
-		( '-' b=atom -> substract(left={$aexpr.st}, right={$b.st}) )*
-		( '*' b=atom -> multiply(left={$aexpr.st}, right={$b.st}) )*
-		( '/' b=atom -> divide(left={$aexpr.st}, right={$b.st}) )*
+    :   (a=basicexpr -> {$a.st})
+        (( '+' b=basicexpr -> add(left={$aexpr.st}, right={$b.st}) ) |
+		( '-' b=basicexpr -> substract(left={$aexpr.st}, right={$b.st}) ) |
+		( '*' b=basicexpr -> multiply(left={$aexpr.st}, right={$b.st}) ) |
+		( '/' b=basicexpr -> divide(left={$aexpr.st}, right={$b.st}) ))*
     ;
 
 atom
     : ID -> refVar(id={$ID.text})
     | INT -> iconst(value={$INT.text})
 	| FP -> iconst(value={$FP.text})
-    | '(' expr ')' -> {$expr.st}
-	| castexpr ID -> castrefVar(type={$castexpr.st},id={$ID.text})
-    | castexpr INT -> casticonst(type={$castexpr.st},value={$INT.text})
-	| castexpr FP -> casticonst(type={$castexpr.st},value={$FP.text})
-    | castexpr '(' expr ')' -> castexp(type={$castexpr.st},value={$expr.st})
+    | '(' expr ')' -> brackets(expr={$expr.st})
     ; 
 
 ID  :   ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*

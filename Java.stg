@@ -19,6 +19,8 @@ arrayexp(index) ::= "[<index>]"
 
 cast(type) ::= "(<type>)"
 
+castvalue(type,value) ::= "(<type>)<value>"
+
 dummy() ::= "dummy"
 
 globalVariable ::= variable
@@ -57,6 +59,8 @@ parameter(type,name) ::= "<type> <name>"
 arrayparameter(type,name) ::= "<type>[] <name>"
 
 statement(expr) ::= "<expr>;"
+
+brackets(expr) ::= "(<expr>)"
 
 return(expr) ::= "return <expr>;"
 
@@ -118,9 +122,3 @@ divide(left,right) ::= "<left> / <right>"
 refVar(id) ::= "<id>"
 
 iconst(value) ::= "<value>"
-
-castrefVar(type,id) ::= "<type><id>"
-
-casticonst(type,value) ::= "<type><value>"
-
-castexp(type,value) ::= "<type>(<value>)"
