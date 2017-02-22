@@ -164,15 +164,20 @@ assignStat
 	|   expr '--' -> dekrement(e={$expr.st})
 	|   e1=expr '+=' e2=expr -> inkrementby(lhs={$e1.st}, rhs={$e2.st})
 	|   e1=expr '-=' e2=expr -> dekrementby(lhs={$e1.st}, rhs={$e2.st})
+	|   e1=expr '*=' e2=expr -> assignmultiply(lhs={$e1.st}, rhs={$e2.st})
+	|   e1=expr '/=' e2=expr -> assigndivide(lhs={$e1.st}, rhs={$e2.st})
     ;
 
 expr:   condExpr -> {$condExpr.st}
-    |   arrayexpr -> {$arrayexpr.st}
 	|   aexpr -> {$aexpr.st}
     ;
 
 arrayexpr
 	:   ID '[' aexpr ']' -> array(name={$ID.text},index={$aexpr.st})
+	;
+	
+funcexpr
+    :   ID '(' ( p+=aexpr ( ',' p+=aexpr )* )? ')' -> funcinstance(name={$ID.text},args={$p})
 	;
 	
 condExpr
@@ -198,6 +203,7 @@ basicexpr
     :   '(' type ')' arrayexpr -> castvalue(type={$type.st},value={$arrayexpr.st})
 	|   '(' type ')' atom -> castvalue(type={$type.st},value={$atom.st})
 	|   arrayexpr -> {$arrayexpr.st}
+	|   funcexpr -> {$funcexpr.st}
 	|   atom -> {$atom.st}
 	;
 

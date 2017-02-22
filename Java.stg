@@ -92,6 +92,8 @@ else {
 }
 >>
 
+funcinstance(name,args) ::= << <name>(<args; separator=", ">) >>
+
 inkrement(e) ::= "<e>++"
 
 dekrement(e) ::= "<e>--"
@@ -99,6 +101,10 @@ dekrement(e) ::= "<e>--"
 inkrementby(lhs,rhs) ::= "<lhs> += <rhs>;"
 
 dekrementby(lhs,rhs) ::= "<lhs> -= <rhs>;"
+
+assignmultiply(lhs,rhs) ::= "<lhs> *= <rhs>;"
+
+assigndivide(lhs,rhs) ::= "<lhs> /= <rhs>;"
 
 assign(lhs,rhs) ::= "<lhs> = <rhs>;"
 
