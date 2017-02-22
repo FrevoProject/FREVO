@@ -1,6 +1,6 @@
 package helper;
 
-// $ANTLR 3.1.1 CMinus.g 2017-02-22 12:06:16
+// $ANTLR 3.1.1 CMinus.g 2017-02-22 12:13:35
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -897,8 +897,8 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:225:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // CMinus.g:225:9: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // CMinus.g:226:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // CMinus.g:226:9: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -909,7 +909,7 @@ public class CMinusLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // CMinus.g:225:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // CMinus.g:226:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop1:
             do {
                 int alt1=2;
@@ -958,10 +958,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:228:5: ( ( '0' .. '9' )+ )
-            // CMinus.g:228:7: ( '0' .. '9' )+
+            // CMinus.g:229:5: ( ( '0' .. '9' )+ )
+            // CMinus.g:229:7: ( '0' .. '9' )+
             {
-            // CMinus.g:228:7: ( '0' .. '9' )+
+            // CMinus.g:229:7: ( '0' .. '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -975,7 +975,7 @@ public class CMinusLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // CMinus.g:228:8: '0' .. '9'
+            	    // CMinus.g:229:8: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1007,10 +1007,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = FP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:231:5: ( ( '0' .. '9' )+ ( '.' ) ( '0' .. '9' )+ )
-            // CMinus.g:231:9: ( '0' .. '9' )+ ( '.' ) ( '0' .. '9' )+
+            // CMinus.g:232:5: ( ( '0' .. '9' )+ ( '.' ) ( '0' .. '9' )+ )
+            // CMinus.g:232:9: ( '0' .. '9' )+ ( '.' ) ( '0' .. '9' )+
             {
-            // CMinus.g:231:9: ( '0' .. '9' )+
+            // CMinus.g:232:9: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -1024,7 +1024,7 @@ public class CMinusLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // CMinus.g:231:10: '0' .. '9'
+            	    // CMinus.g:232:10: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1040,14 +1040,14 @@ public class CMinusLexer extends Lexer {
                 cnt3++;
             } while (true);
 
-            // CMinus.g:231:21: ( '.' )
-            // CMinus.g:231:22: '.'
+            // CMinus.g:232:21: ( '.' )
+            // CMinus.g:232:22: '.'
             {
             match('.'); 
 
             }
 
-            // CMinus.g:231:27: ( '0' .. '9' )+
+            // CMinus.g:232:27: ( '0' .. '9' )+
             int cnt4=0;
             loop4:
             do {
@@ -1061,7 +1061,7 @@ public class CMinusLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // CMinus.g:231:28: '0' .. '9'
+            	    // CMinus.g:232:28: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1093,10 +1093,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:234:5: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // CMinus.g:234:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // CMinus.g:235:5: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // CMinus.g:235:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // CMinus.g:234:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // CMinus.g:235:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt5=0;
             loop5:
             do {

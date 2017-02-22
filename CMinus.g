@@ -201,6 +201,7 @@ condexp
 	
 basicexpr
     :   '(' type ')' arrayexpr -> castvalue(type={$type.st},value={$arrayexpr.st})
+	|   '(' type ')' funcexpr -> castvalue(type={$type.st},value={$funcexpr.st})
 	|   '(' type ')' atom -> castvalue(type={$type.st},value={$atom.st})
 	|   arrayexpr -> {$arrayexpr.st}
 	|   funcexpr -> {$funcexpr.st}
