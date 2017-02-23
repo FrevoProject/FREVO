@@ -5,9 +5,12 @@ import graphics.FrevoWindow.HashTableModel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -26,13 +29,23 @@ public class DetailsFrame extends JFrame {
 	private JPanel detailsPanel;
 	private JTable detailsTable;
 	private JScrollPane detailsScrollPane;
+	private JButton exportButton;
 	
 	public DetailsFrame(AbstractRepresentation representation) {
 		super(representation.getXMLData().getClassName() + " ("
 				+ representation.getHash() + ")");
 		
-		setBounds(0, 0, 100, 100);
+		setBounds(0, 0, 100, 300);
 		
+		exportButton=new JButton("Export representation");
+		exportButton.addActionListener(new ActionListener()
+		{
+		  public void actionPerformed(ActionEvent e)
+		  {
+			JFrame exportFrame = new ExportFrame(representation);
+			exportFrame.setVisible(true);
+		  }
+		});
 		this.setLocationRelativeTo(null);
 		
 		setPreferredSize(new Dimension(260, 200));
@@ -57,10 +70,10 @@ public class DetailsFrame extends JFrame {
 		sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
 		sorter.setSortKeys(sortKeys);
 		
-		GridLayout detailsLayout = new GridLayout(1, 1);
+		GridLayout detailsLayout = new GridLayout(2, 1);
 		detailsPanel.setLayout(detailsLayout);
 		detailsPanel.add(detailsScrollPane);
-		
+		detailsPanel.add(exportButton);
 		this.add(detailsPanel);
 		
 		this.pack();
