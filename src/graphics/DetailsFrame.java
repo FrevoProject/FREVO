@@ -48,7 +48,7 @@ public class DetailsFrame extends JFrame {
 		});
 		this.setLocationRelativeTo(null);
 		
-		setPreferredSize(new Dimension(260, 200));
+		setPreferredSize(new Dimension(500, 500));
 		
 		detailsPanel = new JPanel();
 		detailsPanel.setBorder(BorderFactory.createTitledBorder(

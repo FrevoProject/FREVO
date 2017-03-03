@@ -1,6 +1,10 @@
 group FullyMeshedNet;
 
-getOutputDeclaration(floattype,inttype,iterations,inputsize,inputnodes,outputsize,nodes,outputnodes,activationbody,activationargument) ::= <<
+getOutputDeclaration(floattype,inttype,longtype,doubletype,seed,iterations,inputsize,inputnodes,outputsize,nodes,activationbody,activationargument,biases,weights) ::= <<
+
+<floattype> bias[<nodes>]={<biases; separator=", ">};
+
+<floattype> weight[<nodes>][<nodes>]={<weights:{wei|{<wei; separator=", ">}}; separator=", ">};
 
 <floattype> output[<outputsize>];
 
@@ -8,17 +12,30 @@ getOutputDeclaration(floattype,inttype,iterations,inputsize,inputnodes,outputsiz
   <activationbody>
 }
 
-<floattype> rand_range(<floattype> border){
-  <floattype> x = ((<floattype>)rand()/(<floattype>)RAND_MAX);
-  <floattype> val = x*2.0*border-border;
+<longtype> seed=<seed>;
+
+<inttype> next(){
+   seed=(seed*25214903917+11) & ((1 \<\< 48) - 1);
+   return (<inttype>)(seed \>\> 22);
 }
 
-<floattype>[] getStep(<floattype>[] input){
-  if (inputsize==inputnodes){
+<doubletype> nextDouble(){
+   return ((((<longtype>)next() \<\< 27) + next()) / (<doubletype>)(1 \<\< 53));
+}
+
+<floattype> rand_range(<floattype> border){
+  <floattype> val = (<floattype>)(nextDouble()*2.0*border-border);
+  return val;
+}
+
+void getStep(<floattype> input[]){
+  if (<inputsize>==<inputnodes>){
     <inttype> i;
 	<inttype> j;
 	<floattype> activation [<nodes>];
-	<floattype> outputVector [<outputnodes>];
+	for (i=0; i \< <nodes>; i=i+1){
+		activation[i]=0;
+	}
     for (i=0; i \< <inputsize>; i=i+1) {
       output[i]=input[i];
     }
@@ -27,27 +44,24 @@ getOutputDeclaration(floattype,inttype,iterations,inputsize,inputnodes,outputsiz
 	  for (j=0; j \< <nodes>; j=j+1) {
         sum=sum+weight[j][i]*output[j];
       }
-	  activation[i]=activation[i]+rand_range(randombias[i]);
+	  activation[i]=bias[i]+sum;
     }
 	for (i = <inputnodes>; i \< <nodes>; i=i+1) {
       output[i]=activate(activation[i]);
     }
-	for (i = (<nodes> - <outputnodes>); i \< <nodes>; i=i+1) {
-	  j = i - (<nodes> - <outputnodes>);
-      outputVector[j]=output[i];
-    }
-	return outputVector;
   }
 
 }
 
-<floattype>[] getOutput(<floattype>[] input){
-  srand((unsigned)time(NULL));
+void getOutput(<floattype> input[]){
   <inttype> i;
+  for (i=0; i \< <outputsize>; i=i+1) {
+    output[i]=0;
+  }
   for (i=0; i \< <iterations> - 1; i=i+1) {
     getStep(input);
   }
-  return getStep(input);
+  getStep(input);
 }
 
 >>

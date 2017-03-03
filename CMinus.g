@@ -50,13 +50,28 @@ variable
 	    -> {$function.size()>0 && $function::name==null}?
            globalVariableInit(type={$type.st},name={$declarator.st},value={$expr.st})
         -> variableInit(type={$type.st},name={$declarator.st},value={$expr.st})
-	|   type declarator '[' expr ']' ';'
+	|   type declarator '[' aexpr ']' ';'
 	    -> {$function.size()>0 && $function::name==null}?
-           globalArrayDeclaration(type={$type.st},name={$declarator.st},size={$expr.st})
-        -> arrayDeclaration(type={$type.st},name={$declarator.st},size={$expr.st})
+           globalArrayDeclaration(type={$type.st},name={$declarator.st},size={$aexpr.st})
+        -> arrayDeclaration(type={$type.st},name={$declarator.st},size={$aexpr.st})
+	|   type declarator '[' aexpr ']' '=' arrayinit ';'
+	    -> {$function.size()>0 && $function::name==null}?
+           globalArrayInitialization(type={$type.st},name={$declarator.st},values={$arrayinit.st},size={$aexpr.st})
+        -> arrayInitialization(type={$type.st},name={$declarator.st},values={$arrayinit.st},size={$aexpr.st})
+	|   type declarator '[' a=aexpr ']' '[' b=aexpr ']' ';'
+	    -> {$function.size()>0 && $function::name==null}?
+           globalDoubleArrayDeclaration(type={$type.st},name={$declarator.st},sizeone={$a.st},sizetwo={$b.st})
+        -> doubleArrayDeclaration(type={$type.st},name={$declarator.st},size={$a.st},sizetwo={$b.st})
+	|   type declarator '[' a=aexpr ']' '[' b=aexpr ']' '=' arrayinit ';'
+	    -> {$function.size()>0 && $function::name==null}?
+           globalDoubleArrayInitialization(type={$type.st},name={$declarator.st},values={$arrayinit.st},sizeone={$a.st},sizetwo={$b.st})
+        -> doubleArrayInitialization(type={$type.st},name={$declarator.st},values={$arrayinit.st},sizeone={$a.st},sizetwo={$b.st})
     ;
 	
-
+arrayinit
+    :   '{' ( p+=definednumber ( ',' p+=definednumber )* )? '}' -> arrayInitializationBody(args={$p})
+	|   '{' ( p+=arrayinit ( ',' p+=arrayinit )* )? '}' -> arrayInitializationBody(args={$p})
+	;
 
 declarator
     :   ID -> {new StringTemplate($ID.text)}
@@ -77,7 +92,7 @@ scope slist;
         -> function(type={$type.st}, name={$function::name},
                     locals={$slist::locals},
                     stats={$slist::stats},
-                    args={toTemplates($p)})
+                    args={$p})
     ;
 
 formalParameter
@@ -85,10 +100,13 @@ formalParameter
         -> parameter(type={$type.st},name={$declarator.st})
 	|   type declarator '[]'
 	    -> arrayparameter(type={$type.st},name={$declarator.st})
+	|   type declarator '[][]'
+	    -> doublearrayparameter(type={$type.st},name={$declarator.st})
     ;
 	
-castexpr
-    :   '(' type ')' -> cast(type={$type.st})
+definednumber
+    :   FP -> iconst(value={$FP.text})
+	|   INT -> iconst(value={$INT.text})
 	;
 
 type
@@ -96,10 +114,6 @@ type
     |   'char' -> type_char()
 	|   'float' -> type_float()
 	|   'double' -> type_double()
-	|   'int[]' -> type_intarray()
-	|   'char[]' -> type_chararray()
-	|   'float[]' -> type_floatarray()
-	|   'double[]' -> type_doublearray()
     |   ID     -> type_user_object(name={$ID.text})
     ;
 
@@ -170,10 +184,11 @@ assignStat
 
 expr:   condExpr -> {$condExpr.st}
 	|   aexpr -> {$aexpr.st}
+	|   arrayinit -> {$arrayinit.st}
     ;
-
+	
 arrayexpr
-	:   ID '[' aexpr ']' -> array(name={$ID.text},index={$aexpr.st})
+	:   ID ('[' p+=aexpr ']')+ -> array(name={$ID.text},indices={$p})
 	;
 	
 funcexpr
@@ -200,11 +215,7 @@ condexp
     ;
 	
 basicexpr
-    :   '(' type ')' arrayexpr -> castvalue(type={$type.st},value={$arrayexpr.st})
-	|   '(' type ')' funcexpr -> castvalue(type={$type.st},value={$funcexpr.st})
-	|   '(' type ')' atom -> castvalue(type={$type.st},value={$atom.st})
-	|   arrayexpr -> {$arrayexpr.st}
-	|   funcexpr -> {$funcexpr.st}
+	:   '(' type ')' atom -> castvalue(type={$type.st},value={$atom.st})
 	|   atom -> {$atom.st}
 	;
 
@@ -213,11 +224,18 @@ aexpr
         (( '+' b=basicexpr -> add(left={$aexpr.st}, right={$b.st}) ) |
 		( '-' b=basicexpr -> substract(left={$aexpr.st}, right={$b.st}) ) |
 		( '*' b=basicexpr -> multiply(left={$aexpr.st}, right={$b.st}) ) |
-		( '/' b=basicexpr -> divide(left={$aexpr.st}, right={$b.st}) ))*
+		( '/' b=basicexpr -> substract(left={$aexpr.st}, right={$b.st}) ) |
+		( '&' b=basicexpr -> bitwiseand(left={$aexpr.st}, right={$b.st}) ) |
+		( '|' b=basicexpr -> bitwiseor(left={$aexpr.st}, right={$b.st}) ) |
+		( '^' b=basicexpr -> bitwisexor(left={$aexpr.st}, right={$b.st}) ) |
+		( '<<' b=basicexpr -> bitwiseleftshift(left={$aexpr.st}, right={$b.st}) ) |
+		( '>>' b=basicexpr -> bitwiserightshift(left={$aexpr.st}, right={$b.st}) ))*
     ;
 
 atom
-    : ID -> refVar(id={$ID.text})
+    : arrayexpr -> {$arrayexpr.st}
+	| funcexpr -> {$funcexpr.st}
+    | ID -> refVar(id={$ID.text})
     | INT -> iconst(value={$INT.text})
 	| FP -> iconst(value={$FP.text})
     | '(' expr ')' -> brackets(expr={$expr.st})
@@ -232,5 +250,5 @@ INT	:	('0'..'9')+
 FP  :   ('0'..'9')+ ('.') ('0'..'9')+
 	;
 
-WS  :   (' ' | '\t' | '\r' | '\n')+ {channel=99;}
+WS  :   (' ' | '\t' | '\r' | '\n')+ {_channel=99;}
     ;    

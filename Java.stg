@@ -13,7 +13,13 @@ variableInit(type,name,value) ::= "<type> <name> = <value>;"
 
 arrayDeclaration(type,name,size) ::= "<type>[] <name> = new <type>[<size>];"
 
-array(name,index) ::= "<name>[<index>]"
+arrayInitialization(type,name,values,size) ::= "<type>[] <name> = new <type>[] <values>;"
+
+doubleArrayDeclaration(type,name,sizeone,sizetwo) ::= "<type>[][] <name> = new <type>[<sizeone>][<sizetwo>];"
+
+doubleArrayInitialization(type,name,values,sizeone,sizetwo) ::= "<type>[][] <name> = new <type>[][] <values>;"
+
+array(name,indices) ::= << <name><indices:{ind|[<ind>]}> >>
 
 arrayexp(index) ::= "[<index>]"
 
@@ -28,6 +34,12 @@ globalVariable ::= variable
 globalVariableInit ::= variableInit
 
 globalArrayDeclaration ::= arrayDeclaration
+
+globalArrayInitialization ::= arrayInitialization
+
+globalDoubleArrayDeclaration ::= doubleArrayDeclaration
+
+globalDoubleArrayInitialization ::= doubleArrayInitialization
 
 function(type,name,args,locals,stats) ::= <<
 <type> <name>(<args; separator=", ">) {
@@ -44,19 +56,13 @@ type_float() ::= "float"
 
 type_double() ::= "double"
 
-type_intarray() ::= "int[]"
-
-type_chararray() ::= "char[]"
-
-type_floatarray() ::= "float[]"
-
-type_doublearray() ::= "double[]"
-
 type_user_object(name) ::= "<name>"
 
 parameter(type,name) ::= "<type> <name>"
 
 arrayparameter(type,name) ::= "<type>[] <name>"
+
+doublearrayparameter(type,name) ::= "<type>[][] <name>"
 
 statement(expr) ::= "<expr>;"
 
@@ -92,21 +98,23 @@ else {
 }
 >>
 
-funcinstance(name,args) ::= << <name>(<args; separator=", ">) >>
+funcinstance(name,args) ::= << <name>(<args; separator=",">)>>
+
+arrayInitializationBody(args) ::= <<{<args; separator=",">}>>
 
 inkrement(e) ::= "<e>++"
 
 dekrement(e) ::= "<e>--"
 
-inkrementby(lhs,rhs) ::= "<lhs> += <rhs>;"
+inkrementby(lhs,rhs) ::= "<lhs>+=<rhs>;"
 
-dekrementby(lhs,rhs) ::= "<lhs> -= <rhs>;"
+dekrementby(lhs,rhs) ::= "<lhs>-=<rhs>;"
 
-assignmultiply(lhs,rhs) ::= "<lhs> *= <rhs>;"
+assignmultiply(lhs,rhs) ::= "<lhs>*=<rhs>;"
 
-assigndivide(lhs,rhs) ::= "<lhs> /= <rhs>;"
+assigndivide(lhs,rhs) ::= "<lhs>/=<rhs>;"
 
-assign(lhs,rhs) ::= "<lhs> = <rhs>;"
+assign(lhs,rhs) ::= "<lhs>=<rhs>;"
 
 conjunction(left,right) ::= "<left> && <right>"
 
@@ -114,23 +122,33 @@ disjunction(left,right) ::= "<left> || <right>"
 
 equals(left,right) ::= "<left> == <right>"
 
-lessThan(left,right) ::= "<left> \< <right>"
+lessThan(left,right) ::= "<left>\<<right>"
 
-moreThan(left,right) ::= "<left> \> <right>"
+moreThan(left,right) ::= "<left>\><right>"
 
-lessOrEqual(left,right) ::= "<left> \<= <right>"
+lessOrEqual(left,right) ::= "<left>\<=<right>"
 
-moreOrEqual(left,right) ::= "<left> \>= <right>"
+moreOrEqual(left,right) ::= "<left>\>=<right>"
 
-unEqual(left,right) ::= "<left> != <right>"
+unEqual(left,right) ::= "<left>!=<right>"
 
-add(left,right) ::= "<left> + <right>"
+add(left,right) ::= "<left>+<right>"
 
-substract(left,right) ::= "<left> - <right>"
+substract(left,right) ::= "<left>-<right>"
 
-multiply(left,right) ::= "<left> * <right>"
+multiply(left,right) ::= "<left>*<right>"
 
-divide(left,right) ::= "<left> / <right>"
+divide(left,right) ::= "<left>/<right>"
+
+bitwiseand(left,right) ::= "<left>&<right>"
+
+bitwiseor(left,right) ::= "<left>|<right>"
+
+bitwisexor(left,right) ::= "<left>^<right>"
+
+bitwiseleftshift(left,right) ::= "<left> \<\< <right>"
+
+bitwiserightshift(left,right) ::= "<left> \>\> <right>"
 
 refVar(id) ::= "<id>"
 

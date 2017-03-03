@@ -2,6 +2,8 @@ package helper;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.antlr.runtime.ANTLRFileStream;
 import org.antlr.runtime.CharStream;
@@ -32,5 +34,13 @@ public class RepresentationToIntermediate {
 		parser.setTemplateLib(templates);
 		RuleReturnScope r = parser.program();
 		return r.getTemplate().toString();
+	}
+		
+	public static Set<String> getPossibleLanguages(){
+		Set<String> answer=new HashSet<String>();
+		answer.add("C");
+		answer.add("Java");
+		answer.add("Python");
+		return answer;
 	}
 }
