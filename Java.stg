@@ -78,7 +78,7 @@ statementList(locals,stats) ::= <<
 >>
 
 forLoop(e1,e2,e3,locals,stats) ::= <<
-for (<e1> <e2>; <e3>) {
+for (<e1>; <e2>; <e3>) {
     <locals; separator="\n">
     <stats; separator="\n">
 }
@@ -106,15 +106,15 @@ inkrement(e) ::= "<e>++"
 
 dekrement(e) ::= "<e>--"
 
-inkrementby(lhs,rhs) ::= "<lhs>+=<rhs>;"
+inkrementby(lhs,rhs) ::= "<lhs>+=<rhs>"
 
-dekrementby(lhs,rhs) ::= "<lhs>-=<rhs>;"
+dekrementby(lhs,rhs) ::= "<lhs>-=<rhs>"
 
-assignmultiply(lhs,rhs) ::= "<lhs>*=<rhs>;"
+assignmultiply(lhs,rhs) ::= "<lhs>*=<rhs>"
 
-assigndivide(lhs,rhs) ::= "<lhs>/=<rhs>;"
+assigndivide(lhs,rhs) ::= "<lhs>/=<rhs>"
 
-assign(lhs,rhs) ::= "<lhs>=<rhs>;"
+assign(lhs,rhs) ::= "<lhs>=<rhs>"
 
 conjunction(left,right) ::= "<left> && <right>"
 
@@ -153,3 +153,5 @@ bitwiserightshift(left,right) ::= "<left> \>\> <right>"
 refVar(id) ::= "<id>"
 
 iconst(value) ::= "<value>"
+
+valueWithSemicolon(value) ::= "<value>;"

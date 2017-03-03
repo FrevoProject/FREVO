@@ -131,11 +131,11 @@ scope slist;
   $slist::stats = new ArrayList();
 }
     : forStat -> {$forStat.st}
+	| assignStat ';' -> valueWithSemicolon(value={$assignStat.st})
 	| ifStat -> {$ifStat.st}
 	| elseStat -> {$elseStat.st}
     | expr ';' -> statement(expr={$expr.st})
     | block -> statementList(locals={$slist::locals}, stats={$slist::stats})
-    | assignStat ';' -> {$assignStat.st}
 	| 'return' expr ';' -> return(expr={$expr.st})
     | ';' -> {new StringTemplate(";")}
     ;
