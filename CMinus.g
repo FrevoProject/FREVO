@@ -69,7 +69,7 @@ variable
     ;
 	
 arrayinit
-    :   '{' ( p+=definednumber ( ',' p+=definednumber )* )? '}' -> arrayInitializationBody(args={$p})
+    :   '{' ( p+=numericexpr ( ',' p+=numericexpr )* )? '}' -> arrayInitializationBody(args={$p})
 	|   '{' ( p+=arrayinit ( ',' p+=arrayinit )* )? '}' -> arrayInitializationBody(args={$p})
 	;
 
@@ -103,14 +103,14 @@ formalParameter
 	|   type declarator '[][]'
 	    -> doublearrayparameter(type={$type.st},name={$declarator.st})
     ;
-	
-definednumber
-    :   FP -> iconst(value={$FP.text})
-	|   INT -> iconst(value={$INT.text})
-	;
 
 type
     :   'int'  -> type_int()
+	|   'long int' -> type_long_int()
+	|   'long long int' -> type_long_long_int()
+	|   'unsigned long int' -> type_unsigned_long_int()
+	|   'unsigned long long int' -> type_unsigned_long_long_int()
+	|   'unsigned int' -> type_unsigned_int()
     |   'char' -> type_char()
 	|   'float' -> type_float()
 	|   'double' -> type_double()
@@ -236,10 +236,20 @@ atom
     : arrayexpr -> {$arrayexpr.st}
 	| funcexpr -> {$funcexpr.st}
     | ID -> refVar(id={$ID.text})
-    | INT -> iconst(value={$INT.text})
-	| FP -> iconst(value={$FP.text})
+    | numericexpr -> iconst(value={$numericexpr.st})
     | '(' expr ')' -> brackets(expr={$expr.st})
     ; 
+	
+numericexpr
+    : FP ('f'|'F') -> floatFloatingPoint(value={$FP.text})
+	| FP -> doubleFloatingPoint(value={$FP.text})
+	| INT ('u'|'U') -> unsignedInt(value={$INT.text})
+	| INT ('l'|'L') -> longInt(value={$INT.text})
+	| INT ('ll'|'LL') -> longLongInt(value={$INT.text})
+	| INT ('lu'|'Lu'|'lU'|'LU'|'ul'|'uL'|'Ul'|'UL') -> unsignedLongInt(value={$INT.text})
+	| INT ('llu'|'LLu'|'llU'|'LLU'|'ull'|'uLL'|'Ull'|'ULL') -> unsignedLongLongInt(value={$INT.text})
+	| INT -> defaultInt(value={$INT.text})
+	;
 
 ID  :   ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
     ;

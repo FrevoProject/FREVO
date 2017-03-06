@@ -50,6 +50,16 @@ function(type,name,args,locals,stats) ::= <<
 
 type_int() ::= "int"
 
+type_long_int ::= type_int
+
+type_long_long_int() ::= "long"
+
+type_unsigned_long_int ::= type_long_int
+
+type_unsigned_long_long_int ::= type_long_long_int
+
+type_unsigned_int ::= type_int
+
 type_char() ::= "char"
 
 type_float() ::= "float"
@@ -155,3 +165,19 @@ refVar(id) ::= "<id>"
 iconst(value) ::= "<value>"
 
 valueWithSemicolon(value) ::= "<value>;"
+
+floatFloatingPoint(value) ::="<value>f"
+
+doubleFloatingPoint(value) ::="<value>d"
+
+defaultInt(value) ::= "<value>"
+
+unsignedInt ::= defaultInt
+
+longInt(value) ::= "<value>L"
+
+longLongInt ::= longInt
+
+unsignedLongInt ::= longInt
+
+unsignedLongLongInt ::= longInt

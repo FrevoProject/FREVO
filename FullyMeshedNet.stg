@@ -1,10 +1,10 @@
 group FullyMeshedNet;
 
-getOutputDeclaration(floattype,inttype,longtype,doubletype,seed,iterations,inputsize,inputnodes,outputsize,nodes,activationbody,activationargument,biases,weights) ::= <<
+getOutputDeclaration(floattype,inttype,doubletype,seed,iterations,inputsize,inputnodes,outputsize,nodes,activationbody,activationargument,biases,weights) ::= <<
 
-<floattype> bias[<nodes>]={<biases; separator=", ">};
+<floattype> bias[<nodes>]={<biases:{bia|<bia>f}; separator=", ">};
 
-<floattype> weight[<nodes>][<nodes>]={<weights:{wei|{<wei; separator=", ">}}; separator=", ">};
+<floattype> weight[<nodes>][<nodes>]={<weights:{wei|{<wei:{we|<we>f}; separator=", ">}}; separator=", ">};
 
 <floattype> output[<outputsize>];
 
@@ -12,15 +12,15 @@ getOutputDeclaration(floattype,inttype,longtype,doubletype,seed,iterations,input
   <activationbody>
 }
 
-<longtype> seed=<seed>;
+long long int seed=<seed>LL;
 
 <inttype> next(){
-   seed=(seed*25214903917+11) & ((1 \<\< 48) - 1);
+   seed=(seed*25214903917LL+11) & ((1 \<\< 48) - 1);
    return (<inttype>)(seed \>\> 22);
 }
 
 <doubletype> nextDouble(){
-   return ((((<longtype>)next() \<\< 27) + next()) / (<doubletype>)(1 \<\< 53));
+   return ((((long long int)next() \<\< 27) + next()) / (<doubletype>)(1 \<\< 53));
 }
 
 <floattype> rand_range(<floattype> border){
@@ -40,7 +40,7 @@ void getStep(<floattype> input[]){
       output[i]=input[i];
     }
 	for (i=<inputnodes>; i \< <nodes>; i=i+1) {
-      <floattype> sum=0.0;
+      <floattype> sum=0.0f;
 	  for (j=0; j \< <nodes>; j=j+1) {
         sum=sum+weight[j][i]*output[j];
       }
