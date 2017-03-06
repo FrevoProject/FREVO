@@ -1,6 +1,6 @@
 package helper;
 
-// $ANTLR 3.1.1 CMinus.g 2017-03-06 16:12:13
+// $ANTLR 3.1.1 CMinus.g 2017-03-06 16:28:38
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -1631,24 +1631,42 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:257:5: ( ( '0' .. '9' )+ )
-            // CMinus.g:257:7: ( '0' .. '9' )+
+            // CMinus.g:257:5: ( ( '-' )? ( '0' .. '9' )+ )
+            // CMinus.g:257:7: ( '-' )? ( '0' .. '9' )+
             {
-            // CMinus.g:257:7: ( '0' .. '9' )+
-            int cnt2=0;
-            loop2:
-            do {
-                int alt2=2;
-                int LA2_0 = input.LA(1);
+            // CMinus.g:257:7: ( '-' )?
+            int alt2=2;
+            int LA2_0 = input.LA(1);
 
-                if ( ((LA2_0>='0' && LA2_0<='9')) ) {
-                    alt2=1;
+            if ( (LA2_0=='-') ) {
+                alt2=1;
+            }
+            switch (alt2) {
+                case 1 :
+                    // CMinus.g:257:8: '-'
+                    {
+                    match('-'); 
+
+                    }
+                    break;
+
+            }
+
+            // CMinus.g:257:14: ( '0' .. '9' )+
+            int cnt3=0;
+            loop3:
+            do {
+                int alt3=2;
+                int LA3_0 = input.LA(1);
+
+                if ( ((LA3_0>='0' && LA3_0<='9')) ) {
+                    alt3=1;
                 }
 
 
-                switch (alt2) {
+                switch (alt3) {
             	case 1 :
-            	    // CMinus.g:257:8: '0' .. '9'
+            	    // CMinus.g:257:15: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1656,12 +1674,12 @@ public class CMinusLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt2 >= 1 ) break loop2;
+            	    if ( cnt3 >= 1 ) break loop3;
                         EarlyExitException eee =
-                            new EarlyExitException(2, input);
+                            new EarlyExitException(3, input);
                         throw eee;
                 }
-                cnt2++;
+                cnt3++;
             } while (true);
 
 
@@ -1680,24 +1698,42 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = FP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:260:5: ( ( '0' .. '9' )+ ( '.' ) ( '0' .. '9' )+ )
-            // CMinus.g:260:9: ( '0' .. '9' )+ ( '.' ) ( '0' .. '9' )+
+            // CMinus.g:260:5: ( ( '-' )? ( '0' .. '9' )+ ( '.' ) ( '0' .. '9' )+ )
+            // CMinus.g:260:9: ( '-' )? ( '0' .. '9' )+ ( '.' ) ( '0' .. '9' )+
             {
-            // CMinus.g:260:9: ( '0' .. '9' )+
-            int cnt3=0;
-            loop3:
-            do {
-                int alt3=2;
-                int LA3_0 = input.LA(1);
+            // CMinus.g:260:9: ( '-' )?
+            int alt4=2;
+            int LA4_0 = input.LA(1);
 
-                if ( ((LA3_0>='0' && LA3_0<='9')) ) {
-                    alt3=1;
+            if ( (LA4_0=='-') ) {
+                alt4=1;
+            }
+            switch (alt4) {
+                case 1 :
+                    // CMinus.g:260:10: '-'
+                    {
+                    match('-'); 
+
+                    }
+                    break;
+
+            }
+
+            // CMinus.g:260:16: ( '0' .. '9' )+
+            int cnt5=0;
+            loop5:
+            do {
+                int alt5=2;
+                int LA5_0 = input.LA(1);
+
+                if ( ((LA5_0>='0' && LA5_0<='9')) ) {
+                    alt5=1;
                 }
 
 
-                switch (alt3) {
+                switch (alt5) {
             	case 1 :
-            	    // CMinus.g:260:10: '0' .. '9'
+            	    // CMinus.g:260:17: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1705,36 +1741,36 @@ public class CMinusLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt3 >= 1 ) break loop3;
+            	    if ( cnt5 >= 1 ) break loop5;
                         EarlyExitException eee =
-                            new EarlyExitException(3, input);
+                            new EarlyExitException(5, input);
                         throw eee;
                 }
-                cnt3++;
+                cnt5++;
             } while (true);
 
-            // CMinus.g:260:21: ( '.' )
-            // CMinus.g:260:22: '.'
+            // CMinus.g:260:28: ( '.' )
+            // CMinus.g:260:29: '.'
             {
             match('.'); 
 
             }
 
-            // CMinus.g:260:27: ( '0' .. '9' )+
-            int cnt4=0;
-            loop4:
+            // CMinus.g:260:34: ( '0' .. '9' )+
+            int cnt6=0;
+            loop6:
             do {
-                int alt4=2;
-                int LA4_0 = input.LA(1);
+                int alt6=2;
+                int LA6_0 = input.LA(1);
 
-                if ( ((LA4_0>='0' && LA4_0<='9')) ) {
-                    alt4=1;
+                if ( ((LA6_0>='0' && LA6_0<='9')) ) {
+                    alt6=1;
                 }
 
 
-                switch (alt4) {
+                switch (alt6) {
             	case 1 :
-            	    // CMinus.g:260:28: '0' .. '9'
+            	    // CMinus.g:260:35: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1742,12 +1778,12 @@ public class CMinusLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt4 >= 1 ) break loop4;
+            	    if ( cnt6 >= 1 ) break loop6;
                         EarlyExitException eee =
-                            new EarlyExitException(4, input);
+                            new EarlyExitException(6, input);
                         throw eee;
                 }
-                cnt4++;
+                cnt6++;
             } while (true);
 
 
@@ -1770,18 +1806,18 @@ public class CMinusLexer extends Lexer {
             // CMinus.g:263:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
             // CMinus.g:263:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
-            int cnt5=0;
-            loop5:
+            int cnt7=0;
+            loop7:
             do {
-                int alt5=2;
-                int LA5_0 = input.LA(1);
+                int alt7=2;
+                int LA7_0 = input.LA(1);
 
-                if ( ((LA5_0>='\t' && LA5_0<='\n')||LA5_0=='\r'||LA5_0==' ') ) {
-                    alt5=1;
+                if ( ((LA7_0>='\t' && LA7_0<='\n')||LA7_0=='\r'||LA7_0==' ') ) {
+                    alt7=1;
                 }
 
 
-                switch (alt5) {
+                switch (alt7) {
             	case 1 :
             	    // CMinus.g:
             	    {
@@ -1799,12 +1835,12 @@ public class CMinusLexer extends Lexer {
             	    break;
 
             	default :
-            	    if ( cnt5 >= 1 ) break loop5;
+            	    if ( cnt7 >= 1 ) break loop7;
                         EarlyExitException eee =
-                            new EarlyExitException(5, input);
+                            new EarlyExitException(7, input);
                         throw eee;
                 }
-                cnt5++;
+                cnt7++;
             } while (true);
 
             _channel=99;
@@ -1821,9 +1857,9 @@ public class CMinusLexer extends Lexer {
 
     public void mTokens() throws RecognitionException {
         // CMinus.g:1:8: ( T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | ID | INT | FP | WS )
-        int alt6=75;
-        alt6 = dfa6.predict(input);
-        switch (alt6) {
+        int alt8=75;
+        alt8 = dfa8.predict(input);
+        switch (alt8) {
             case 1 :
                 // CMinus.g:1:10: T__8
                 {
@@ -2355,8 +2391,8 @@ public class CMinusLexer extends Lexer {
     }
 
 
-    protected DFA6 dfa6 = new DFA6(this);
-    static final String DFA6_eotS =
+    protected DFA8 dfa8 = new DFA8(this);
+    static final String DFA8_eotS =
         "\2\uffff\1\43\1\45\6\uffff\1\37\1\54\1\60\1\37\1\64\3\37\1\72\1"+
         "\75\1\77\1\101\1\103\1\105\1\110\1\113\2\uffff\1\114\1\117\1\123"+
         "\1\uffff\1\124\3\uffff\1\127\1\uffff\1\37\1\131\1\37\1\135\1\136"+
@@ -2367,9 +2403,9 @@ public class CMinusLexer extends Lexer {
         "\37\2\uffff\1\37\2\uffff\1\u0087\1\37\1\uffff\2\37\1\u008b\5\uffff"+
         "\1\37\1\uffff\1\u008f\2\37\3\uffff\1\37\1\uffff\1\u0093\1\u0094"+
         "\1\37\2\uffff\1\37\11\uffff";
-    static final String DFA6_eofS =
+    static final String DFA8_eofS =
         "\u009f\uffff";
-    static final String DFA6_minS =
+    static final String DFA8_minS =
         "\1\11\1\uffff\1\75\1\135\6\uffff\1\146\2\60\1\150\1\60\1\157\1"+
         "\145\1\154\1\53\1\55\2\75\1\46\1\174\1\74\1\75\2\uffff\3\60\1\uffff"+
         "\1\56\3\uffff\1\133\1\uffff\1\164\1\60\1\156\3\60\1\uffff\1\163"+
@@ -2380,7 +2416,7 @@ public class CMinusLexer extends Lexer {
         "\1\60\1\164\1\uffff\1\154\1\162\1\60\4\uffff\1\151\1\156\1\uffff"+
         "\1\60\1\145\1\156\3\uffff\1\145\1\uffff\2\60\1\144\2\uffff\1\40"+
         "\1\151\1\157\1\uffff\1\156\1\147\1\40\1\151\2\uffff";
-    static final String DFA6_maxS =
+    static final String DFA8_maxS =
         "\1\175\1\uffff\1\75\1\135\6\uffff\1\156\2\172\1\150\1\172\1\157"+
         "\1\145\1\154\4\75\1\46\1\174\1\75\1\76\2\uffff\3\172\1\uffff\1\71"+
         "\3\uffff\1\133\1\uffff\1\164\1\172\1\156\3\172\1\uffff\1\163\2\172"+
@@ -2391,7 +2427,7 @@ public class CMinusLexer extends Lexer {
         "\uffff\1\172\1\164\1\uffff\1\154\1\162\1\172\4\uffff\1\154\1\156"+
         "\1\uffff\1\172\1\145\1\156\3\uffff\1\145\1\uffff\2\172\1\144\2\uffff"+
         "\1\40\1\154\1\157\1\uffff\1\156\1\147\1\40\1\154\2\uffff";
-    static final String DFA6_acceptS =
+    static final String DFA8_acceptS =
         "\1\uffff\1\1\2\uffff\1\4\1\5\1\6\1\7\1\10\1\11\20\uffff\1\46\1"+
         "\55\3\uffff\1\110\1\uffff\1\113\1\41\1\2\1\uffff\1\3\6\uffff\1\64"+
         "\3\uffff\1\62\3\uffff\1\60\3\uffff\1\31\1\33\1\47\1\32\1\34\1\50"+
@@ -2402,9 +2438,9 @@ public class CMinusLexer extends Lexer {
         "\1\uffff\1\104\1\105\2\uffff\1\30\3\uffff\1\106\1\107\1\101\1\103"+
         "\2\uffff\1\22\3\uffff\1\27\1\15\1\16\1\uffff\1\23\3\uffff\1\24\1"+
         "\25\3\uffff\1\21\4\uffff\1\17\1\20";
-    static final String DFA6_specialS =
+    static final String DFA8_specialS =
         "\u009f\uffff}>";
-    static final String[] DFA6_transitionS = {
+    static final String[] DFA8_transitionS = {
             "\2\41\2\uffff\1\41\22\uffff\1\41\1\32\4\uffff\1\26\1\uffff"+
             "\1\10\1\11\1\24\1\22\1\6\1\23\1\uffff\1\25\12\40\1\uffff\1\1"+
             "\1\30\1\2\1\31\2\uffff\5\37\1\34\5\37\1\36\10\37\1\35\5\37\1"+
@@ -2431,7 +2467,7 @@ public class CMinusLexer extends Lexer {
             "\1\66",
             "\1\67",
             "\1\70\21\uffff\1\71",
-            "\1\73\17\uffff\1\74",
+            "\1\73\2\uffff\12\40\3\uffff\1\74",
             "\1\76",
             "\1\100",
             "\1\102",
@@ -2577,34 +2613,34 @@ public class CMinusLexer extends Lexer {
             ""
     };
 
-    static final short[] DFA6_eot = DFA.unpackEncodedString(DFA6_eotS);
-    static final short[] DFA6_eof = DFA.unpackEncodedString(DFA6_eofS);
-    static final char[] DFA6_min = DFA.unpackEncodedStringToUnsignedChars(DFA6_minS);
-    static final char[] DFA6_max = DFA.unpackEncodedStringToUnsignedChars(DFA6_maxS);
-    static final short[] DFA6_accept = DFA.unpackEncodedString(DFA6_acceptS);
-    static final short[] DFA6_special = DFA.unpackEncodedString(DFA6_specialS);
-    static final short[][] DFA6_transition;
+    static final short[] DFA8_eot = DFA.unpackEncodedString(DFA8_eotS);
+    static final short[] DFA8_eof = DFA.unpackEncodedString(DFA8_eofS);
+    static final char[] DFA8_min = DFA.unpackEncodedStringToUnsignedChars(DFA8_minS);
+    static final char[] DFA8_max = DFA.unpackEncodedStringToUnsignedChars(DFA8_maxS);
+    static final short[] DFA8_accept = DFA.unpackEncodedString(DFA8_acceptS);
+    static final short[] DFA8_special = DFA.unpackEncodedString(DFA8_specialS);
+    static final short[][] DFA8_transition;
 
     static {
-        int numStates = DFA6_transitionS.length;
-        DFA6_transition = new short[numStates][];
+        int numStates = DFA8_transitionS.length;
+        DFA8_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA6_transition[i] = DFA.unpackEncodedString(DFA6_transitionS[i]);
+            DFA8_transition[i] = DFA.unpackEncodedString(DFA8_transitionS[i]);
         }
     }
 
-    class DFA6 extends DFA {
+    class DFA8 extends DFA {
 
-        public DFA6(BaseRecognizer recognizer) {
+        public DFA8(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 6;
-            this.eot = DFA6_eot;
-            this.eof = DFA6_eof;
-            this.min = DFA6_min;
-            this.max = DFA6_max;
-            this.accept = DFA6_accept;
-            this.special = DFA6_special;
-            this.transition = DFA6_transition;
+            this.decisionNumber = 8;
+            this.eot = DFA8_eot;
+            this.eof = DFA8_eof;
+            this.min = DFA8_min;
+            this.max = DFA8_max;
+            this.accept = DFA8_accept;
+            this.special = DFA8_special;
+            this.transition = DFA8_transition;
         }
         public String getDescription() {
             return "1:1: Tokens : ( T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | ID | INT | FP | WS );";
