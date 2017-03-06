@@ -164,6 +164,8 @@ refVar(id) ::= "<id>"
 
 iconst(value) ::= "<value>"
 
+minusNumber(value) ::= "-<value>"
+
 valueWithSemicolon(value) ::= "<value>;"
 
 floatFloatingPoint(value) ::="<value>f"

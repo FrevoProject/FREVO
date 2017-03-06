@@ -69,7 +69,7 @@ variable
     ;
 	
 arrayinit
-    :   '{' ( p+=numericexpr ( ',' p+=numericexpr )* )? '}' -> arrayInitializationBody(args={$p})
+    :   '{' ( p+=realnum ( ',' p+=realnum )* )? '}' -> arrayInitializationBody(args={$p})
 	|   '{' ( p+=arrayinit ( ',' p+=arrayinit )* )? '}' -> arrayInitializationBody(args={$p})
 	;
 
@@ -240,6 +240,11 @@ atom
     | '(' expr ')' -> brackets(expr={$expr.st})
     ; 
 	
+realnum
+    : numericexpr -> {$numericexpr.st}
+	| '-' numericexpr -> minusNumber(value={$numericexpr.st})
+	;
+	
 numericexpr
     : FP ('f'|'F') -> floatFloatingPoint(value={$FP.text})
 	| FP -> doubleFloatingPoint(value={$FP.text})
@@ -254,10 +259,10 @@ numericexpr
 ID  :   ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'0'..'9'|'_')*
     ;
 
-INT	:	('-')? ('0'..'9')+
+INT	:	('0'..'9')+
 	;
 	
-FP  :   ('-')? ('0'..'9')+ ('.') ('0'..'9')+
+FP  :   ('0'..'9')+ ('.') ('0'..'9')+
 	;
 
 WS  :   (' ' | '\t' | '\r' | '\n')+ {_channel=99;}
