@@ -1256,4 +1256,10 @@ public class NEAT extends AbstractRepresentation {
 		
 		visualizer.visualize();
 	}
+
+	@Override
+	public String getC() {
+		System.err.println ("NEAT not implemented!");
+		return null;
+	}
 }

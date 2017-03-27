@@ -182,6 +182,12 @@ public class SimpleBulkRepresentation extends AbstractBulkRepresentation {
 		return this.genotypesize;
 	}
 
+	@Override
+	public String getC() {
+		System.err.println ("Bulk representations cannot process output directly!");
+		return null;
+	}
+
 	
 
 }

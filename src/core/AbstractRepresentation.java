@@ -52,6 +52,11 @@ public abstract class AbstractRepresentation extends AbstractComponent implement
 		return classInitialized;
 	}
 	
+	/**
+	 * Gets the C representation
+	 */
+	public abstract String getC();
+	
 	/** Initializes the class variables. Used to be overwritten for cross-instance information handling */
 	public static void initialize(int inputnumber, int outputnumber,
 			Hashtable<String, XMLFieldEntry> properties, Random rand) {
