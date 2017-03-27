@@ -13,8 +13,6 @@ import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
-
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -45,8 +43,9 @@ public class ExportFrame extends JFrame {
 			  public void actionPerformed(ActionEvent e)
 			  {
 			    String name=ExportFrame.getSavePlace();
+			    CloseFrame();
 			    String content=representation.getC();
-			    System.out.println(content);
+			    content=content+getCPreamble();
 			    PrintWriter out;
 				try {
 					out = new PrintWriter(name);
@@ -55,7 +54,7 @@ public class ExportFrame extends JFrame {
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				}			    
+				}		    
 			  }
 			});
 		add(btnC);
@@ -71,7 +70,6 @@ public class ExportFrame extends JFrame {
 						StringTemplateGroup templates = new StringTemplateGroup(new FileReader(stgName),
 							    AngleBracketTemplateLexer.class);
 					    String content=representation.getC();
-					    System.out.println(content);
 					    InputStream stream = new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8));
 					    CMinusLexer lexer = new CMinusLexer(new ANTLRInputStream(stream));
 						CommonTokenStream tokens = new CommonTokenStream(lexer);
@@ -79,7 +77,6 @@ public class ExportFrame extends JFrame {
 						parser.setTemplateLib(templates);
 						RuleReturnScope r = parser.program();
 						String result=r.getTemplate().toString();
-						System.out.println(result);
 						String name=ExportFrame.getSavePlace();
 						out = new PrintWriter(name);
 						out.print(result);
@@ -93,11 +90,16 @@ public class ExportFrame extends JFrame {
 					} catch (RecognitionException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
-					}		
+					}
+					CloseFrame();
 				  }
 				});
 			add(btn);
 		}
+	}
+	
+	public void CloseFrame(){
+	    super.dispose();
 	}
 	
 	private List<String> getLanguages(){
@@ -105,7 +107,7 @@ public class ExportFrame extends JFrame {
 		File[] files = new File(".").listFiles();
 		for (File file : files) {
 		    if (file.isFile() && file.getName().endsWith(".stg")) {
-		        results.add(file.getName().split(".")[0]);
+		        results.add(file.getName().split("\\.")[0]);
 		    }
 		}
 		return results;
@@ -121,6 +123,11 @@ public class ExportFrame extends JFrame {
 	      else{
 	    	  return null;
 	      }
+	}
+	
+	private String getCPreamble(){
+		String activate="#include <math.h>\n\nfloat sigmoidActivate(float x) {\n		float y=(1.0f / (1.0f + exp(-x)));\n		return y;\n	}\n\n";
+		return activate;
 	}
 
 }
