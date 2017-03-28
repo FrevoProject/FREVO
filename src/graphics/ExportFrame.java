@@ -42,9 +42,13 @@ public class ExportFrame extends JFrame {
 		{
 			  public void actionPerformed(ActionEvent e)
 			  {
+			    String content=representation.getC();
+			    if (content==null){
+			    	CloseFrame();
+			    	return;
+			    }
 			    String name=ExportFrame.getSavePlace();
 			    CloseFrame();
-			    String content=representation.getC();
 			    content=content+getCPreamble();
 			    PrintWriter out;
 				try {
@@ -70,6 +74,10 @@ public class ExportFrame extends JFrame {
 						StringTemplateGroup templates = new StringTemplateGroup(new FileReader(stgName),
 							    AngleBracketTemplateLexer.class);
 					    String content=representation.getC();
+					    if (content==null){
+					    	CloseFrame();
+					    	return;
+					    }
 					    InputStream stream = new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8));
 					    CMinusLexer lexer = new CMinusLexer(new ANTLRInputStream(stream));
 						CommonTokenStream tokens = new CommonTokenStream(lexer);
