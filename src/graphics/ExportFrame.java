@@ -49,7 +49,7 @@ public class ExportFrame extends JFrame {
 			    }
 			    String name=ExportFrame.getSavePlace();
 			    CloseFrame();
-			    content=content+getCPreamble();
+			    content=getCPreamble()+content;
 			    PrintWriter out;
 				try {
 					out = new PrintWriter(name);
@@ -134,7 +134,7 @@ public class ExportFrame extends JFrame {
 	}
 	
 	private String getCPreamble(){
-		String activate="#include <math.h>\n\nfloat sigmoidActivate(float x) {\n		float y=(1.0f / (1.0f + exp(-x)));\n		return y;\n	}\n\n";
+		String activate="#include <math.h>\n\nclass Result{\npublic:\n  float output[];\n  Result(float outp[], long outputsize){\n    long i;\n	for (i=0L;i<outputsize; i=i+1){\n	  output[i]=outp[i];\n	}\n  }\n};\n\nfloat sigmoidActivate(float x) {\n		float y=(1.0f / (1.0f + exp(-x)));\n		return y;\n	}\n\n";
 		return activate;
 	}
 
