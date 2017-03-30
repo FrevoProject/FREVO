@@ -110,6 +110,8 @@ else {
 
 funcinstance(name,args) ::= << <name>(<args; separator=",">)>>
 
+constrinstance(type,name,args) ::= << <type> <name>(<args; separator=",">);>>
+
 arrayInitializationBody(args) ::= <<{<args; separator=",">}>>
 
 inkrement(e) ::= "<e>++"

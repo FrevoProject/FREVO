@@ -105,12 +105,12 @@ formalParameter
     ;
 
 type
-    :   'int'  -> type_int()
-	|   'long int' -> type_long_int()
-	|   'long long int' -> type_long_long_int()
-	|   'unsigned long int' -> type_unsigned_long_int()
-	|   'unsigned long long int' -> type_unsigned_long_long_int()
-	|   'unsigned int' -> type_unsigned_int()
+	:   'unsigned' 'long' 'long' 'int' -> type_unsigned_long_long_int()
+	|   'long' 'long' 'int' -> type_long_long_int()
+	|   'unsigned' 'long' -> type_unsigned_long_int()
+	|   'unsigned' 'int' -> type_unsigned_int()
+	|   'int'  -> type_int()
+	|   'long' -> type_long_int()
     |   'char' -> type_char()
 	|   'float' -> type_float()
 	|   'double' -> type_double()
@@ -131,6 +131,7 @@ scope slist;
   $slist::stats = new ArrayList();
 }
     : forStat -> {$forStat.st}
+	| constructExpr ';' -> {$constructExpr.st}
 	| assignStat ';' -> valueWithSemicolon(value={$assignStat.st})
 	| ifStat -> {$ifStat.st}
 	| elseStat -> {$elseStat.st}
@@ -193,6 +194,10 @@ arrayexpr
 	
 funcexpr
     :   ID '(' ( p+=aexpr ( ',' p+=aexpr )* )? ')' -> funcinstance(name={$ID.text},args={$p})
+	;
+	
+constructExpr
+    :   id1=ID id2=ID '(' ( p+=aexpr ( ',' p+=aexpr )* )? ')' -> constrinstance(type={$id1.text},name={$id2.text},args={$p})
 	;
 	
 condExpr

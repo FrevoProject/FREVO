@@ -1,6 +1,6 @@
 package helper;
 
-// $ANTLR 3.1.1 CMinus.g 2017-03-06 18:23:19
+// $ANTLR 3.1.1 CMinus.g 2017-03-29 18:19:47
 
 import org.antlr.runtime.*;
 import java.util.Stack;
@@ -60,9 +60,7 @@ public class CMinusLexer extends Lexer {
     public static final int T__38=38;
     public static final int T__39=39;
     public static final int T__33=33;
-    public static final int T__77=77;
     public static final int T__34=34;
-    public static final int T__78=78;
     public static final int T__35=35;
     public static final int T__36=36;
     public static final int T__73=73;
@@ -73,7 +71,6 @@ public class CMinusLexer extends Lexer {
     public static final int T__31=31;
     public static final int T__75=75;
     public static final int T__32=32;
-    public static final int T__76=76;
     public static final int T__48=48;
     public static final int T__49=49;
     public static final int T__44=44;
@@ -325,10 +322,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:14:7: ( 'int' )
-            // CMinus.g:14:9: 'int'
+            // CMinus.g:14:7: ( 'unsigned' )
+            // CMinus.g:14:9: 'unsigned'
             {
-            match("int"); 
+            match("unsigned"); 
 
 
             }
@@ -346,10 +343,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:15:7: ( 'long int' )
-            // CMinus.g:15:9: 'long int'
+            // CMinus.g:15:7: ( 'long' )
+            // CMinus.g:15:9: 'long'
             {
-            match("long int"); 
+            match("long"); 
 
 
             }
@@ -367,10 +364,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:16:7: ( 'long long int' )
-            // CMinus.g:16:9: 'long long int'
+            // CMinus.g:16:7: ( 'int' )
+            // CMinus.g:16:9: 'int'
             {
-            match("long long int"); 
+            match("int"); 
 
 
             }
@@ -388,10 +385,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:17:7: ( 'unsigned long int' )
-            // CMinus.g:17:9: 'unsigned long int'
+            // CMinus.g:17:7: ( 'char' )
+            // CMinus.g:17:9: 'char'
             {
-            match("unsigned long int"); 
+            match("char"); 
 
 
             }
@@ -409,10 +406,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:18:7: ( 'unsigned long long int' )
-            // CMinus.g:18:9: 'unsigned long long int'
+            // CMinus.g:18:7: ( 'float' )
+            // CMinus.g:18:9: 'float'
             {
-            match("unsigned long long int"); 
+            match("float"); 
 
 
             }
@@ -430,10 +427,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:19:7: ( 'unsigned int' )
-            // CMinus.g:19:9: 'unsigned int'
+            // CMinus.g:19:7: ( 'double' )
+            // CMinus.g:19:9: 'double'
             {
-            match("unsigned int"); 
+            match("double"); 
 
 
             }
@@ -451,10 +448,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:20:7: ( 'char' )
-            // CMinus.g:20:9: 'char'
+            // CMinus.g:20:7: ( 'return' )
+            // CMinus.g:20:9: 'return'
             {
-            match("char"); 
+            match("return"); 
 
 
             }
@@ -472,10 +469,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:21:7: ( 'float' )
-            // CMinus.g:21:9: 'float'
+            // CMinus.g:21:7: ( 'if' )
+            // CMinus.g:21:9: 'if'
             {
-            match("float"); 
+            match("if"); 
 
 
             }
@@ -493,10 +490,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:22:7: ( 'double' )
-            // CMinus.g:22:9: 'double'
+            // CMinus.g:22:7: ( 'else' )
+            // CMinus.g:22:9: 'else'
             {
-            match("double"); 
+            match("else"); 
 
 
             }
@@ -514,10 +511,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:23:7: ( 'return' )
-            // CMinus.g:23:9: 'return'
+            // CMinus.g:23:7: ( 'for' )
+            // CMinus.g:23:9: 'for'
             {
-            match("return"); 
+            match("for"); 
 
 
             }
@@ -535,10 +532,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:24:7: ( 'if' )
-            // CMinus.g:24:9: 'if'
+            // CMinus.g:24:7: ( '++' )
+            // CMinus.g:24:9: '++'
             {
-            match("if"); 
+            match("++"); 
 
 
             }
@@ -556,10 +553,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:25:7: ( 'else' )
-            // CMinus.g:25:9: 'else'
+            // CMinus.g:25:7: ( '--' )
+            // CMinus.g:25:9: '--'
             {
-            match("else"); 
+            match("--"); 
 
 
             }
@@ -577,10 +574,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:26:7: ( 'for' )
-            // CMinus.g:26:9: 'for'
+            // CMinus.g:26:7: ( '+=' )
+            // CMinus.g:26:9: '+='
             {
-            match("for"); 
+            match("+="); 
 
 
             }
@@ -598,10 +595,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:27:7: ( '++' )
-            // CMinus.g:27:9: '++'
+            // CMinus.g:27:7: ( '-=' )
+            // CMinus.g:27:9: '-='
             {
-            match("++"); 
+            match("-="); 
 
 
             }
@@ -619,10 +616,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:28:7: ( '--' )
-            // CMinus.g:28:9: '--'
+            // CMinus.g:28:7: ( '*=' )
+            // CMinus.g:28:9: '*='
             {
-            match("--"); 
+            match("*="); 
 
 
             }
@@ -640,10 +637,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:29:7: ( '+=' )
-            // CMinus.g:29:9: '+='
+            // CMinus.g:29:7: ( '/=' )
+            // CMinus.g:29:9: '/='
             {
-            match("+="); 
+            match("/="); 
 
 
             }
@@ -661,10 +658,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:30:7: ( '-=' )
-            // CMinus.g:30:9: '-='
+            // CMinus.g:30:7: ( '&&' )
+            // CMinus.g:30:9: '&&'
             {
-            match("-="); 
+            match("&&"); 
 
 
             }
@@ -682,10 +679,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:31:7: ( '*=' )
-            // CMinus.g:31:9: '*='
+            // CMinus.g:31:7: ( '||' )
+            // CMinus.g:31:9: '||'
             {
-            match("*="); 
+            match("||"); 
 
 
             }
@@ -703,10 +700,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:32:7: ( '/=' )
-            // CMinus.g:32:9: '/='
+            // CMinus.g:32:7: ( '==' )
+            // CMinus.g:32:9: '=='
             {
-            match("/="); 
+            match("=="); 
 
 
             }
@@ -724,11 +721,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:33:7: ( '&&' )
-            // CMinus.g:33:9: '&&'
+            // CMinus.g:33:7: ( '<' )
+            // CMinus.g:33:9: '<'
             {
-            match("&&"); 
-
+            match('<'); 
 
             }
 
@@ -745,10 +741,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:34:7: ( '||' )
-            // CMinus.g:34:9: '||'
+            // CMinus.g:34:7: ( '<=' )
+            // CMinus.g:34:9: '<='
             {
-            match("||"); 
+            match("<="); 
 
 
             }
@@ -766,10 +762,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:35:7: ( '==' )
-            // CMinus.g:35:9: '=='
+            // CMinus.g:35:7: ( '>=' )
+            // CMinus.g:35:9: '>='
             {
-            match("=="); 
+            match(">="); 
 
 
             }
@@ -787,10 +783,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:36:7: ( '<' )
-            // CMinus.g:36:9: '<'
+            // CMinus.g:36:7: ( '>' )
+            // CMinus.g:36:9: '>'
             {
-            match('<'); 
+            match('>'); 
 
             }
 
@@ -807,10 +803,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:37:7: ( '<=' )
-            // CMinus.g:37:9: '<='
+            // CMinus.g:37:7: ( '!=' )
+            // CMinus.g:37:9: '!='
             {
-            match("<="); 
+            match("!="); 
 
 
             }
@@ -828,11 +824,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:38:7: ( '>=' )
-            // CMinus.g:38:9: '>='
+            // CMinus.g:38:7: ( '+' )
+            // CMinus.g:38:9: '+'
             {
-            match(">="); 
-
+            match('+'); 
 
             }
 
@@ -849,10 +844,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:39:7: ( '>' )
-            // CMinus.g:39:9: '>'
+            // CMinus.g:39:7: ( '-' )
+            // CMinus.g:39:9: '-'
             {
-            match('>'); 
+            match('-'); 
 
             }
 
@@ -869,11 +864,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:40:7: ( '!=' )
-            // CMinus.g:40:9: '!='
+            // CMinus.g:40:7: ( '*' )
+            // CMinus.g:40:9: '*'
             {
-            match("!="); 
-
+            match('*'); 
 
             }
 
@@ -890,10 +884,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:41:7: ( '+' )
-            // CMinus.g:41:9: '+'
+            // CMinus.g:41:7: ( '/' )
+            // CMinus.g:41:9: '/'
             {
-            match('+'); 
+            match('/'); 
 
             }
 
@@ -910,10 +904,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:42:7: ( '-' )
-            // CMinus.g:42:9: '-'
+            // CMinus.g:42:7: ( '&' )
+            // CMinus.g:42:9: '&'
             {
-            match('-'); 
+            match('&'); 
 
             }
 
@@ -930,10 +924,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:43:7: ( '*' )
-            // CMinus.g:43:9: '*'
+            // CMinus.g:43:7: ( '|' )
+            // CMinus.g:43:9: '|'
             {
-            match('*'); 
+            match('|'); 
 
             }
 
@@ -950,10 +944,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:44:7: ( '/' )
-            // CMinus.g:44:9: '/'
+            // CMinus.g:44:7: ( '^' )
+            // CMinus.g:44:9: '^'
             {
-            match('/'); 
+            match('^'); 
 
             }
 
@@ -970,10 +964,11 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:45:7: ( '&' )
-            // CMinus.g:45:9: '&'
+            // CMinus.g:45:7: ( '<<' )
+            // CMinus.g:45:9: '<<'
             {
-            match('&'); 
+            match("<<"); 
+
 
             }
 
@@ -990,10 +985,11 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:46:7: ( '|' )
-            // CMinus.g:46:9: '|'
+            // CMinus.g:46:7: ( '>>' )
+            // CMinus.g:46:9: '>>'
             {
-            match('|'); 
+            match(">>"); 
+
 
             }
 
@@ -1010,10 +1006,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:47:7: ( '^' )
-            // CMinus.g:47:9: '^'
+            // CMinus.g:47:7: ( 'f' )
+            // CMinus.g:47:9: 'f'
             {
-            match('^'); 
+            match('f'); 
 
             }
 
@@ -1030,11 +1026,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:48:7: ( '<<' )
-            // CMinus.g:48:9: '<<'
+            // CMinus.g:48:7: ( 'F' )
+            // CMinus.g:48:9: 'F'
             {
-            match("<<"); 
-
+            match('F'); 
 
             }
 
@@ -1051,11 +1046,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:49:7: ( '>>' )
-            // CMinus.g:49:9: '>>'
+            // CMinus.g:49:7: ( 'u' )
+            // CMinus.g:49:9: 'u'
             {
-            match(">>"); 
-
+            match('u'); 
 
             }
 
@@ -1072,10 +1066,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:50:7: ( 'f' )
-            // CMinus.g:50:9: 'f'
+            // CMinus.g:50:7: ( 'U' )
+            // CMinus.g:50:9: 'U'
             {
-            match('f'); 
+            match('U'); 
 
             }
 
@@ -1092,10 +1086,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__56;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:51:7: ( 'F' )
-            // CMinus.g:51:9: 'F'
+            // CMinus.g:51:7: ( 'l' )
+            // CMinus.g:51:9: 'l'
             {
-            match('F'); 
+            match('l'); 
 
             }
 
@@ -1112,10 +1106,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__57;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:52:7: ( 'u' )
-            // CMinus.g:52:9: 'u'
+            // CMinus.g:52:7: ( 'L' )
+            // CMinus.g:52:9: 'L'
             {
-            match('u'); 
+            match('L'); 
 
             }
 
@@ -1132,10 +1126,11 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__58;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:53:7: ( 'U' )
-            // CMinus.g:53:9: 'U'
+            // CMinus.g:53:7: ( 'll' )
+            // CMinus.g:53:9: 'll'
             {
-            match('U'); 
+            match("ll"); 
+
 
             }
 
@@ -1152,10 +1147,11 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__59;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:54:7: ( 'l' )
-            // CMinus.g:54:9: 'l'
+            // CMinus.g:54:7: ( 'LL' )
+            // CMinus.g:54:9: 'LL'
             {
-            match('l'); 
+            match("LL"); 
+
 
             }
 
@@ -1172,10 +1168,11 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__60;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:55:7: ( 'L' )
-            // CMinus.g:55:9: 'L'
+            // CMinus.g:55:7: ( 'lu' )
+            // CMinus.g:55:9: 'lu'
             {
-            match('L'); 
+            match("lu"); 
+
 
             }
 
@@ -1192,10 +1189,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__61;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:56:7: ( 'll' )
-            // CMinus.g:56:9: 'll'
+            // CMinus.g:56:7: ( 'Lu' )
+            // CMinus.g:56:9: 'Lu'
             {
-            match("ll"); 
+            match("Lu"); 
 
 
             }
@@ -1213,10 +1210,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__62;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:57:7: ( 'LL' )
-            // CMinus.g:57:9: 'LL'
+            // CMinus.g:57:7: ( 'lU' )
+            // CMinus.g:57:9: 'lU'
             {
-            match("LL"); 
+            match("lU"); 
 
 
             }
@@ -1234,10 +1231,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__63;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:58:7: ( 'lu' )
-            // CMinus.g:58:9: 'lu'
+            // CMinus.g:58:7: ( 'LU' )
+            // CMinus.g:58:9: 'LU'
             {
-            match("lu"); 
+            match("LU"); 
 
 
             }
@@ -1255,10 +1252,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__64;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:59:7: ( 'Lu' )
-            // CMinus.g:59:9: 'Lu'
+            // CMinus.g:59:7: ( 'ul' )
+            // CMinus.g:59:9: 'ul'
             {
-            match("Lu"); 
+            match("ul"); 
 
 
             }
@@ -1276,10 +1273,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__65;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:60:7: ( 'lU' )
-            // CMinus.g:60:9: 'lU'
+            // CMinus.g:60:7: ( 'uL' )
+            // CMinus.g:60:9: 'uL'
             {
-            match("lU"); 
+            match("uL"); 
 
 
             }
@@ -1297,10 +1294,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__66;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:61:7: ( 'LU' )
-            // CMinus.g:61:9: 'LU'
+            // CMinus.g:61:7: ( 'Ul' )
+            // CMinus.g:61:9: 'Ul'
             {
-            match("LU"); 
+            match("Ul"); 
 
 
             }
@@ -1318,10 +1315,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__67;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:62:7: ( 'ul' )
-            // CMinus.g:62:9: 'ul'
+            // CMinus.g:62:7: ( 'UL' )
+            // CMinus.g:62:9: 'UL'
             {
-            match("ul"); 
+            match("UL"); 
 
 
             }
@@ -1339,10 +1336,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__68;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:63:7: ( 'uL' )
-            // CMinus.g:63:9: 'uL'
+            // CMinus.g:63:7: ( 'llu' )
+            // CMinus.g:63:9: 'llu'
             {
-            match("uL"); 
+            match("llu"); 
 
 
             }
@@ -1360,10 +1357,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__69;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:64:7: ( 'Ul' )
-            // CMinus.g:64:9: 'Ul'
+            // CMinus.g:64:7: ( 'LLu' )
+            // CMinus.g:64:9: 'LLu'
             {
-            match("Ul"); 
+            match("LLu"); 
 
 
             }
@@ -1381,10 +1378,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__70;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:65:7: ( 'UL' )
-            // CMinus.g:65:9: 'UL'
+            // CMinus.g:65:7: ( 'llU' )
+            // CMinus.g:65:9: 'llU'
             {
-            match("UL"); 
+            match("llU"); 
 
 
             }
@@ -1402,10 +1399,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__71;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:66:7: ( 'llu' )
-            // CMinus.g:66:9: 'llu'
+            // CMinus.g:66:7: ( 'LLU' )
+            // CMinus.g:66:9: 'LLU'
             {
-            match("llu"); 
+            match("LLU"); 
 
 
             }
@@ -1423,10 +1420,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__72;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:67:7: ( 'LLu' )
-            // CMinus.g:67:9: 'LLu'
+            // CMinus.g:67:7: ( 'ull' )
+            // CMinus.g:67:9: 'ull'
             {
-            match("LLu"); 
+            match("ull"); 
 
 
             }
@@ -1444,10 +1441,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__73;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:68:7: ( 'llU' )
-            // CMinus.g:68:9: 'llU'
+            // CMinus.g:68:7: ( 'uLL' )
+            // CMinus.g:68:9: 'uLL'
             {
-            match("llU"); 
+            match("uLL"); 
 
 
             }
@@ -1465,10 +1462,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__74;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:69:7: ( 'LLU' )
-            // CMinus.g:69:9: 'LLU'
+            // CMinus.g:69:7: ( 'Ull' )
+            // CMinus.g:69:9: 'Ull'
             {
-            match("LLU"); 
+            match("Ull"); 
 
 
             }
@@ -1486,71 +1483,8 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = T__75;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:70:7: ( 'ull' )
-            // CMinus.g:70:9: 'ull'
-            {
-            match("ull"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__75"
-
-    // $ANTLR start "T__76"
-    public final void mT__76() throws RecognitionException {
-        try {
-            int _type = T__76;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:71:7: ( 'uLL' )
-            // CMinus.g:71:9: 'uLL'
-            {
-            match("uLL"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__76"
-
-    // $ANTLR start "T__77"
-    public final void mT__77() throws RecognitionException {
-        try {
-            int _type = T__77;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:72:7: ( 'Ull' )
-            // CMinus.g:72:9: 'Ull'
-            {
-            match("Ull"); 
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        }
-    }
-    // $ANTLR end "T__77"
-
-    // $ANTLR start "T__78"
-    public final void mT__78() throws RecognitionException {
-        try {
-            int _type = T__78;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:73:7: ( 'ULL' )
-            // CMinus.g:73:9: 'ULL'
+            // CMinus.g:70:7: ( 'ULL' )
+            // CMinus.g:70:9: 'ULL'
             {
             match("ULL"); 
 
@@ -1563,15 +1497,15 @@ public class CMinusLexer extends Lexer {
         finally {
         }
     }
-    // $ANTLR end "T__78"
+    // $ANTLR end "T__75"
 
     // $ANTLR start "ID"
     public final void mID() throws RecognitionException {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:259:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
-            // CMinus.g:259:9: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // CMinus.g:264:5: ( ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )* )
+            // CMinus.g:264:9: ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             {
             if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
                 input.consume();
@@ -1582,7 +1516,7 @@ public class CMinusLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // CMinus.g:259:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
+            // CMinus.g:264:33: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '_' )*
             loop1:
             do {
                 int alt1=2;
@@ -1631,10 +1565,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:262:5: ( ( '0' .. '9' )+ )
-            // CMinus.g:262:7: ( '0' .. '9' )+
+            // CMinus.g:267:5: ( ( '0' .. '9' )+ )
+            // CMinus.g:267:7: ( '0' .. '9' )+
             {
-            // CMinus.g:262:7: ( '0' .. '9' )+
+            // CMinus.g:267:7: ( '0' .. '9' )+
             int cnt2=0;
             loop2:
             do {
@@ -1648,7 +1582,7 @@ public class CMinusLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // CMinus.g:262:8: '0' .. '9'
+            	    // CMinus.g:267:8: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1680,10 +1614,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = FP;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:265:5: ( ( '0' .. '9' )+ ( '.' ) ( '0' .. '9' )+ )
-            // CMinus.g:265:9: ( '0' .. '9' )+ ( '.' ) ( '0' .. '9' )+
+            // CMinus.g:270:5: ( ( '0' .. '9' )+ ( '.' ) ( '0' .. '9' )+ )
+            // CMinus.g:270:9: ( '0' .. '9' )+ ( '.' ) ( '0' .. '9' )+
             {
-            // CMinus.g:265:9: ( '0' .. '9' )+
+            // CMinus.g:270:9: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -1697,7 +1631,7 @@ public class CMinusLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // CMinus.g:265:10: '0' .. '9'
+            	    // CMinus.g:270:10: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1713,14 +1647,14 @@ public class CMinusLexer extends Lexer {
                 cnt3++;
             } while (true);
 
-            // CMinus.g:265:21: ( '.' )
-            // CMinus.g:265:22: '.'
+            // CMinus.g:270:21: ( '.' )
+            // CMinus.g:270:22: '.'
             {
             match('.'); 
 
             }
 
-            // CMinus.g:265:27: ( '0' .. '9' )+
+            // CMinus.g:270:27: ( '0' .. '9' )+
             int cnt4=0;
             loop4:
             do {
@@ -1734,7 +1668,7 @@ public class CMinusLexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // CMinus.g:265:28: '0' .. '9'
+            	    // CMinus.g:270:28: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1766,10 +1700,10 @@ public class CMinusLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // CMinus.g:268:5: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // CMinus.g:268:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // CMinus.g:273:5: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // CMinus.g:273:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // CMinus.g:268:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // CMinus.g:273:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt5=0;
             loop5:
             do {
@@ -1820,8 +1754,8 @@ public class CMinusLexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // CMinus.g:1:8: ( T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | ID | INT | FP | WS )
-        int alt6=75;
+        // CMinus.g:1:8: ( T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | ID | INT | FP | WS )
+        int alt6=72;
         alt6 = dfa6.predict(input);
         switch (alt6) {
             case 1 :
@@ -2301,49 +2235,28 @@ public class CMinusLexer extends Lexer {
                 }
                 break;
             case 69 :
-                // CMinus.g:1:416: T__76
-                {
-                mT__76(); 
-
-                }
-                break;
-            case 70 :
-                // CMinus.g:1:422: T__77
-                {
-                mT__77(); 
-
-                }
-                break;
-            case 71 :
-                // CMinus.g:1:428: T__78
-                {
-                mT__78(); 
-
-                }
-                break;
-            case 72 :
-                // CMinus.g:1:434: ID
+                // CMinus.g:1:416: ID
                 {
                 mID(); 
 
                 }
                 break;
-            case 73 :
-                // CMinus.g:1:437: INT
+            case 70 :
+                // CMinus.g:1:419: INT
                 {
                 mINT(); 
 
                 }
                 break;
-            case 74 :
-                // CMinus.g:1:441: FP
+            case 71 :
+                // CMinus.g:1:423: FP
                 {
                 mFP(); 
 
                 }
                 break;
-            case 75 :
-                // CMinus.g:1:444: WS
+            case 72 :
+                // CMinus.g:1:426: WS
                 {
                 mWS(); 
 
@@ -2357,59 +2270,58 @@ public class CMinusLexer extends Lexer {
 
     protected DFA6 dfa6 = new DFA6(this);
     static final String DFA6_eotS =
-        "\2\uffff\1\43\1\45\6\uffff\1\37\1\54\1\60\1\37\1\64\3\37\1\72\1"+
-        "\75\1\77\1\101\1\103\1\105\1\110\1\113\2\uffff\1\114\1\117\1\123"+
-        "\1\uffff\1\124\3\uffff\1\127\1\uffff\1\37\1\131\1\37\1\135\1\136"+
-        "\1\137\1\uffff\1\37\1\142\1\144\1\uffff\3\37\1\uffff\3\37\25\uffff"+
-        "\1\154\1\156\1\uffff\1\161\1\162\1\163\5\uffff\1\164\1\uffff\1\37"+
-        "\1\166\1\167\3\uffff\1\37\1\171\1\uffff\1\172\1\uffff\2\37\1\175"+
-        "\3\37\1\u0081\1\uffff\1\u0082\1\uffff\1\u0083\1\u0084\4\uffff\1"+
-        "\37\2\uffff\1\37\2\uffff\1\u0087\1\37\1\uffff\2\37\1\u008b\5\uffff"+
-        "\1\37\1\uffff\1\u008f\2\37\3\uffff\1\37\1\uffff\1\u0093\1\u0094"+
-        "\1\37\2\uffff\1\37\11\uffff";
+        "\2\uffff\1\43\1\45\6\uffff\1\51\1\56\2\37\1\64\3\37\1\72\1\75\1"+
+        "\77\1\101\1\103\1\105\1\110\1\113\2\uffff\1\114\1\117\1\123\1\uffff"+
+        "\1\125\3\uffff\1\127\1\uffff\1\37\1\132\1\134\1\uffff\1\37\1\140"+
+        "\1\141\1\142\1\uffff\1\37\1\144\3\37\1\uffff\3\37\25\uffff\1\154"+
+        "\1\156\1\uffff\1\161\1\162\1\163\5\uffff\1\37\1\165\1\uffff\1\166"+
+        "\1\uffff\1\37\1\170\1\171\3\uffff\1\172\1\uffff\2\37\1\175\3\37"+
+        "\1\u0081\1\uffff\1\u0082\1\uffff\1\u0083\1\u0084\3\uffff\1\37\2"+
+        "\uffff\1\u0086\3\uffff\1\u0087\1\37\1\uffff\2\37\1\u008b\4\uffff"+
+        "\1\37\2\uffff\1\u008d\2\37\1\uffff\1\37\1\uffff\1\u0091\1\u0092"+
+        "\1\37\2\uffff\1\u0094\1\uffff";
     static final String DFA6_eofS =
-        "\u009f\uffff";
+        "\u0095\uffff";
     static final String DFA6_minS =
-        "\1\11\1\uffff\1\75\1\135\6\uffff\1\146\2\60\1\150\1\60\1\157\1"+
+        "\1\11\1\uffff\1\75\1\135\6\uffff\2\60\1\146\1\150\1\60\1\157\1"+
         "\145\1\154\1\53\1\55\2\75\1\46\1\174\1\74\1\75\2\uffff\3\60\1\uffff"+
-        "\1\56\3\uffff\1\133\1\uffff\1\164\1\60\1\156\3\60\1\uffff\1\163"+
-        "\2\60\1\uffff\1\141\1\157\1\162\1\uffff\1\165\1\164\1\163\25\uffff"+
-        "\2\60\1\uffff\3\60\5\uffff\1\60\1\uffff\1\147\2\60\3\uffff\1\151"+
-        "\1\60\1\uffff\1\60\1\uffff\1\162\1\141\1\60\1\142\1\165\1\145\1"+
-        "\60\1\uffff\1\60\1\uffff\2\60\4\uffff\1\40\2\uffff\1\147\2\uffff"+
-        "\1\60\1\164\1\uffff\1\154\1\162\1\60\4\uffff\1\151\1\156\1\uffff"+
-        "\1\60\1\145\1\156\3\uffff\1\145\1\uffff\2\60\1\144\2\uffff\1\40"+
-        "\1\151\1\157\1\uffff\1\156\1\147\1\40\1\151\2\uffff";
+        "\1\56\3\uffff\1\133\1\uffff\1\163\2\60\1\uffff\1\156\3\60\1\uffff"+
+        "\1\164\1\60\1\141\1\157\1\162\1\uffff\1\165\1\164\1\163\25\uffff"+
+        "\2\60\1\uffff\3\60\5\uffff\1\151\1\60\1\uffff\1\60\1\uffff\1\147"+
+        "\2\60\3\uffff\1\60\1\uffff\1\162\1\141\1\60\1\142\1\165\1\145\1"+
+        "\60\1\uffff\1\60\1\uffff\2\60\3\uffff\1\147\2\uffff\1\60\3\uffff"+
+        "\1\60\1\164\1\uffff\1\154\1\162\1\60\4\uffff\1\156\2\uffff\1\60"+
+        "\1\145\1\156\1\uffff\1\145\1\uffff\2\60\1\144\2\uffff\1\60\1\uffff";
     static final String DFA6_maxS =
-        "\1\175\1\uffff\1\75\1\135\6\uffff\1\156\2\172\1\150\1\172\1\157"+
+        "\1\175\1\uffff\1\75\1\135\6\uffff\2\172\1\156\1\150\1\172\1\157"+
         "\1\145\1\154\4\75\1\46\1\174\1\75\1\76\2\uffff\3\172\1\uffff\1\71"+
-        "\3\uffff\1\133\1\uffff\1\164\1\172\1\156\3\172\1\uffff\1\163\2\172"+
-        "\1\uffff\1\141\1\157\1\162\1\uffff\1\165\1\164\1\163\25\uffff\2"+
-        "\172\1\uffff\3\172\5\uffff\1\172\1\uffff\1\147\2\172\3\uffff\1\151"+
-        "\1\172\1\uffff\1\172\1\uffff\1\162\1\141\1\172\1\142\1\165\1\145"+
-        "\1\172\1\uffff\1\172\1\uffff\2\172\4\uffff\1\40\2\uffff\1\147\2"+
-        "\uffff\1\172\1\164\1\uffff\1\154\1\162\1\172\4\uffff\1\154\1\156"+
-        "\1\uffff\1\172\1\145\1\156\3\uffff\1\145\1\uffff\2\172\1\144\2\uffff"+
-        "\1\40\1\154\1\157\1\uffff\1\156\1\147\1\40\1\154\2\uffff";
+        "\3\uffff\1\133\1\uffff\1\163\2\172\1\uffff\1\156\3\172\1\uffff\1"+
+        "\164\1\172\1\141\1\157\1\162\1\uffff\1\165\1\164\1\163\25\uffff"+
+        "\2\172\1\uffff\3\172\5\uffff\1\151\1\172\1\uffff\1\172\1\uffff\1"+
+        "\147\2\172\3\uffff\1\172\1\uffff\1\162\1\141\1\172\1\142\1\165\1"+
+        "\145\1\172\1\uffff\1\172\1\uffff\2\172\3\uffff\1\147\2\uffff\1\172"+
+        "\3\uffff\1\172\1\164\1\uffff\1\154\1\162\1\172\4\uffff\1\156\2\uffff"+
+        "\1\172\1\145\1\156\1\uffff\1\145\1\uffff\2\172\1\144\2\uffff\1\172"+
+        "\1\uffff";
     static final String DFA6_acceptS =
-        "\1\uffff\1\1\2\uffff\1\4\1\5\1\6\1\7\1\10\1\11\20\uffff\1\46\1"+
-        "\55\3\uffff\1\110\1\uffff\1\113\1\41\1\2\1\uffff\1\3\6\uffff\1\64"+
-        "\3\uffff\1\62\3\uffff\1\60\3\uffff\1\31\1\33\1\47\1\32\1\34\1\50"+
-        "\1\35\1\51\1\36\1\52\1\37\1\53\1\40\1\54\1\43\1\56\1\42\1\44\1\57"+
-        "\1\45\1\61\2\uffff\1\63\3\uffff\1\65\1\111\1\112\1\13\1\12\1\uffff"+
-        "\1\26\3\uffff\1\66\1\70\1\72\2\uffff\1\74\1\uffff\1\75\7\uffff\1"+
-        "\76\1\uffff\1\77\2\uffff\1\67\1\71\1\73\1\14\1\uffff\1\100\1\102"+
-        "\1\uffff\1\104\1\105\2\uffff\1\30\3\uffff\1\106\1\107\1\101\1\103"+
-        "\2\uffff\1\22\3\uffff\1\27\1\15\1\16\1\uffff\1\23\3\uffff\1\24\1"+
-        "\25\3\uffff\1\21\4\uffff\1\17\1\20";
+        "\1\uffff\1\1\2\uffff\1\4\1\5\1\6\1\7\1\10\1\11\20\uffff\1\43\1"+
+        "\52\3\uffff\1\105\1\uffff\1\110\1\36\1\2\1\uffff\1\3\3\uffff\1\57"+
+        "\4\uffff\1\61\5\uffff\1\55\3\uffff\1\26\1\30\1\44\1\27\1\31\1\45"+
+        "\1\32\1\46\1\33\1\47\1\34\1\50\1\35\1\51\1\40\1\53\1\37\1\41\1\54"+
+        "\1\42\1\56\2\uffff\1\60\3\uffff\1\62\1\107\1\106\1\13\1\12\2\uffff"+
+        "\1\71\1\uffff\1\72\3\uffff\1\63\1\65\1\67\1\uffff\1\23\7\uffff\1"+
+        "\73\1\uffff\1\74\2\uffff\1\64\1\66\1\70\1\uffff\1\101\1\102\1\uffff"+
+        "\1\75\1\77\1\16\2\uffff\1\25\3\uffff\1\103\1\104\1\76\1\100\1\uffff"+
+        "\1\15\1\17\3\uffff\1\24\1\uffff\1\20\3\uffff\1\21\1\22\1\uffff\1"+
+        "\14";
     static final String DFA6_specialS =
-        "\u009f\uffff}>";
+        "\u0095\uffff}>";
     static final String[] DFA6_transitionS = {
             "\2\41\2\uffff\1\41\22\uffff\1\41\1\32\4\uffff\1\26\1\uffff"+
             "\1\10\1\11\1\24\1\22\1\6\1\23\1\uffff\1\25\12\40\1\uffff\1\1"+
             "\1\30\1\2\1\31\2\uffff\5\37\1\34\5\37\1\36\10\37\1\35\5\37\1"+
             "\3\1\uffff\1\4\1\33\1\37\1\uffff\2\37\1\15\1\17\1\21\1\16\2"+
-            "\37\1\12\2\37\1\13\5\37\1\20\2\37\1\14\5\37\1\5\1\27\1\7",
+            "\37\1\14\2\37\1\13\5\37\1\20\2\37\1\12\5\37\1\5\1\27\1\7",
             "",
             "\1\42",
             "\1\44",
@@ -2419,11 +2331,11 @@ public class CMinusLexer extends Lexer {
             "",
             "",
             "",
-            "\1\47\7\uffff\1\46",
-            "\12\37\7\uffff\24\37\1\53\5\37\4\uffff\1\37\1\uffff\13\37"+
-            "\1\51\2\37\1\50\5\37\1\52\5\37",
-            "\12\37\7\uffff\13\37\1\57\16\37\4\uffff\1\37\1\uffff\13\37"+
-            "\1\56\1\37\1\55\14\37",
+            "\12\37\7\uffff\13\37\1\50\16\37\4\uffff\1\37\1\uffff\13\37"+
+            "\1\47\1\37\1\46\14\37",
+            "\12\37\7\uffff\24\37\1\55\5\37\4\uffff\1\37\1\uffff\13\37"+
+            "\1\53\2\37\1\52\5\37\1\54\5\37",
+            "\1\60\7\uffff\1\57",
             "\1\61",
             "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\13\37\1\62\2\37"+
             "\1\63\13\37",
@@ -2446,24 +2358,24 @@ public class CMinusLexer extends Lexer {
             "\12\37\7\uffff\13\37\1\120\10\37\1\122\5\37\4\uffff\1\37\1"+
             "\uffff\24\37\1\121\5\37",
             "",
-            "\1\125\1\uffff\12\40",
+            "\1\124\1\uffff\12\40",
             "",
             "",
             "",
             "\1\126",
             "",
             "\1\130",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "\1\132",
-            "\12\37\7\uffff\24\37\1\134\5\37\4\uffff\1\37\1\uffff\24\37"+
-            "\1\133\5\37",
+            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\13\37\1\131\16\37",
+            "\12\37\7\uffff\13\37\1\133\16\37\4\uffff\1\37\1\uffff\32\37",
+            "",
+            "\1\135",
+            "\12\37\7\uffff\24\37\1\137\5\37\4\uffff\1\37\1\uffff\24\37"+
+            "\1\136\5\37",
             "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
             "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
             "",
-            "\1\140",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\13\37\1\141\16\37",
-            "\12\37\7\uffff\13\37\1\143\16\37\4\uffff\1\37\1\uffff\32\37",
-            "",
+            "\1\143",
+            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
             "\1\145",
             "\1\146",
             "\1\147",
@@ -2504,16 +2416,16 @@ public class CMinusLexer extends Lexer {
             "",
             "",
             "",
+            "\1\164",
             "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
             "",
-            "\1\165",
+            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
+            "",
+            "\1\167",
             "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
             "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
             "",
             "",
-            "",
-            "\1\170",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
             "",
             "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
             "",
@@ -2532,11 +2444,11 @@ public class CMinusLexer extends Lexer {
             "",
             "",
             "",
-            "",
             "\1\u0085",
             "",
             "",
-            "\1\u0086",
+            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
+            "",
             "",
             "",
             "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
@@ -2549,31 +2461,21 @@ public class CMinusLexer extends Lexer {
             "",
             "",
             "",
-            "\1\u008c\2\uffff\1\u008d",
+            "\1\u008c",
+            "",
+            "",
+            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
             "\1\u008e",
+            "\1\u008f",
             "",
-            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
             "\1\u0090",
-            "\1\u0091",
-            "",
-            "",
-            "",
-            "\1\u0092",
             "",
             "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
             "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
-            "\1\u0095",
+            "\1\u0093",
             "",
             "",
-            "\1\u0096",
-            "\1\u0098\2\uffff\1\u0097",
-            "\1\u0099",
-            "",
-            "\1\u009a",
-            "\1\u009b",
-            "\1\u009c",
-            "\1\u009d\2\uffff\1\u009e",
-            "",
+            "\12\37\7\uffff\32\37\4\uffff\1\37\1\uffff\32\37",
             ""
     };
 
@@ -2607,7 +2509,7 @@ public class CMinusLexer extends Lexer {
             this.transition = DFA6_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | T__76 | T__77 | T__78 | ID | INT | FP | WS );";
+            return "1:1: Tokens : ( T__8 | T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | T__57 | T__58 | T__59 | T__60 | T__61 | T__62 | T__63 | T__64 | T__65 | T__66 | T__67 | T__68 | T__69 | T__70 | T__71 | T__72 | T__73 | T__74 | T__75 | ID | INT | FP | WS );";
         }
     }
  
