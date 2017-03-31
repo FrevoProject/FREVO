@@ -207,7 +207,9 @@ condExpr
 	;
 
 condexp
-    :   a=aexpr
+	:	'true' -> boolean_true()
+	|	'false' -> boolean_false()
+    |   a=aexpr
         (   (  '==' b=aexpr -> equals(left={$a.st},right={$b.st})
             |  '<' b=aexpr   -> lessThan(left={$a.st},right={$b.st})
 			|  '<=' b=aexpr   -> lessOrEqual(left={$a.st},right={$b.st})
