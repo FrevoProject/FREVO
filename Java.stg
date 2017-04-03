@@ -108,6 +108,10 @@ else {
 }
 >>
 
+boolean_false()::= "false"
+
+boolean_true()::= "true"
+
 funcinstance(name,args) ::= << <name>(<args; separator=",">)>>
 
 constrinstance(type,name,args) ::= << <type> <name>(<args; separator=",">);>>
