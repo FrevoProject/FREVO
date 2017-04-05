@@ -14,9 +14,9 @@ package hebbNet;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -25,7 +25,6 @@ import main.FrevoMain;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
-import org.antlr.stringtemplate.language.AngleBracketTemplateLexer;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
@@ -627,13 +626,8 @@ public class HebbNet extends AbstractRepresentation {
 
 	}
 	
-	private String getTemplate(){
-		String template="group HebbNet;\n\ngetOutputDeclaration(learningrate,stepnumber,inputnodes,outputsize,outputnodes,nodes,biases,weights) ::= <<\n\nfloat bias[<nodes>]={<biases:{bia|<bia>f}; separator=\", \">};\n\nfloat currentweight[<nodes>][<nodes>]={<weights:{wei|{<wei:{we|<we>f}; separator=\", \">}}; separator=\", \">};\n\nfloat output[<outputsize>];\n\nfloat linearActivate(float x){\n	if (x \\>= 1)\n		{return 1;}\n	else {\n		if (x \\<= 0)\n			{return 0;}\n		else\n			{return x;}\n		}\n}\n\nResult getStep(float input[], long inputsize, boolean learn){\n    long i;\n	long j;\n	float activation [<nodes>];\n	for (i=0L; i \\< <nodes>L; i=i+1){\n		activation[i]=0.0f;\n	}\n    for (i=0L; i \\< inputsize; i=i+1) {\n      output[i]=input[i];\n    }\n	for (i=<inputnodes>L; i \\< <nodes>L; i=i+1) {\n      float sum=0.0f;\n	  for (j=0L; j \\< <nodes>L; j=j+1) {\n        sum=sum+currentweight[j][i]*output[j];\n      }\n	  activation[i]=bias[i]+sum;\n    }\n	float outputVector [<outputnodes>];\n	for (i = <inputnodes>L; i \\< <nodes>L; i=i+1) {\n      output[i]=linearActivate(activation[i]);\n    }\n	if (learn==true){\n		float delta[<nodes>][<nodes>];\n		for (i=<inputnodes>L; i \\< <nodes>L; i=i+1) {\n			for (j=0L; j \\< <nodes>L; j=j+1){\n				delta[j][i]=(float)(<learningrate>*(output[i]-0.5f)*(output[j]-0.5f));\n			}\n		}\n		float sum=0.0f;\n		long n=0L;\n		for (i=<inputnodes>L; i \\< <nodes>L; i=i+1) {\n			for (j=0L; j \\< <nodes>L; j=j+1){\n				if (i!=j){\n					sum=sum+delta[j][i];\n					n=n+1;\n				}\n			}\n		}\n		float corr;\n		corr=sum/((float)n);\n		for (i=<inputnodes>L; i \\< <nodes>L; i=i+1) {\n			for (j=0L; j \\< <nodes>L; j=j+1){\n				if (i!=j){\n					currentweight[j][i]=currentweight[j][i]+delta[j][i]-corr;\n				}\n			}\n		}\n	}\n	for (i = (<nodes>L - <outputnodes>L); i \\< <nodes>L; i=i+1) {\n	  j = i - (<nodes>L - <outputnodes>L);\n      outputVector[j]=output[i];\n    }\n	Result r(outputVector,<outputnodes>L);\n	return r;\n\n}\n\nResult getOutput(float input[], long inputsize){\n  long i;\n  for (i=0L; i \\< <outputsize>L; i=i+1) {\n    output[i]=0;\n  }\n  for (i=0L; i \\< <stepnumber>L - 1; i=i+1) {\n    getStep(input,inputsize,false);\n  }\n  return getStep(input,inputsize,true);\n}\n\n>>";
-		return template;
-	}
-	
 	@Override
-	public String getC() {
+	public String getC() throws FileNotFoundException {
 		List<Float> biases=new ArrayList<Float>();
 		for (float b:this.bias){
 			biases.add(b);
@@ -646,7 +640,7 @@ public class HebbNet extends AbstractRepresentation {
 			}
 			weights.add(temp);
 		}
-		StringTemplateGroup templates = new StringTemplateGroup(new StringReader(this.getTemplate()),AngleBracketTemplateLexer.class);
+		StringTemplateGroup templates = this.getStringTemplate();
 		StringTemplate claST = templates.getInstanceOf("getOutputDeclaration");
 		claST.setAttribute("stepnumber", stepnumber);
 		claST.setAttribute("learningrate", learningrate);

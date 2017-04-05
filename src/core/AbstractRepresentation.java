@@ -13,12 +13,16 @@
 package core;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Random;
 
 import main.FrevoMain;
 
+import org.antlr.stringtemplate.StringTemplateGroup;
+import org.antlr.stringtemplate.language.AngleBracketTemplateLexer;
 import org.dom4j.Element;
 import org.dom4j.Node;
 
@@ -54,8 +58,9 @@ public abstract class AbstractRepresentation extends AbstractComponent implement
 	
 	/**
 	 * Gets the C representation
+	 * @throws FileNotFoundException 
 	 */
-	public abstract String getC();
+	public abstract String getC() throws FileNotFoundException;
 	
 	/** Initializes the class variables. Used to be overwritten for cross-instance information handling */
 	public static void initialize(int inputnumber, int outputnumber,
@@ -253,5 +258,17 @@ public abstract class AbstractRepresentation extends AbstractComponent implement
 	 * @param generator the generator of random numbers
 	 */
 	public void setGenerator(NESRandom generator) {
+	}
+	
+	/**
+	 * Gets the StringTemplateGroup from a file with a name corresponding to class name and ".template" extension
+	 * @return
+	 * @throws FileNotFoundException
+	 */
+	protected StringTemplateGroup getStringTemplate() throws FileNotFoundException{
+		String name=this.getClass().getSimpleName();
+		String filename=name+".template";
+		StringTemplateGroup templates = new StringTemplateGroup(new FileReader(filename),AngleBracketTemplateLexer.class);
+		return templates;
 	}
 }

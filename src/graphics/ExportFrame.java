@@ -42,17 +42,16 @@ public class ExportFrame extends JFrame {
 		{
 			  public void actionPerformed(ActionEvent e)
 			  {
-			    String content=representation.getC();
-			    if (content==null){
-			    	CloseFrame();
-			    	return;
-			    }
-			    String name=ExportFrame.getSavePlace();
-			    CloseFrame();
-			    content=getCPreamble()+content;
-			    PrintWriter out;
 				try {
-					out = new PrintWriter(name);
+					String content=representation.getC();
+			    	if (content==null){
+			    		CloseFrame();
+			    		return;
+			    	}
+			    	String name=ExportFrame.getSavePlace();
+			    	CloseFrame();
+			    	content=getCPreamble()+content;
+			    	PrintWriter	out = new PrintWriter(name);
 					out.print(content);
 				    out.close();
 				} catch (FileNotFoundException e1) {
@@ -134,7 +133,7 @@ public class ExportFrame extends JFrame {
 	}
 	
 	private String getCPreamble(){
-		String activate="#include <math.h>\n\nclass Result{\npublic:\n  float output[];\n  Result(float outp[], long outputsize){\n    long i;\n	for (i=0L;i<outputsize; i=i+1){\n	  output[i]=outp[i];\n	}\n  }\n};\n\nfloat sigmoidActivate(float x) {\n		float y=(1.0f / (1.0f + exp(-x)));\n		return y;\n	}\n\n";
+		String activate="#include <math.h>\n\nclass Result{\npublic:\n  float output[];\n  Result(float outp[], long outputsize){\n    long i;\n	for (i=0L;i<outputsize; i=i+1){\n	  output[i]=outp[i];\n	}\n  }\n};\n\n";
 		return activate;
 	}
 

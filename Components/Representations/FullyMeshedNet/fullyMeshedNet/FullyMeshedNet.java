@@ -16,11 +16,8 @@ package fullyMeshedNet;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -30,7 +27,6 @@ import net.jodk.lang.FastMath;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
-import org.antlr.stringtemplate.language.AngleBracketTemplateLexer;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
@@ -867,14 +863,9 @@ public class FullyMeshedNet extends AbstractRepresentation {
 		}
 
 	}
-	
-	private String getTemplate(){
-		String template="group FullyMeshedNet;\n\ngetOutputDeclaration(randomsource,randombiases,seed,iterations,inputnodes,outputsize,outputnodes,nodes,activationmode,biases,weights) ::= <<\n\nfloat bias[<nodes>]={<biases:{bia|<bia>f}; separator=\", \">};\n\nfloat randombias[<nodes>]={<randombiases:{bia|<bia>f}; separator=\", \">};\n\nfloat weight[<nodes>][<nodes>]={<weights:{wei|{<wei:{we|<we>f}; separator=\", \">}}; separator=\", \">};\n\nfloat output[<outputsize>];\n\nlong long int seed=<seed>LL;\n\nlong next(){\n   seed=(seed*25214903917LL+11) & ((1 \\<\\< 48) - 1);\n   return (long)(seed \\>\\> 22);\n}\n\nfloat nextDouble(){\n   return ((((long long int)next() \\<\\< 27) + next()) / (float)(1 \\<\\< 53));\n}\n\nfloat rand_range(float border){\n  float val = (float)(nextDouble()*2.0*border-border);\n  return val;\n}\n\nfloat linearActivate(float x){\n	if (x \\>= 1)\n		{return 1;}\n	else {\n		if (x \\<= 0)\n			{return 0;}\n		else\n			{return x;}\n		}\n}\n\nResult getStep(float input[], long inputsize){\n    long i;\n	long j;\n	float activation [<nodes>];\n	for (i=0L; i \\< <nodes>L; i=i+1){\n		activation[i]=0.0f;\n	}\n    for (i=0L; i \\< inputsize; i=i+1) {\n      output[i]=input[i];\n    }\n	for (i=<inputnodes>L; i \\< <nodes>L; i=i+1) {\n      float sum=0.0f;\n	  for (j=0L; j \\< <nodes>L; j=j+1) {\n        sum=sum+weight[j][i]*output[j];\n      }\n	  activation[i]=bias[i]+sum;\n	  if (<randomsource>){\n		activation[i]=activation[i]+rand_range(randombias[i]);\n	  }\n    }\n	float outputVector [<outputnodes>];\n	for (i = <inputnodes>L; i \\< <nodes>L; i=i+1) {\n      output[i]=<activationmode>(activation[i]);\n    }\n	for (i = (<nodes>L - <outputnodes>L); i \\< <nodes>L; i=i+1) {\n	  j = i - (<nodes>L - <outputnodes>L);\n      outputVector[j]=output[i];\n    }\n	Result r(outputVector,<outputnodes>L);\n	return r;\n\n}\n\nResult getOutput(float input[],long inputsize){\n  long i;\n  for (i=0L; i \\< <outputsize>L; i=i+1) {\n    output[i]=0;\n  }\n  for (i=0L; i \\< <iterations>L - 1; i=i+1) {\n    getStep(input,inputsize);\n  }\n  return getStep(input,inputsize);\n}\n\n>>";
-		return template;
-	}
 
 	@Override
-	public String getC() {
+	public String getC() throws FileNotFoundException {
 		List<Float> biases=new ArrayList<Float>();
 		for (float b:this.bias){
 			biases.add(b);
@@ -891,7 +882,7 @@ public class FullyMeshedNet extends AbstractRepresentation {
 			}
 			weights.add(temp);
 		}
-		StringTemplateGroup templates = new StringTemplateGroup(new StringReader(this.getTemplate()),AngleBracketTemplateLexer.class);
+		StringTemplateGroup templates = this.getStringTemplate();
 		StringTemplate claST = templates.getInstanceOf("getOutputDeclaration");
 		claST.setAttribute("seed", FrevoMain.getSeed());
 		claST.setAttribute("iterations", iterations);

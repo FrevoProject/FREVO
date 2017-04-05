@@ -193,7 +193,26 @@ arrayexpr
 	;
 	
 funcexpr
-    :   ID '(' ( p+=aexpr ( ',' p+=aexpr )* )? ')' -> funcinstance(name={$ID.text},args={$p})
+	:	enumeratedFunction -> {$enumeratedFunction.st}
+    |   ID '(' ( p+=aexpr ( ',' p+=aexpr )* )? ')' -> funcinstance(name={$ID.text},args={$p})
+	;
+	
+enumeratedFunction
+	:	'floor' '(' aexpr ')' -> floor_function(argument={$aexpr.st})
+	|	'round' '(' aexpr ')' -> round_function(argument={$aexpr.st})
+	|	'ceil' '(' aexpr ')' -> ceil_function(argument={$aexpr.st})
+	|	'sin' '(' aexpr ')' -> sin_function(argument={$aexpr.st})
+	|	'cos' '(' aexpr ')' -> cos_function(argument={$aexpr.st})
+	|	'cosh' '(' aexpr ')' -> cosh_function(argument={$aexpr.st})
+	|	'exp' '(' aexpr ')' -> exp_function(argument={$aexpr.st})
+	|	'tan' '(' aexpr ')' -> tan_function(argument={$aexpr.st})
+	|	'tanh' '(' aexpr ')' -> tanh_function(argument={$aexpr.st})
+	|	'sinh' '(' aexpr ')' -> sinh_function(argument={$aexpr.st})
+	|	'log' '(' aexpr ')' -> log_function(argument={$aexpr.st})
+	|	'log10' '(' aexpr ')' -> log10_function(argument={$aexpr.st})
+	|	'sqrt' '(' aexpr ')' -> sqrt_function(argument={$aexpr.st})
+	|	'pow' '(' base=aexpr ',' exponent=aexpr ')' -> pow_function(base={$base.st},exponent={$exponent.st})
+	|	'abs' '(' aexpr ')' -> abs_function(argument={$aexpr.st})
 	;
 	
 constructExpr

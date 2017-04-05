@@ -1,7 +1,13 @@
 group Java;
 
 program(globals,functions) ::= <<
-class Wrapper {
+class Representation {
+	class Result{
+		public final float[] output;
+		public Result(float outp[], int outputsize){
+			output=outp;
+		}
+	}
     <globals; separator="\n">
     <functions; separator="\n">
 }
@@ -108,10 +114,6 @@ else {
 }
 >>
 
-boolean_false()::= "false"
-
-boolean_true()::= "true"
-
 funcinstance(name,args) ::= << <name>(<args; separator=",">)>>
 
 constrinstance(type,name,args) ::= << <type> <name>(<args; separator=",">);>>
@@ -165,6 +167,22 @@ bitwisexor(left,right) ::= "<left>^<right>"
 bitwiseleftshift(left,right) ::= "<left> \<\< <right>"
 
 bitwiserightshift(left,right) ::= "<left> \>\> <right>"
+
+floor_function(argument) ::= "Math.floor(<argument>)"
+round_function(argument) ::= "Math.round(<argument>)"
+ceil_function(argument) ::= "Math.ceil(<argument>)"
+sin_function(argument) ::= "Math.sin(<argument>)"
+sinh_function(argument) ::= "Math.sinh(<argument>)"
+cos_function(argument) ::= "Math.cos(<argument>)"
+cosh_function(argument) ::= "Math.cosh(<argument>)"
+tan_function(argument) ::= "Math.tan(<argument>)"
+tanh_function(argument) ::= "Math.tanh(<argument>)"
+exp_function(argument) ::= "Math.exp(<argument>)"
+log_function(argument) ::= "Math.log(<argument>)"
+log10_function(argument) ::= "Math.log10(<argument>)"
+sqrt_function(argument) ::= "Math.sqrt(<argument>)"
+abs_function(argument) ::= "Math.abs(<argument>)"
+pow_function(base,exponent) ::= "Math.pow(<base>,<exponent>)"
 
 refVar(id) ::= "<id>"
 

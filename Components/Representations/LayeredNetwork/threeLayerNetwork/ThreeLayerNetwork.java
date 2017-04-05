@@ -14,8 +14,8 @@ package threeLayerNetwork;
 
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
-import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -24,7 +24,6 @@ import net.jodk.lang.FastMath;
 
 import org.antlr.stringtemplate.StringTemplate;
 import org.antlr.stringtemplate.StringTemplateGroup;
-import org.antlr.stringtemplate.language.AngleBracketTemplateLexer;
 import org.dom4j.Element;
 import org.dom4j.Node;
 
@@ -557,13 +556,8 @@ public class ThreeLayerNetwork extends AbstractRepresentation {
 		}
 	}
 	
-	private String getTemplate(){
-		String template="group ThreeLayerNetwork;\n\ngetOutputDeclaration(stepnumber,inputnodes,outputsize,outputnodes,nodes,biases,weights) ::= <<\n\nfloat bias[<nodes>]={<biases:{bia|<bia>f}; separator=\", \">};\n\nfloat weight[<nodes>][<nodes>]={<weights:{wei|{<wei:{we|<we>f}; separator=\", \">}}; separator=\", \">};\n\nfloat output[<outputsize>];\n\nResult getStep(float input[], long inputsize){\n    long i;\n	long j;\n	float activation [<nodes>];\n	for (i=0L; i \\< <nodes>L; i=i+1){\n		activation[i]=0.0f;\n	}\n    for (i=0L; i \\< inputsize; i=i+1) {\n      output[i]=input[i];\n    }\n	for (i=<inputnodes>L; i \\< (<nodes>L-<outputnodes>L); i=i+1) {\n      float sum=0.0f;\n	  for (j=0L; j \\< <inputnodes>L; j=j+1) {\n        sum=sum+weight[j][i]*output[j];\n      }\n	  activation[i]=bias[i]+sum;\n	  output[i]=sigmoidActivate(activation[i]);\n    }\n	for (i=(<nodes>L-<outputnodes>L); i\\< <nodes>L; i=i+1) {\n	  float sum=0.0f;\n	  for (j=<inputnodes>L; j \\< (<nodes>L-<outputnodes>L); j=j+1) {\n	    sum=sum+weight[j][i]*output[j];\n	  }\n	  activation[i]=bias[i]+sum;\n	  output[i]=sigmoidActivate(activation[i]);\n	}\n	float outputVector [<outputnodes>];\n	for (i = (<nodes>L - <outputnodes>L); i \\< <nodes>L; i=i+1) {\n	  j = i - (<nodes>L - <outputnodes>L);\n      outputVector[j]=output[i];\n    }\n	Result r(outputVector,<outputnodes>L);\n	return r;\n}\n\nResult getOutput(float input[],long inputsize){\n  long i;\n  for (i=0L; i \\< <outputsize>L; i=i+1) {\n    output[i]=0;\n  }\n  for (i=0L; i \\< <stepnumber>L - 1; i=i+1) {\n    getStep(input,inputsize);\n  }\n  return getStep(input,inputsize);\n}\n\n>>";
-		return template;
-	}
-	
 	@Override
-	public String getC() {
+	public String getC() throws FileNotFoundException {
 		List<Float> biases=new ArrayList<Float>();
 		for (float b:this.bias){
 			biases.add(b);
@@ -576,7 +570,7 @@ public class ThreeLayerNetwork extends AbstractRepresentation {
 			}
 			weights.add(temp);
 		}
-		StringTemplateGroup templates = new StringTemplateGroup(new StringReader(this.getTemplate()),AngleBracketTemplateLexer.class);
+		StringTemplateGroup templates = this.getStringTemplate();
 		StringTemplate claST = templates.getInstanceOf("getOutputDeclaration");
 		claST.setAttribute("stepnumber", stepnumber);
 		claST.setAttribute("inputnodes", input_nodes);
