@@ -9,8 +9,7 @@ float weight[<nodes>][<nodes>]={<weights:{wei|{<wei:{we|<we>f}; separator=", ">}
 float output[<outputsize>];
 
 float sigmoidActivate(float x) {
-	float y;
-	y=(1.0f / (1.0f + exp(-x)));
+	float y=(float)(1.0f / (1.0f + exp(-x)));
 	return y;
 }
 

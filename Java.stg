@@ -200,13 +200,13 @@ defaultInt(value) ::= "<value>"
 
 unsignedInt ::= defaultInt
 
-longInt(value) ::= "<value>L"
+longInt ::= defaultInt
 
-longLongInt ::= longInt
+longLongInt(value) ::= "<value>L"
 
 unsignedLongInt ::= longInt
 
-unsignedLongLongInt ::= longInt
+unsignedLongLongInt ::= longLongInt
 
 boolean_false()::= "false"
 
