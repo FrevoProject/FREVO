@@ -116,7 +116,7 @@ else {
 
 funcinstance(name,args) ::= << <name>(<args; separator=",">)>>
 
-constrinstance(type,name,args) ::= << <type> <name>= new <type>(<args; separator=",">);>>
+constrinstance(type,name,args) ::= << <type> <name> = new <type>(<args; separator=",">);>>
 
 arrayInitializationBody(args) ::= <<{<args; separator=",">}>>
 
