@@ -264,6 +264,7 @@ atom
     | ID -> refVar(id={$ID.text})
     | numericexpr -> iconst(value={$numericexpr.st})
     | '(' expr ')' -> brackets(expr={$expr.st})
+	| '-' a=atom -> minusNumber(value={$a.st})
     ; 
 	
 realnum

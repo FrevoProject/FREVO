@@ -207,3 +207,7 @@ longLongInt ::= longInt
 unsignedLongInt ::= longInt
 
 unsignedLongLongInt ::= longInt
+
+boolean_false()::= "false"
+
+boolean_true()::= "true"
