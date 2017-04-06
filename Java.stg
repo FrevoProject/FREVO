@@ -2,7 +2,7 @@ group Java;
 
 program(globals,functions) ::= <<
 class Representation {
-	class Result{
+	public static class Result{
 		public final float[] output;
 		public Result(float outp[], int outputsize){
 			output=outp;
@@ -116,7 +116,7 @@ else {
 
 funcinstance(name,args) ::= << <name>(<args; separator=",">)>>
 
-constrinstance(type,name,args) ::= << <type> <name>(<args; separator=",">);>>
+constrinstance(type,name,args) ::= << <type> <name>= new <type>(<args; separator=",">);>>
 
 arrayInitializationBody(args) ::= <<{<args; separator=",">}>>
 
