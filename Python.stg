@@ -1,6 +1,7 @@
 group Python;
 
 program(globals,functions) ::= <<
+<globals; separator="\n">
 <functions; separator="\n">
 >>
 
