@@ -6,7 +6,7 @@ float bias[<nodes>]={<biases:{bia|<bia>f}; separator=", ">};
 
 float currentweight[<nodes>][<nodes>]={<weights:{wei|{<wei:{we|<we>f}; separator=", ">}}; separator=", ">};
 
-float output[<outputsize>];
+float netOutput[<outputsize>];
 
 float linearActivate(float x){
 	if (x \>= 1)
@@ -19,7 +19,7 @@ float linearActivate(float x){
 		}
 }
 
-Result getStep(float input[], boolean learn, long inputsize){
+Result getStep(float netInput[], boolean learn, long inputsize){
     long i;
 	long j;
 	float activation [<nodes>];
@@ -27,24 +27,24 @@ Result getStep(float input[], boolean learn, long inputsize){
 		activation[i]=0.0f;
 	}
     for (i=0L; i \< inputsize; i=i+1) {
-      output[i]=input[i];
+      netOutput[i]=netInput[i];
     }
 	for (i=<inputnodes>L; i \< <nodes>L; i=i+1) {
       float sum=0.0f;
 	  for (j=0L; j \< <nodes>L; j=j+1) {
-        sum=sum+currentweight[j][i]*output[j];
+        sum=sum+currentweight[j][i]*netOutput[j];
       }
 	  activation[i]=bias[i]+sum;
     }
 	float outputVector [<outputnodes>];
 	for (i = <inputnodes>L; i \< <nodes>L; i=i+1) {
-      output[i]=linearActivate(activation[i]);
+      netOutput[i]=linearActivate(activation[i]);
     }
 	if (learn==true){
 		float delta[<nodes>][<nodes>];
 		for (i=<inputnodes>L; i \< <nodes>L; i=i+1) {
 			for (j=0L; j \< <nodes>L; j=j+1){
-				delta[j][i]=(float)(<learningrate>*(output[i]-0.5f)*(output[j]-0.5f));
+				delta[j][i]=(float)(<learningrate>*(netOutput[i]-0.5f)*(netOutput[j]-0.5f));
 			}
 		}
 		float sum=0.0f;
@@ -69,21 +69,21 @@ Result getStep(float input[], boolean learn, long inputsize){
 	}
 	for (i = (<nodes>L - <outputnodes>L); i \< <nodes>L; i=i+1) {
 	  j = i - (<nodes>L - <outputnodes>L);
-      outputVector[j]=output[i];
+      outputVector[j]=netOutput[i];
     }
 	Result r(outputVector,<outputnodes>L);
 	return r; 
 }
 
-Result getOutput(float input[], long inputsize){
+Result getOutput(float netInput[], long inputsize){
   long i;
   for (i=0L; i \< <outputsize>L; i=i+1) {
-    output[i]=0;
+    netOutput[i]=0;
   }
   for (i=0L; i \< <stepnumber>L - 1; i=i+1) {
-    getStep(input,false,inputsize);
+    getStep(netInput,false,inputsize);
   }
-  return getStep(input,true,inputsize);
+  return getStep(netInput,true,inputsize);
 }
 
 >>
