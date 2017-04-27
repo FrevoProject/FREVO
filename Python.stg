@@ -1,6 +1,10 @@
 group Python;
 
 program(globals,functions) ::= <<
+class Result(object):
+	def __init__(self,outp,outputsize):
+		self.output=outp
+
 <globals; separator="\n">
 <functions; separator="\n">
 >>
