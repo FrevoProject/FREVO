@@ -12,13 +12,13 @@ float netOutput[<outputsize>];
 
 long long int seed=<seed>LL;
 
-long next(){
+long nextValue(){
    seed=(seed*25214903917LL+11) & ((1 \<\< 48) - 1);
    return (long)(seed \>\> 22);
 }
 
 float nextDouble(){
-   return ((((long long int)next() \<\< 27) + next()) / (float)(1 \<\< 53));
+   return ((((long long int)nextValue() \<\< 27) + nextValue()) / (float)(1 \<\< 53));
 }
 
 float rand_range(float border){
@@ -53,11 +53,11 @@ Result getStep(float netInput[], long inputsize){
       netOutput[i]=netInput[i];
     }
 	for (i=<inputnodes>L; i \< <nodes>L; i=i+1) {
-      float sum=0.0f;
+      float sumValue=0.0f;
 	  for (j=0L; j \< <nodes>L; j=j+1) {
-        sum=sum+weight[j][i]*netOutput[j];
+        sumValue=sumValue+weight[j][i]*netOutput[j];
       }
-	  activation[i]=bias[i]+sum;
+	  activation[i]=bias[i]+sumValue;
 	  if (<randomsource>){
 		activation[i]=activation[i]+rand_range(randombias[i]);
 	  }

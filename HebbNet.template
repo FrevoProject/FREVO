@@ -30,11 +30,11 @@ Result getStep(float netInput[], boolean learn, long inputsize){
       netOutput[i]=netInput[i];
     }
 	for (i=<inputnodes>L; i \< <nodes>L; i=i+1) {
-      float sum=0.0f;
+      float sumValue=0.0f;
 	  for (j=0L; j \< <nodes>L; j=j+1) {
-        sum=sum+currentweight[j][i]*netOutput[j];
+        sumValue=sumValue+currentweight[j][i]*netOutput[j];
       }
-	  activation[i]=bias[i]+sum;
+	  activation[i]=bias[i]+sumValue;
     }
 	float outputVector [<outputnodes>];
 	for (i = <inputnodes>L; i \< <nodes>L; i=i+1) {
@@ -47,18 +47,18 @@ Result getStep(float netInput[], boolean learn, long inputsize){
 				delta[j][i]=(float)(<learningrate>*(netOutput[i]-0.5f)*(netOutput[j]-0.5f));
 			}
 		}
-		float sum=0.0f;
+		float sumValue=0.0f;
 		long n=0L;
 		for (i=<inputnodes>L; i \< <nodes>L; i=i+1) {
 			for (j=0L; j \< <nodes>L; j=j+1){
 				if (i!=j){
-					sum=sum+delta[j][i];
+					sumValue=sumValue+delta[j][i];
 					n=n+1;
 				}
 			}
 		}
 		float corr;
-		corr=sum/((float)n);
+		corr=sumValue/((float)n);
 		for (i=<inputnodes>L; i \< <nodes>L; i=i+1) {
 			for (j=0L; j \< <nodes>L; j=j+1){
 				if (i!=j){

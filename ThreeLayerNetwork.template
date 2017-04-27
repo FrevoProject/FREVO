@@ -24,19 +24,19 @@ Result getStep(float netInput[], long inputsize){
       netOutput[i]=netInput[i];
     }
 	for (i=<inputnodes>L; i \< (<nodes>L-<outputnodes>L); i=i+1) {
-      float sum=0.0f;
+      float sumValue=0.0f;
 	  for (j=0L; j \< <inputnodes>L; j=j+1) {
-        sum=sum+weight[j][i]*netOutput[j];
+        sumValue=sumValue+weight[j][i]*netOutput[j];
       }
-	  activation[i]=bias[i]+sum;
+	  activation[i]=bias[i]+sumValue;
 	  netOutput[i]=sigmoidActivate(activation[i]);
     }
 	for (i=(<nodes>L-<outputnodes>L); i\< <nodes>L; i=i+1) {
-	  float sum=0.0f;
+	  float sumValue=0.0f;
 	  for (j=<inputnodes>L; j \< (<nodes>L-<outputnodes>L); j=j+1) {
-	    sum=sum+weight[j][i]*netOutput[j];
+	    sumValue=sumValue+weight[j][i]*netOutput[j];
 	  }
-	  activation[i]=bias[i]+sum;
+	  activation[i]=bias[i]+sumValue;
 	  netOutput[i]=sigmoidActivate(activation[i]);
 	}
 	float outputVector [<outputnodes>];
