@@ -181,19 +181,19 @@ iconst(value) ::= "<value>"
 
 minusNumber(value) ::= "-<value>"
 
-valueWithSemicolon(value) ::= "<value>;"
+valueWithSemicolon ::= iconst
 
-floatFloatingPoint(value) ::="<value>"
+floatFloatingPoint ::= iconst
 
-doubleFloatingPoint(value) ::="<value>"
+doubleFloatingPoint ::= iconst
 
-defaultInt(value) ::= "<value>"
+defaultInt ::= iconst
 
 unsignedInt ::= defaultInt
 
 longInt ::= defaultInt
 
-longLongInt(value) ::= "<value>"
+longLongInt ::= defaultInt
 
 unsignedLongInt ::= longInt
 
