@@ -2,6 +2,7 @@ package graphics;
 
 import graphics.FrevoWindow.HashTableModel;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -46,6 +47,7 @@ public class DetailsFrame extends JFrame {
 			exportFrame.setVisible(true);
 		  }
 		});
+		exportButton.setPreferredSize(new Dimension(100, 30));
 		this.setLocationRelativeTo(null);
 		
 		setPreferredSize(new Dimension(500, 500));
@@ -70,10 +72,10 @@ public class DetailsFrame extends JFrame {
 		sortKeys.add(new RowSorter.SortKey(0, SortOrder.ASCENDING));
 		sorter.setSortKeys(sortKeys);
 		
-		GridLayout detailsLayout = new GridLayout(2, 1);
+		BorderLayout detailsLayout = new BorderLayout();
 		detailsPanel.setLayout(detailsLayout);
-		detailsPanel.add(detailsScrollPane);
-		detailsPanel.add(exportButton);
+		detailsPanel.add(BorderLayout.CENTER,detailsScrollPane);
+		detailsPanel.add(BorderLayout.PAGE_END, exportButton);
 		this.add(detailsPanel);
 		
 		this.pack();

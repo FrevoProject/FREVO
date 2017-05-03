@@ -35,8 +35,9 @@ public class ExportFrame extends JFrame {
 		super(representation.getXMLData().getClassName() + " ("
 				+ representation.getHash() + ")");
 		
-		setBounds(0, 0, 500, 500);
-		setLayout(new GridLayout(3,1));
+		int rows=1+this.getLanguages().size();
+		setBounds(0, 0, 250, 50*rows);
+		setLayout(new GridLayout(rows,1));
 		JButton btnC=new JButton("C");
 		btnC.addActionListener(new ActionListener()
 		{
