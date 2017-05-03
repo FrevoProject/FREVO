@@ -1,6 +1,8 @@
 group Python;
 
 program(globals,functions) ::= <<
+import math
+
 class Result(object):
 	def __init__(self,outp,outputsize):
 		self.output=outp
