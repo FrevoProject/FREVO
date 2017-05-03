@@ -31,8 +31,6 @@ arrayexp(index) ::= "[<index>]"
 
 castvalue(type,value) ::= "<type>(<value>)"
 
-globalVariable ::= variable
-
 globalVariableInit ::= variableInit
 
 globalArrayDeclaration ::= arrayDeclaration
@@ -45,6 +43,7 @@ globalDoubleArrayInitialization ::= doubleArrayInitialization
 
 function(type,name,args,locals,stats) ::= <<
 def <name>(<args; separator=", ">):
+	<globals:{glob|global <glob.name>}; separator="\n">
 	<locals; separator="\n">
 	<stats; separator="\n">
 >>
