@@ -12,22 +12,29 @@
  */
 package main;
 
+import graphics.ExportFrame;
 import graphics.FrevoTheme;
 import graphics.FrevoWindow;
+import helper.CMinusLexer;
+import helper.CMinusParser;
 
 import java.io.BufferedWriter;
+import java.io.ByteArrayInputStream;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.io.PrintWriter;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Deque;
@@ -45,10 +52,17 @@ import java.util.zip.ZipException;
 import java.util.zip.ZipFile;
 import java.util.zip.ZipOutputStream;
 
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 
+import org.antlr.runtime.ANTLRInputStream;
+import org.antlr.runtime.CommonTokenStream;
+import org.antlr.runtime.RecognitionException;
+import org.antlr.runtime.RuleReturnScope;
+import org.antlr.stringtemplate.StringTemplateGroup;
+import org.antlr.stringtemplate.language.AngleBracketTemplateLexer;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
@@ -439,6 +453,10 @@ public class FrevoMain {
 			// load results file in argument
 			launchFrevoGraphics(args[0]);
 		} else {
+			System.out.println("Args length: "+args.length);
+			for (int i=0;i<args.length;i++){
+				System.out.println("argument: "+args[i]);
+			}
 			if (args[0].equals("-s")) { // Load session and run
 				if (FREVO_REDIRECTCONSOLE_TO_FILE) {
 					try {
@@ -608,7 +626,126 @@ public class FrevoMain {
 			} else if (args[0].equals("-?") || args[0].equals("?")
 					|| args[0].equals("/?")) {
 				printUsage();
-			} else {
+			} else if ((args.length == 2) && (args[0].equals("-e"))) {
+				String[] arguments=args[1].split(" |,|;");
+				int population=0;
+				int representation=0;
+				String language="C";
+				String filename=null;
+				String outputfile=null;
+				for (String s:arguments){
+					if (s.contains("=")){
+						String[] parts=s.split("=");
+						if (parts.length!=2){
+							String message="ERROR: wrong parameter!\n"+s+"\nIn a command line argument: "+args[1];
+							System.out.println(message);
+							printUsage();
+							throw new IllegalArgumentException(message);
+						}
+						if (parts[0].contains("filename")){
+							filename=parts[1];
+						}
+						if (parts[0].contains("out")){
+							outputfile=parts[1];
+						}
+						if (parts[0].contains("language")){
+							language=parts[1];
+						}
+						if (parts[0].contains("population")){
+							population=Integer.valueOf(parts[1]);
+						}
+						if (parts[0].contains("representation")){
+							representation=Integer.valueOf(parts[1]);
+						}
+					}
+				}
+				if (filename==null){
+					throw new IllegalArgumentException("No representation file specified!");
+				}
+				if (outputfile==null){
+					throw new IllegalArgumentException("No output file specified!");
+				}
+				File loadFile=new File(filename);
+				Document doc = FrevoMain.loadSession(loadFile);
+				ComponentXMLData method = FrevoMain
+						.getSelectedComponent(ComponentType.FREVO_METHOD);
+
+				AbstractMethod m;
+				try {
+					m = method
+							.getNewMethodInstance(new NESRandom(FrevoMain
+									.getSeed()));
+					ArrayList<ArrayList<AbstractRepresentation>> populations = m.loadFromXML(doc);
+					AbstractRepresentation net=populations.get(population).get(representation);
+					String stgName=null;
+					if (!language.equals("C") && !language.equals("c")){
+						stgName=language+".stg";
+					}
+					String content=net.getC();
+				    if (content==null){
+				    	printUsage();
+				    	throw new IllegalArgumentException("Unable to get C code for given representation");
+				    }
+				    String output=content;
+				    if (stgName!=null){
+						StringTemplateGroup templates = new StringTemplateGroup(new FileReader(stgName),
+							    AngleBracketTemplateLexer.class);
+					    
+					    InputStream stream = new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8));
+					    CMinusLexer lexer = new CMinusLexer(new ANTLRInputStream(stream));
+						CommonTokenStream tokens = new CommonTokenStream(lexer);
+						CMinusParser parser = new CMinusParser(tokens);
+						parser.setTemplateLib(templates);
+						RuleReturnScope r = parser.program();
+						String result=r.getTemplate().toString();
+						output=result;
+					}
+					PrintWriter out;
+					out = new PrintWriter(outputfile);
+					out.print(output);
+				    out.close();
+				} catch (InstantiationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (RecognitionException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}		
+			} /*else if ((args.length == 4) && (args[0].equals("-e"))) {
+				System.out.println("jestem!");
+				String filename=args[1];
+				File loadfile=new File(filename);
+				int populationid=Integer.parseInt(args[2]);
+				AbstractRepresentation population=FrevoMain.getRepresentation(loadfile, populationid);
+				
+				Document doc = SafeSAX.read(loadfile, true);
+				Node dpopulations = doc.selectSingleNode("/frevo/populations");
+				// get population size
+				@SuppressWarnings("unchecked")
+				List<? extends Node> populationsNode = dpopulations
+						.selectNodes(".//population");
+				for (Node populationNode:populationsNode){
+				List<?> representations = populationNode.selectNodes("./*");
+				ComponentXMLData representation = FrevoMain
+						.getSelectedComponent(ComponentType.FREVO_REPRESENTATION);
+				AbstractRepresentation member = representation
+						.getNewRepresentationInstance(0, 0, null);
+
+				// load representation data from the XML into the instance
+				Node net=representations.get(representationid);
+				member.loadFromXML(net);
+				}
+				
+			} else if ((args.length == 5) && (args[0].equals("-e"))) {
+				
+			}*/
+			 else {
 				System.out.println("ERROR: wrong parameter set!");
 				printUsage();
 			}
