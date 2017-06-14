@@ -717,34 +717,7 @@ public class FrevoMain {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}		
-			} /*else if ((args.length == 4) && (args[0].equals("-e"))) {
-				System.out.println("jestem!");
-				String filename=args[1];
-				File loadfile=new File(filename);
-				int populationid=Integer.parseInt(args[2]);
-				AbstractRepresentation population=FrevoMain.getRepresentation(loadfile, populationid);
-				
-				Document doc = SafeSAX.read(loadfile, true);
-				Node dpopulations = doc.selectSingleNode("/frevo/populations");
-				// get population size
-				@SuppressWarnings("unchecked")
-				List<? extends Node> populationsNode = dpopulations
-						.selectNodes(".//population");
-				for (Node populationNode:populationsNode){
-				List<?> representations = populationNode.selectNodes("./*");
-				ComponentXMLData representation = FrevoMain
-						.getSelectedComponent(ComponentType.FREVO_REPRESENTATION);
-				AbstractRepresentation member = representation
-						.getNewRepresentationInstance(0, 0, null);
-
-				// load representation data from the XML into the instance
-				Node net=representations.get(representationid);
-				member.loadFromXML(net);
-				}
-				
-			} else if ((args.length == 5) && (args[0].equals("-e"))) {
-				
-			}*/
+			}
 			 else {
 				System.out.println("ERROR: wrong parameter set!");
 				printUsage();
