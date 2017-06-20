@@ -88,7 +88,7 @@ public class DetailsFrame extends JFrame {
 		detailsPanel.add(BorderLayout.CENTER,detailsScrollPane);
 		
 		menuBar = new JMenuBar();
-		menu = new JMenu("Export");
+		menu = new JMenu("Export the source code");
 		JMenuItem menuItemC = new JMenuItem("C");
 		menuItemC.addActionListener(new ActionListener()
 		{
@@ -97,9 +97,12 @@ public class DetailsFrame extends JFrame {
 				try {
 					String content=representation.getC();
 			    	if (content==null){
-			    		return;
+			    		throw new IllegalArgumentException("Failed to generate C source code!");
 			    	}
 			    	String name=DetailsFrame.getSavePlace();
+			    	if (name==null){
+			    		return;
+			    	}
 			    	content=getCPreamble()+content;
 			    	PrintWriter	out = new PrintWriter(name);
 					out.print(content);
@@ -124,7 +127,7 @@ public class DetailsFrame extends JFrame {
 							    AngleBracketTemplateLexer.class);
 					    String content=representation.getC();
 					    if (content==null){
-					    	return;
+					    	throw new IllegalArgumentException("Failed to generate C source code!");
 					    }
 					    InputStream stream = new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8));
 					    CMinusLexer lexer = new CMinusLexer(new ANTLRInputStream(stream));
@@ -134,6 +137,9 @@ public class DetailsFrame extends JFrame {
 						RuleReturnScope r = parser.program();
 						String result=r.getTemplate().toString();
 						String name=DetailsFrame.getSavePlace();
+						if (name==null){
+				    		return;
+				    	}
 						out = new PrintWriter(name);
 						out.print(result);
 					    out.close();
