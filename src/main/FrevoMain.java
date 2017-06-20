@@ -12,7 +12,6 @@
  */
 package main;
 
-import graphics.ExportFrame;
 import graphics.FrevoTheme;
 import graphics.FrevoWindow;
 import helper.CMinusLexer;
