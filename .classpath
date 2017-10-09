@@ -30,8 +30,7 @@
   <classpathentry kind="src" output="Components/Rankings/NoveltyRanking" path="Components/Rankings/NoveltyRanking"/>  
   <classpathentry kind="src" output="Components/Rankings/SwissSystem" path="Components/Rankings/SwissSystem"/>  
   <classpathentry kind="src" output="Components/Problems/SinglePong" path="Components/Problems/SinglePong"/>  
-  <classpathentry kind="src" path="Components/Problems/querySched"/>  
-  <classpathentry kind="lib" path="Libraries/JProwler/jprowler_v1_0.jar"/>  
+  <classpathentry kind="lib" path="Libraries/JProwler/jprowler_v1_0.jar"/>
   <classpathentry kind="lib" path="Libraries/jafama/jodk.jar" sourcepath="Libraries/jafama/jodk_1_2_src.zip"/>  
   <classpathentry kind="lib" path="Libraries/jgraphx/jgraphx.jar"/>  
   <classpathentry kind="lib" path="Libraries/JFreeChart/jfreechart-1.0.17.jar"/>  
