@@ -4,6 +4,8 @@ FREVO is an open-source framework developed in Java to help engineers and scient
 
 The major feature of FREVO is the componentwise decomposition and separation of the key building blocks for each optimization tasks. We identify these as the problem definition, solution representation and the optimization method. This structure enables the components to be designed separately allowing the user to easily swap and evaluate different configurations and methods or to connect an external simulation tool.
 
+![Frevo Framework](images/frevo_framework.png)
+
 FREVO simply stands for FRamework for Evolutionary Design. However, if you look up the word [Frevo in a dictionary](https://en.wikipedia.org/wiki/Frevo), you will see that is also a dance or rather a set of musical styles originating from Brazilian Carnival. The word Frevo is explained as being derived from the Portuguese word ferver which means to boil. This is a nice reference, since our tool FREVO is more or less also boiling the solutions in a pot (ok, rather a pool) until they are ready to serve.
 
 ## Modules in the FREVO Archictecture
