@@ -163,7 +163,7 @@ public class FrevoMain {
 	}
 
 	/** The current major version */
-	private final static String MAJORVERSION = "1.3";
+	private final static String MAJORVERSION = "1.4";
 
 	/**
 	 * Returns the major version of FREVO in a <code>String</code> format.
