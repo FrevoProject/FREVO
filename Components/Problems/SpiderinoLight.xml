@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE frevo SYSTEM "..//IComponent.dtd">
+
+<icomponent>
+  <config>
+	<entry key="author" type="STRING" value="Sergii Zhevzhyk"/>
+	<entry key="version" type="STRING" value="1.00"/>
+	<entry key="classdir" type="STRING" value="SpiderinoLight/SpiderinoLight"/>
+    <entry key="classname" type="STRING" value="spiderinoLight.SpiderinoLight"/>
+	<entry key="name" type="STRING" value="Spiderino and Light"/>
+	<entry key="description" type="STRING" value="Spiderino finding the Light"/>
+	<entry key="image" type="STRING" value="spiderinoLight.png"/>
+	<entry key="tags" type="STRING" value="spiderino light game"/>
+  </config>
+  <properties>
+	<!-- concerning the paddles -->
+	<propentry key="playersPerTeam" type="INT" value="3" description="Number of players (paddles) per team."/>
+	<propentry key="paddleHeight" type="INT" value="60" description="The height of the paddle."/>
+	<propentry key="paddleSpeed" type="FLOAT" value="4" description="Maximum speed of the paddle."/>
+	
+	<!-- simulation -->
+	<propentry key="maximumSteps" type="INT" value="2000" description="Number of steps in simulation"/>	    
+  </properties>
+  <requirements>
+    <reqentry key="inputnumber" type="INT" value="3"/>
+    <reqentry key="outputnumber" type="INT" value="2"/>
+    <reqentry key="minimumCandidates" type="INT" value="1"/>
+    <reqentry key="maximumCandidates" type="INT" value="10"/>
+  </requirements>
+</icomponent>
+
