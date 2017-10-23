@@ -14,3 +14,5 @@ hs_err_pid*
 bin/
 
 !Libraries/**/*.jar
+frevo_config.xml
+.settings/org.eclipse.jdt.core.prefs

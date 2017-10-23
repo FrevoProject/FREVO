@@ -35,7 +35,8 @@
   <classpathentry kind="lib" path="Libraries/jgraphx/jgraphx.jar"/>  
   <classpathentry kind="lib" path="Libraries/JFreeChart/jfreechart-1.0.17.jar"/>  
   <classpathentry kind="lib" path="Libraries/JFreeChart/jcommon-1.0.21.jar"/>  
-  <classpathentry kind="src" path="Components/Problems/Pong"/>  
+  <classpathentry kind="src" path="Components/Problems/Pong"/>
+  <classpathentry kind="src" path="Components/Problems/SpiderinoLight"/>    
   <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>  
   <classpathentry kind="lib" path="Libraries/resources.jar"/>  
   <classpathentry kind="lib" path="Libraries/JGridMap/JGridMap.jar"/>  

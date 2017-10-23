@@ -1,4 +1,4 @@
-package singlePong;
+package spiderinoLight;
 
 import java.util.Hashtable;
 
@@ -14,6 +14,7 @@ public class SpiderinoLight extends AbstractSingleProblem {
 
 	@Override
 	protected double evaluateCandidate(AbstractRepresentation candidate) {
+		return 0;
 	}
 
 	/* (non-Javadoc)
