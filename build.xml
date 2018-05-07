@@ -400,13 +400,7 @@
                 <exclude name="**/*.launch"/>
                 <exclude name="**/*.java"/>
             </fileset>
-        </copy>
-        <copy includeemptydirs="false" todir="bin">
-            <fileset dir="Components/Problems/querySched">
-                <exclude name="**/*.launch"/>
-                <exclude name="**/*.java"/>
-            </fileset>
-        </copy>
+        </copy>        
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="Components/Problems/Pong">
                 <exclude name="**/*.launch"/>
@@ -468,7 +462,6 @@
         <echo message="${ant.project.name}: ${ant.file}"/>
         <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
             <src path="src"/>
-            <src path="Components/Problems/querySched"/>
             <src path="Components/Problems/Pong"/>
             <exclude name="**/.svn/"/>
             <classpath refid="FREVO.classpath"/>
